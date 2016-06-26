@@ -1,0 +1,141 @@
+\documentclass[letterpaper, 11pt, onecolumn, oneside]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Evolution of the Energy Spectrum for Homogeneous Turbulent Flow}
+\author{Jormundgard}
+
+\begin{document}
+
+\maketitle
+
+(Unfinished Draft!!!)
+
+\section{Introduction}
+
+Oh, how long-winded ye be, Marshall.
+
+The impetus behind the development of an evolution equation for the energy spectrum seems to have arisen from two principal sources. The first was due to the early work by Taylor in 1935 and von K\'arm\'an and Howarth in 1938, who emphasized the importance of velocity correlations in turbulent fluids (building on the earlier results of Boussinesq and Reynolds), and the latter pair had constructed an explicit expression for the velocity correlations (i.e. second order moments) in terms of the third order moments of velocity. And so they clearly illustrated the so-called closure problem of turbulence, where the evolution of lower order moments depend explicitly on the higher order moments. Consequently, no finite set of equations is capable of fully describing the dynamics of a turbulent fluid.
+
+The second source was the independent work of Kolmogorov and Obukhov in 1941 (which relied heavily on earlier postulates of Richardson in 1922 (at least in Kolmogorov's case!)) that predicted the existence of an ``inertial subrange'' where the energy associated with a particular wavelength of a disturbance is exchanged with adjacent modes, and undergoes a so-called ``cascade'' to higher and higher modes, until the gradients are so sharp that the disturbances are dissipated by viscosity. Although these results were based on somewhat subjective arguments, there has been significant agreement with experiment.
+
+With the combination of the importance of velocity correlations with the ideas of cascading and the Kolmogorov spectrum strong in the minds of those at the forefront of turbulence theory, there was a desire to understand the dynamics of this energy spectrum and this cascade, and it was clear that it would depend heavily on the velocity correlations. As I can best tell, this work was done independently by Lin (1947) and Batchelor (1948), the latter of whom was greatly inspired by earlier work of Heisenberg (1948). Lin provided a direct Fourier transformation of the von K\'arm\'an-Howarth equation, and is generally considered to be a far more cumbersome task than is necessary. Batchelor's approach was to develop a spectral form of the fundamental equations and to proceed from there, and this is the commonly accepted approach today.
+
+The spectral representation of a turbulent fluid exhibits the same closure catastrophe as its spatial cousin, and some results such as conservation of energy are difficult to illustrate. But it does serve to clearly demonstrate the interaction between the various Fourier modes of the turbulence, and in doing so it also demonstrates the surprising dynamics of the energy cascade.
+
+\section{Spectral Form of the Navier-Stokes Equations}
+
+A Navier-Stokes fluid of constant density obeys
+\begin{subequations}
+\begin{align}
+	\pdiff{u_i}{t} + \pdiff{(u_i u_j)}{x_j} & = -\pdiff{p}{x_i} + \nu \nabla^2 u_i \label{eqnmotion}\\
+	\pdiff{u_i}{x_i} & = 0 \label{divu}
+\end{align}
+with $\rho \equiv 1$. Equivalently, one may replace the quantity $p / \rho$ by $p$ and let it act as a proxy for the pressure. Take note that incompressibility \eqref{divu} has been used to rewrite the advection term in the equation of motion \eqref{eqnmotion} as a momentum flux.
+
+There are four equations and four unknowns, namely $\bm{u}$ and $p$. Ideally, we would like to decouple these variables into a separable system of equations. This is not wholly possible, but we can simplify the problem to some extent. By taking the divergence of the equation of motion, we find that the pressure satisfies
+\begin{equation}\label{peqn}
+	\nabla^2 p = -\frac{\partial^2 (u_m u_n)}{\partial x_m \partial x_n}
+\end{equation}
+\end{subequations}
+so that we can regard \eqref{eqnmotion} and \eqref{peqn} as an alternative system of equations. The advantage of this form is that \eqref{peqn} reduces to an algebraic equation in the spectral form of $p$, which we can then eliminate from \eqref{eqnmotion}.\footnote{Expressing $p$ as the solution to Poisson's equation has other advantages, particularly in numerical schemes. By solving for $p$ with a so-called ``fast Poisson solver'', we can then use it to determine $\bm{u}$ at some later time via the equation of motion.}
+
+We refer to the following results of Fourier theory for spectral transformations:
+\begin{subequations}
+\begin{align}
+	\mathcal{F} \{ f(\bm{x}, t) \} & = \hat{f}(\bm{k}, t) \\
+	\mathcal{F} \{ \partial f / \partial x_i \} & = i k_i \hat{f} \\
+	\mathcal{F} \left\{ \nabla^2 f \right\} & = -k_m k_m \hat{f} = -k^2 \hat{f} \\
+	\mathcal{F} \{ f(\bm{x},t) g(\bm{x},t) \} & = (\hat{f} * \hat{g})(\bm{k},t)
+\end{align}
+\end{subequations}
+where $(\hat{f} * \hat{g})(\bm{k},t)$ represents the convolution and can be represented by either of the following:
+\begin{equation*}
+\begin{split}
+	(\hat{f} * \hat{g})(\bm{k}) & = \int \hat{f}(\bm{p}) \hat{g}(\bm{k} - \bm{p}) d\bm{p} \\
+	& = \int\limits_{\bm{p} + \bm{q} = \bm{k}} \hat{f}(\bm{p}) \hat{g}(\bm{q}) d\bm{p}
+\end{split}
+\end{equation*}
+where $d\bm{p} = dp_x dp_y dp_x$ for three dimensional flow.
+
+Using these basic tranformations, we may represent \eqref{peqn} in spectral form as
+\begin{equation}\label{pspect}
+	\hat{p} = -\frac{k_m k_n}{k^2} (\hat{u}_m * \hat{u}_n).
+\end{equation}
+We can then write the spectral form of \eqref{eqnmotion} as
+\begin{equation}
+	\pdiff{\hat{u}_i}{t} + ik_n (\hat{u}_i * \hat{u}_n) = -i k_i \left(-\frac{k_m k_n}{k^2}\right) (\hat{u}_m * \hat{u}_n) - \nu k^2 \hat{u}_i.
+\end{equation}
+By bringing the convolution under a common term, this expression can be simplified as
+\begin{equation}
+	\left(\pdiff{}{t} + \nu k^2 \right) \hat{u}_i = -i k_n P_{im}(\bm{k}) (\hat{u}_m * \hat{u}_n)
+\end{equation}
+where $P_{ij}(\bm{k}) = (\delta_{ij} - k_i k_j / k^2)$.
+
+A further simplification is possible. For an arbitrary matrix $P_{mn}$ and a symmetric matrix $Q_{mn}$, we can decompose $P_{mn}$ into its symmetric and antisymmetric parts, so that $P_{mn} = S_{mn} + A_{mn}$. Then it is not difficult to show that $A_{mn} Q_{mn} = 0$. Hence, we can simplify the trace of $P_{mn}$ and $Q_{mn}$ as $P_{mn} Q_{mn} = S_{mn} Q_{mn}$.
+
+For our purposes, the symmetry of the convolution allows us to replace $k_n P_{im}$ with its symmetric part, which can serve to simplify future calculations. The complete spectral equation for $\hat{u}_i$ is then
+\begin{equation}\label{spectNS}
+	\left(\pdiff{}{t} + \nu k^2 \right) \hat{u}_i = -\frac{i}{2} P_{imn}(\bm{k}) (\hat{u}_m * \hat{u}_n)
+\end{equation}
+where $P_{imn}(\bm{k}) = k_m P_{in}(\bm{k}) + k_n P_{im}(\bm{k})$. With sufficient initial conditions, this equation completely describes dynamical behavior of the system.
+
+One interesting observation is that incompressibility, $\nabla \cdot \bm{u} = 0$ (that is, $\bm{k} \cdot \hat{\bm{u}} = 0$), can be shown from a direct spectral transformation of \eqref{divu}, but it is also a derivable quantity from \eqref{spectNS}. Multiplication by $k_i$ and use of the identity $k_i P_{ij}(\bm{k}) = 0$ yields
+\begin{equation}
+	\pdiff{(k_i \hat{u}_i)}{t} = -\nu k^2 (k_i \hat{u}_i)
+\end{equation}
+whose solution is
+\begin{equation}\label{kueqn}
+	(k_i \hat{u}_i)(t) = A e^{-\nu k^2 t}
+\end{equation}
+where $A = k_i \hat{u}_i$ at an initial time $t_0$. Since the boundary conditions require that the flow initially be incompressible, so that $A = 0$, we can see by \eqref{kueqn} that the fluid must therefore be incompressible for all time.\footnote{There may be more here than meets the eye. Are we then imposing a restricted class of boundary conditions upon our flow? Why is it that incompressibility is universal in spatial form, and yet we must require that incompressibility hold at some initial time in spectral form? I feel as if I am missing something here. At the very least, it shows the importance of boundary conditions, an issue that has been wholly neglected here.} It also illustrates the completeness of equation \eqref{spectNS}. But although this information has been compacted into the spectral Navier-Stokes equation, we should still always remember that the amplitudes of a spectral mode are perpendicular to their respective $\bm{k}$-modes in an incompressible flow.
+
+\section{Evolution Equation for the Energy Spectrum $E(k,t)$}
+
+Using our dynamical equation \eqref{spectNS}, we now seek an expression for the energy in each mode $\bm{k}$, denoted by $E(\bm{k},t)$, and how this mode exchanges energy with other modes. For this section onwards, it will now be useful to regard the velocity amplitudes $\hat{u}_i$ as random variables with desirable properties. Specifically, we require that the statistics be homogeneous (invariant to translations) and isotropic (invariant to rotations). In addition to simplifying the statistics, homogeneity will allow us to equate ensemble averages with spatial averages through an ergodic hypothesis.\footnote{An ergodic theorem has not been proven for the Navier-Stokes equations. But some numerical studies suggest that the hypothesis is valid for an inviscid fluid. [references?]}
+
+(Maybe add some more here)
+
+To arrive at an energy equation, we multiply \eqref{spectNS} for $\hat{u}_i(\bm{k})$ by the conjugate $\hat{u}^*_i(\bm{k}')$ and sum over $i$ to obtain
+\begin{equation}
+	\hat{u}^*_i(\bm{k}') \left(\pdiff{}{t} + \nu k^2 \right) \hat{u}_i(\bm{k}) = -\frac{i}{2} P_{imn}(\bm{k}) \hat{u}^*_i(\bm{k}') (\hat{u}_m * \hat{u}_n)(\bm{k}).
+\end{equation}
+Through differentiaion by parts on the LHS and expansion of the convolution integral, we can rewrite this as
+\begin{equation}
+	\left(\pdiff{}{t} + 2 \nu k^2 \right) (\hat{u}^*_i(\bm{k}') \hat{u}_i(\bm{k})) = - i P_{imn}(\bm{k}) \int \hat{u}^*_i(\bm{k}') \hat{u}_m(\bm{p}) \hat{u}_n(\bm{k} - \bm{p}) d\bm{p}.
+\end{equation}
+
+Since we are attempting to construct an equation for the energy, a purely real quantity, the following identity will be useful. For two real functions $f(x)$ and $g(x)$, it can be shown that $(\hat{f} * \hat{g})(k) = (\hat{f}^{*} \!* \hat{g}^*)(-k)$. We may then rewrite our equation as
+\begin{equation}
+\begin{split}
+	\left(\pdiff{}{t} + 2 \nu k^2 \right) (\hat{u}^*_i(\bm{k}') \hat{u}_i(\bm{k})) & = - i P_{imn}(\bm{k}) \int \hat{u}^*_i(\bm{k}') \hat{u}^*_m(\bm{p}) \hat{u}^*_n(-\bm{k} - \bm{p}) d\bm{p}. \\
+	& = \left[i P_{imn}(\bm{k}) \int \hat{u}_i(\bm{k}') \hat{u}_m(\bm{p}) \hat{u}_n(-\bm{k} - \bm{p}) d\bm{p}\right]^*.
+\end{split}
+\end{equation}
+
+We now consider mean quantities of this system. By performing such a mean and recognizing that $\langle\hat{u}^*_i(\bm{k}) \hat{u}_i(\bm{k}')\rangle = \widehat{U}_{ii}(\bm{k}) \delta(\bm{k}+\bm{k}')$ where $\widehat{U}_{ij}(\bm{k})$ is the spectral tensor, then after integration over $\bm{k}'$, we obtain
+\begin{equation}
+	\left(\pdiff{}{t} + 2 \nu k^2 \right) \widehat{U}_{ii}(\bm{k}) = \left[i P_{imn}(\bm{k}) \iint \langle \hat{u}_i(\bm{k}') \hat{u}_m(\bm{p}) \hat{u}_n(-\bm{k} - \bm{p}) \rangle d\bm{p} \ d\bm{k}' \right]^*.
+\end{equation}
+
+Now since the spectral tensor and therefore the LHS is real, we then require that the RHS also be real. It is not difficult to show that for a complex number $z$, $\Re((iz)^*) = -\Im(z)$. We can then express our system as
+\begin{equation}
+	\left(\pdiff{}{t} + 2 \nu k^2 \right) \widehat{U}_{ii}(\bm{k}) = -\Im \left[ P_{imn}(\bm{k}) \iint \langle \hat{u}_i(\bm{k}') \hat{u}_m(\bm{p}) \hat{u}_n(-\bm{k} - \bm{p}) \rangle d\bm{p} \ d\bm{k}' \right].
+\end{equation}
+
+Finally, we want to express the RHS in a way that will best emphasize this nonlinear exchange between the different modes. To do so, we first appeal to homoegeneity and recognize that
+\begin{equation*}
+	\langle \hat{u}_i(\bm{k}') \hat{u}_m(\bm{p}) \hat{u}_n(-\bm{k} - \bm{p}) \rangle \propto \delta(\bm{k}' + \bm{p} - \bm{k} - \bm{p}) = \delta(\bm{k}' - \bm{k}),
+\end{equation*}
+and that we can therefore freely exchange $\bm{k}$ and $\bm{k}'$ within the integrand. Then by also making the change of variables $\bm{q} = -\bm{k}' - \bm{p}$ for fixed $\bm{p}$ and noting that this reverses the integration range (and therefore absorbs the resulting minus sign), we can construct our equation for the evolution of the trace of the spectral tensor:
+\begin{equation}
+\left(\pdiff{}{t} + 2 \nu k^2 \right) \widehat{U}_{ii}(\bm{k}) = -\Im \left[ P_{imn}(\bm{k}) \iint \langle \hat{u}_i(\bm{k}) \hat{u}_m(\bm{p}) \hat{u}_n(\bm{q}) \rangle d\bm{p} \ d\bm{q} \right].
+\end{equation}
+
+We introduce one final step into this derivation. Isotropy allows us to relate the trace of the spectral tensor to the energy spectrum, $E(k)$.
+
+\end{document}

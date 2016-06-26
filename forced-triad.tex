@@ -1,0 +1,127 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Forced Resonant Wave Interactions}
+\author{Marshall Ward}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+This is a running dialogue of my inclusion of external forcing into a generic system exhibiting resonant triad instabilities and growth.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Forced System}
+
+If we introduce a forcing $\mathcal{F}^i_1(t)$ to the generic form of our system, we have
+\begin{equation}
+\pdiff{A^i_1}{t} + i \omega^i_1 A^i_1 = \mathcal{F}^i_1 + \epsilon \sum_{jk}\int\limits_{23} \Gamma^{ijk}_{123} A^j_2 A^k_3 d\mathbf{k}_{23}
+\end{equation}
+using the conventions defined in the prospectus. By considering a perturbative expansion,
+\begin{equation}
+A^i_1 = {A^i_1}^{(0)} + \epsilon {A^i_1}^{(1)} + \epsilon^2 {A^i_1}^{(2)} + \ldots
+\end{equation}
+we decompose the solution into a system of linear equation at each order of $\epsilon$.
+
+\subsection{$O(1)$}
+
+At $O(1)$, the system is
+\begin{equation}
+\pdiff{}{t}{A^i_1}^{(0)} + i \omega^i_1 {A^i_1}^{(0)} = \mathcal{F}^i_1
+\end{equation}
+and the solution for ${A^i_1}^{(0)}$ is
+\begin{equation}
+{A^i_1}^{(0)} = a^i_1 e^{-i \omega^i_1 t} + \int_0^t \mathcal{F}^i_1(t') e^{i \omega^i_1 (t' - t)} dt'
+\end{equation}
+where $a^i_1$ is the initial condition for $A^i_1$ at $t = 0$.
+
+To better analyze the response of the flow to a particular forcing, we consider the simplest case, where the system is only forced at the frequency $\omega_0$,
+\begin{equation}
+\mathcal{F}^i_1 = F^i_1 e^{-i \omega_0 t}.
+\end{equation}
+The amplitudes $F^i_1$ describe the forcing on a wave of type $i$ and wavelength $\mathbf{k}_1$ and are independent of time. The $O(1)$ solution then becomes
+\begin{equation}
+{A^i_1}^{(0)} = a^i_1 e^{-i \omega^i_1 t} + F^i_1 e^{-i \omega^i_1 t} \Delta_1(\omega^i_1 - \omega_0)
+\end{equation}
+where $\Delta_1(\omega) \equiv (i\omega)^{-1} \left(e^{i \omega t} - 1\right)$ was introduced in the prospectus. In particular, recall that $\Delta_1(0) = t$, which in this case indicates that the forcing matches one of the natural modes of the system. If such a resonant response is present, then it will likely dominate over any slower modulational response induced by the nonlinearity. We therefore assume that $F^i_1 = 0$ for those modes $(i,\mathbf{k}_1)$ that satisfy $\omega^i_1 = \omega_0$. An obvious but atypical example would be a PV forcing at nonzero frequency. A more typical example would be the following: given the dispersion relation $\omega^\pm_1 = \sqrt{1 + \lambda^2 {K_1}^2}$ and a forcing at wavelength $\lambda/2\pi$ (or mode $K_1 = \lambda^{-1}$) and zero forcing at all other modes, we simply require that the oscillation $\omega_0 \neq \sqrt{2}$. Any other frequency is suffcient to prevent $O(1)$ resonance.
+
+\subsection{$O(\epsilon)$}
+
+At $O(\epsilon)$, the system is described by
+\begin{equation}
+\pdiff{}{t}{A^i_1}^{(1)} + i \omega^i_1 {A^i_1}^{(1)} = \sum_{jk} \int\limits_{23} \Gamma^{ijk}_{123} {A^j_2}^{(0)} {A^k_3}^{(0)} d\mathbf{k}_{23} 
+\end{equation}
+where the right hand side, after substitution of the $O(1)$ result, becomes
+\begin{equation}
+\begin{split}
+\sum_{jk} \int\limits_{23} \Gamma^{ijk}_{123} \lbrace a^j_2 & a^k_3 + 2 a^j_2 F^k_3 \Delta_1(\omega^k_3 - \omega_0) \\
+&+ F^j_2 F^k_3 \Delta_1(\omega^j_2 - \omega_0) \Delta_1(\omega^k_3 - \omega_0) \rbrace e^{-i(\omega^j_2 + \omega^k_3)t} d\mathbf{k}_{23}.
+\end{split}
+\end{equation}
+The solution to this system is
+\begin{equation}
+\begin{split}
+e^{i\omega^i_1 t}{A^i_1}^{(1)} &= \sum_{jk} \int\limits_{23} \Gamma^{ijk}_{123} a^j_2 a^k_3 \Delta_1(\omega^{ijk}_{123}) d\mathbf{k}_{23} \\
+&+ 2 \sum_{jk} \int\limits_{23} \Gamma^{ijk}_{123} a^j_2 F^k_3 \Delta_2(\omega^{ijk}_{123},\omega^k_3 - \omega_0) d\mathbf{k}_{23} \\
+&+ \sum_{jk} \int\limits_{23} \Gamma^{ijk}_{123} F^j_3 F^k_3 \Delta_3(\omega^{ijk}_{123}, \omega^j_2 - \omega_0, \omega^k_3 - \omega_0) d\mathbf{k}_{23}
+\end{split}
+\end{equation}
+where $\omega^{ijk}_{123} = \omega^i_1 - \omega^j_2 - \omega^k_3$ as before. $\Delta_2$ is given by
+\begin{equation}
+\begin{split}
+\Delta_2(\omega, \omega') &= \int_0^t e^{i \omega t'} \Delta_1(\omega') dt' \\
+&= \frac{\Delta_1(\omega + \omega') - \Delta_1(\omega)}{i \omega'}
+\end{split}
+\end{equation}
+as in the prospectus, and $\Delta_3$ is
+\begin{equation}
+\Delta_3(\omega, \omega', \omega'') = \int_0^t e^{i \omega t'} \Delta_1(\omega') \Delta_1(\omega'') dt'.
+\end{equation}
+
+The first term in the expression for ${A^i_1}^{(1)}$ represents nonlinear interactions between the modes, and is described in the prospectus. The second term describes indirect forcing of a particular mode by using an intermediary mode as a ``bridge'', while the last term represents two forcing modes using each other as bridges to excite a new, third mode.
+
+\section{Resonances}
+
+The cases of interest are when resonances arise, since these presumably correspond to the fastest rates of growth. The resonances in the first term occur when $\omega^{ijk}_{123} = 0$, corresponding to classical resonant triads. The modal bridging in the second term requires an understanding of $\Delta_2$, detailed in the prospectus. While an $O(t^2)$ resonance can emerge when both $\omega^{ijk}_{123} + \omega^k_3 - \omega_0 = 0$ and $\omega^k_3 - \omega_0 = 0$, the latter can only be true if $O(t)$ is resonant, which we have prevented by assuming $F^k_3 = 0$ whenever $\omega^k_3 = \omega_0$. But an $O(t)$ resonance arises whenever only one of the two conditions is met, and therefore a resonant bridge between forcing and mode $(i,\mathbf{k}_1)$ occurs whenever $\omega^i_1 = \omega^j_2 + \omega_0$.
+
+The third case is difficult to analyze, since the function $\Delta_3$ will exhibit a number of resonances for a variety of cases, in much the same way that $\Delta_2$ is combinatorically more complicated than $\Delta_1$. However, in the spirit of studying gravity wave-PV interactions, suppose we focus on the case where a PV mode acts as the bridge between a gravity wave and the forcing of a gravity mode. Then either $F^0_2$ or $F^0_3$ (depending on the triad) will be zero and the third term cannot contribute to gravity wave-PV interactions.
+
+We will focus solely on the $(\pm, 0, \pm)$ cases where the forcing is acting only on the gravity modes. Therefore, the second term is the most important for describing how the presence of PV in a region can allow the forcing of one mode $(\pm,\mathbf{k}_3)$ to excite a different mode $(\pm,\mathbf{k}_1)$
+
+Since $\omega^0_2 = 0$, the resonant condition is simply $\omega^i_1 = \omega_0$, so that the excited modes have wavelengths $K_1 = \lambda^{-1} \sqrt{1 - {\omega_0}^2}$. Any bridging and forcing modes $\mathbf{k}_2$ and $\mathbf{k}_3$ should be sufficient, as long as they satisfy a triad $\mathbf{k}_1 = \mathbf{k}_2 + \mathbf{k}_3$.
+
+\section{Multiple Scale Modulation}
+
+A proper multiple scale analysis can provide a modulational equation for this early period of resonant growth. Noting that
+\begin{equation}
+\lim_{\omega+\omega' \rightarrow 0}\Delta_2(\omega, \omega') \sim \frac{t}{i \omega'}
+\end{equation}
+the modulational form of the amplitude equation will become
+\begin{equation}
+\begin{split}
+\pdiff{a^i_1}{\tau} &= \sum_{jk}\int\limits_{23} \Gamma^{ijk}_{123} a^j_2 a^k_3 d\mathbf{k}_{23} \\
+&+ \sum_{jk} \int\limits_{23} \frac{1}{i (\omega^k_3 - \omega_0)} \Gamma^{ijk}_{123} a^j_2 F^k_3 d\mathbf{k}_{23}
+\end{split}
+\end{equation}
+where the sum and integration is only over resonant mode triads satisfying $\mathbf{k}_1 = \mathbf{k}_2 + \mathbf{k}_3 = 0$ and $\omega^{\pm0\pm}_{123} = 0$ in the first term on the RHS, and $\mathbf{k}_1 = \mathbf{k}_2 + \mathbf{k}_3 = 0$ and $\omega^\pm_1 = \omega_0$ in the second. The triads of type $(\pm, \pm, \pm)$ have been dropped, mostly to avoid their complexity but also because they may possibly be of less importance.
+
+The ``non-zero measure'' problem still seems to arise, so one may need to discretize the initial condition or use a discrete Fourier series to guarantee a resonant response.
+
+\section{Conclusion}
+
+This short paper demonstrates that it is possible for a gravity wave forcing to produce a resonant response on a gravity mode of different wavelength if it is in the vicinity of a proper PV-containing wavefield. The simplified resonant requirement may even encourage such bridging with PV modes rather than gravity modes. Typical interaction coefficients $\Gamma$ and situational parameters such as PV amplitude activity, forcing amplitudes, and such should be estimated to decide if this mechanism is relevant, however.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

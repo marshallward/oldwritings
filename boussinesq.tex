@@ -1,0 +1,200 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{The Boussinesq Approximation}
+\author{Jormundgard}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+The set of equations known as the Boussinesq equations are generally attributed to the French physicist Joseph Valentin Boussinesq who worked during the second half of the nineteenth century. He was a profound but sometimes overlooked scientist, who not only developed the buoyant flow equations that bear his name, but also the concept of an eddy viscosity and one of the earliest theories for solitary waves.
+
+The Boussinesq equations are more of an intuitive or observationally driven approximation than a rigorous asymptotic limit because it requires that particular parameters such as the density remain small, even though such parameters cannot truly be known without solving the complete problem. This is not altogether different from most scaling analyses (for example, a ``low Reynolds number'' flow requires a specification of the velocity scale, so that the validity of the approximation requires that we already know the velocity range), but there are a significantly greater number of them than in most, which tends to increase the uncertainty.
+
+(add detail about buoyantly driven flows here)
+
+(include full equations, emphasize isentropic flow and lack of subgrid effects)
+\begin{subequations}\label{FullEqns}
+\begin{equation}\label{FullEqnMotion}
+\frac{D \bm{u}}{D t} = -\frac{1}{\rho} \nabla p - g \hat{\bm{z}}
+\end{equation}
+\begin{equation}\label{FullMassEqn}
+\frac{D \rho}{D t} + \rho \nabla \cdot \bm{u} = 0
+\end{equation}
+\begin{equation}\label{FullThermoEqn}
+\frac{D \rho}{D t} = \frac{1}{c^2} \frac{D p}{D t}
+\end{equation}
+\end{subequations}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Basic State}
+
+Fundamental to the Boussinesq approximation is the dominance of a hydrostatic basic state. Assuming a typical gravitational field $\bm{g} = -g \hat{\bm{z}}$, let us suppose that $\overline{p}$ is the basic state pressure field, $\rho_0$ is the mean density of the fluid, and $\overline{\rho}$ is the basic state perturbation from $\rho_0$. In practice, such a decomposition of density is only sensible when $\overline{\rho} \ll \rho_0$, which is generally true for water and other liquids, but not for gaseous flow. The density of the oceans rarely changes by more than a few percent, which is the main reason why it is safe to treat them as Boussinesq fluids. But the density of the atmosphere may vary by nearly an order of magnitude across the troposphere, so we must take great care when applying this approximation to this system. In this case, one can either focus on situations where the basic state variation is small, or introduce an \emph{anelastic approximation}, which is less restrictive but more difficult to analyze. We will only focus on the Boussinesq case, however.
+
+In the basic steady state, we assume that $\bm{u} = 0$ and $\pdiff{}{t} = 0$ so that the balanced momentum equation becomes
+\begin{equation*}
+\nabla{\overline{p}} = - \left(\rho_0 + \overline{\rho}\right) g \hat{\bm{z}}
+\end{equation*}
+which implies that $\overline{p} = \overline{p}(z)$ and $\overline{\rho} = \overline{\rho}(z)$, and that they satisfy the relation
+\begin{equation}
+\frac{d\overline{p}}{dz} = -\left(\rho_0 + \overline{\rho}\right) g.
+\end{equation}
+We now consider perturbations about this basic state.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Equation of Motion}
+
+Taking the full pressure and density to be $p = \overline{p} + p'(\bm{x},t)$ and $\rho = \rho_0 + \overline{\rho} + \rho'(\bm{x},t)$, where primes denote the dynamic perturbation, the equation of motion becomes
+\begin{equation}\label{ExactEqnMotion}
+\rho_0 \left(1 + \frac{\overline{\rho} + \rho'}{\rho_0} \right) \frac{D\bm{u}}{Dt} = - \nabla p' - \rho' g \hat{\bm{z}}
+\end{equation}
+where the hydrostatic basic state has been removed.
+
+Now let us take $\Delta \rho$ as a scale for the variation in density. To be a little more specific, we may say that $\Delta \rho \equiv \textrm{max}\left\{ |\overline{\rho}|, |\rho'| \right\}$ over all revelant locations and times. If we assume that density variations from the basic state are small, namely that
+\begin{equation}
+\frac{\Delta \rho}{\rho_0} \ll 1,
+\end{equation}
+then the approximate form of the equation of motion becomes
+\begin{equation}\label{ApproxEqnMotion}
+\frac{D \bm{u}}{D t} = - \frac{1}{\rho_0} \nabla p' - \frac{\rho' g}{\rho_0} \hat{\bm{z}}
+\end{equation}
+We therefore see that one major aspect of the Boussinesq approximation is in the neglect of inertial effects of the perturbation density.
+
+It is helpful to introduce the notion of a \textit{buoyancy}. In the equation of motion \eqref{ApproxEqnMotion}, we see that the gravity $g$ has been effectively reduced by a factor of $(\rho' / \rho_0)$, and is often described as a \emph{reduced gravity}. If we define the buoyancy as $b \equiv -\rho' g / \rho_0$, then it acts as a measure of the resulting \textit{upward} acceleration of a fluid particle within a stratified medium, which is in close agreement with our intuitive idea of buoyancy. In this case, we can rewrite the equation of motion as
+\begin{equation}\label{BsqEqnMotion}
+\frac{D \bm{u}}{D t} = -\frac{1}{\rho_0} \nabla p' + b \hat{\bm{z}}
+\end{equation}
+
+Note that although we are focusing on the limit where $\Delta \rho / \rho_0 \rightarrow 0$, we are most interested in situations where $g \Delta \rho / \rho_0$ remains finite, since this retains the effects of buoyant forcing on the fluid. Such a scaling will also be necessary when considering the underlying dynamics of the other equations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Thermodynamic Equation}
+
+In terms of the perturbation quantities, the thermodynamic equation is
+\begin{equation}\label{ExactThermoEqn}
+\frac{D \rho'}{D t} + w \frac{d \overline{\rho}}{d z} = \frac{1}{c^2} \left(w \frac{d \overline{p}}{d z} + \frac{D p'}{D t} \right).
+\end{equation}
+The underlying goal behind the Boussinesq approximation is to simiplify the effects of density variation, and a key part of this is in the elimination of sound waves, perhaps the most prevalent of compressible processes. These are described by the terms $\frac{D p'}{D t}$ and $\frac{D \rho'}{D t}$. To compare these terms, consider the vertical equation of motion,
+\begin{equation}
+\frac{D w}{D t} = -\frac{1}{\rho_0} p'_z - \frac{\rho' g}{\rho_0}.
+\end{equation}
+If $|\rho' g / \rho_0|$ is much smaller than the other quantities, then we have effectively reduced our system to a fluid of constant density (assuming that incompressibility also remains valid), which is clearly not the regime that we are interested in. Alternatively, if $\left|\frac{D w}{D t}\right|$ is much smaller, then we lose the possibility of strong convection and have a purely hydrostatic flow (in an asymptotic sense). It is clear that if we want an accurate model for buoyantly-driven flows, then we are expecting a balance between all three effects; in other words,
+\begin{equation}\label{ConvectiveScale}
+\left|\frac{D w}{D t}\right| \sim \left|\frac{1}{\rho_0} p'_z \right| \sim \left|\frac{\rho' g}{\rho_0}\right|.
+\end{equation}
+We then see that the perturbation pressure and density are related by
+\begin{equation}
+p' \sim \rho' g H_p
+\end{equation}
+where $H_p$ denotes the height scale of interest for variation in $p'$. Since it is difficult to say precisely when we might expect such a triple balance, we will return to this issue later, after we have established our full set of equations.
+
+We can now consider compressible effects. Comparing the ratio of the terms which lead to sound waves, we have
+\begin{equation}
+\frac{1}{c^2} \frac{\left|\frac{D p'}{D t}\right|} {\left|\frac{D \rho'}{D t}\right|} \sim \frac{p'}{c^2 \rho'} \sim \frac{g H_p}{c^2}
+\end{equation}
+So, if $g H_p \ll c^2$, then we may neglect the thermodynamic effects of compressibility. Alternatively, since the system is likely to be bounded by a lengthscale $H > H_p$, we can alternatively state this condition as
+\begin{equation*}
+H \ll \frac{c^2}{g}
+\end{equation*}
+which is slightly more restrictive than necessary but is simpler to diagnose, since it doesn't require a detailed description of $p'$.\footnote{We are, however, running the risk of taking our scale analysis a little too seriously.}
+
+So for sufficiently small height scales, we can write the thermodynamic equation as
+\begin{equation}
+\frac{D \rho'}{D t} + w \frac{d \overline{\rho}}{d z} = \frac{1}{c^2} \left(w \frac{d \overline{p}}{d z}\right).
+\end{equation}
+Then by using hydrostatic balance $\frac{d \overline{p}}{d z} = -\left(\rho_0 + \rho'\right) g \approx -\rho_0 g$ and introducing a \textit{buoyancy frequency} $N$ defined by
+\begin{equation}
+N^2 \equiv -\frac{g}{\rho_0} \left( \frac{d \overline{\rho}}{d z} + \frac{\rho_0 g}{c^2} \right),
+\end{equation}
+we may write the approximate thermodynamic equation as
+\begin{equation}\label{ApproxThermoEqn}
+\frac{D \rho'}{D t} - w \frac{\rho_0 N^2}{g} = 0
+\end{equation} 
+or, in terms of the buoyancy,
+\begin{equation}
+\frac{D b}{D t} + N^2 w = 0.
+\end{equation}
+So aside from compressibility by the hydrostatic pressure, our approximations have eliminated any pressure-driven changes in density.
+
+Before moving on, we comment that a stable basic state ($N^2 > 0$) requires that $\frac{d \overline{\rho}}{d z} < 0$, or when lighter fluid is sitting atop heavier fluid. We also note that the compressibility term $\frac{\rho_0 g}{c^2}$ always acts to destabilize such a state. We can typically neglect the effects of compressibility though, specifically when the stronger constraint
+\begin{equation*}
+H \ll \frac{\Delta \rho}{\rho_0} \frac{c^2}{g}
+\end{equation*}
+is satisfied.\footnote{There are important situations where this does not hold. I believe that the deep water formation in the Weddell Sea is in large part due to the variation of $c^2$ with pressure (or, equivalently, depth).}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Mass Conservation}
+
+We are now prepared to directly address the question of the compressibility. The complete equation for mass balance is
+\begin{equation}\label{ExactMassEqn}
+\frac{D \rho'}{D t} + w \frac{d \overline{\rho}}{d z} + \rho_0 \left(1 + \frac{\overline{\rho} + \rho'}{\rho_0} \right) \nabla \cdot \bm{u} = 0.
+\end{equation}
+Again assuming that $\Delta \rho / \rho_0 \ll 1$, this simplifies to
+\begin{equation*}
+\frac{D \rho'}{D t} + w \frac{d \overline{\rho}}{d z} + \rho_0 \nabla \cdot \bm{u} = 0.
+\end{equation*}
+Then by using the thermodynamic equation, the density dependence is written in terms of vertical flow and we have
+\begin{equation*}
+\nabla \cdot \bm{u} = \frac{g}{c^2} w.
+\end{equation*}
+We now see that the compression of the perturbation is balanced by an expansion of the basic state and vice versa, with a slight offset caused by $\pdiff{p}{\rho}$. Now consider the vertical divergence, $\pdiff{w}{z}$. Since
+\begin{equation*}
+\frac{\left|\pdiff{w}{z}\right|}{\left|\frac{g}{c^2} w\right|} \sim \frac{g H}{c^2} \ll 1
+\end{equation*}
+based on prior assumptions, we can neglect this effect. Finally, since we expect $\pdiff{u}{x} \sim \pdiff{v}{y}$, these terms are both retained,\footnote{In fact, they may dominate over $\pdiff{w}{z}$ in the presence of rotation.} and our final equation for mass balance is simply a state of incompressibility,
+\begin{equation}\label{BsqMassEqn}
+\nabla \cdot \bm{u} = 0.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Scaling Considerations}
+
+We can now write our complete set of equations under the Boussinesq approximation:
+\begin{subequations}
+\begin{equation}
+\frac{D \bm{u}}{D t} = -\frac{1}{\rho_0} \nabla p + b \hat{\bm{z}}
+\end{equation}
+\begin{equation}
+\frac{D b}{D t} + N^2 w = 0
+\end{equation}
+\begin{equation}
+\nabla \cdot \bm{u} = 0
+\end{equation}
+\end{subequations}
+where the primed notation has been dropped. We can also, if we wish, incude the effects of rotation into the equation of motion:
+\begin{equation}
+\frac{D \bm{u}}{D t} + f \hat{\bm{z}} \times \bm{u} = -\frac{1}{\rho_0} \nabla p + b \hat{\bm{z}}.
+\end{equation}
+
+With or without rotation, the necessary assumptions are that
+\begin{subequations}
+\begin{equation*}
+\frac{\Delta \rho}{\rho_0} \ll 1
+\end{equation*}
+\begin{equation*}
+H \ll \frac{c^2}{g}
+\end{equation*}
+\begin{equation*}
+\left|\frac{D w}{D t}\right| \sim \left|\frac{1}{\rho_0} p'_z \right| \sim \left|\frac{\rho' g}{\rho_0}\right|.
+\end{equation*}
+\end{subequations}
+Using the complete set of equations, we are now prepared to address the final constraint in more detail.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

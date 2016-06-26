@@ -1,0 +1,710 @@
+\documentclass[letterpaper,11pt,onecolumn,twoside,titlepage]{article}
+
+\usepackage{amsmath, amssymb, amsfonts, bm}
+\usepackage{newapa}
+\usepackage{natbib}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Nonmodal Growth of Atmospheric Disturbances}
+\author{Marshall Ward}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\maketitle
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\tableofcontents
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\pagenumbering{arabic}
+
+\section{Introduction}
+
+One of the principal goals of dynamic meteorology is to construct a consistent theory for the development of synoptic scale disturbances in the atmosphere. The theory of baroclinic instability was perhaps the first to provide a successful framework within which to address this problem. The early models of \citet{Charney:1947} and \citet{Eady:1949} gave the first justifications for the observed length and time scales of these processes, as well as other features such as the tilting of pressure troughs and ridges towards the west during cyclogenesis.
+
+Their method was essentially the same as that used in hydrodynamic stability problems for over a century. The hydrodynamic equations are first linearized about a particular rest state. Next, small harmonic perturbations of the type $e^{i(\mathbf{k} \cdot \mathbf{x} - \sigma t)}$ are applied to the system, which typically places some constraint on $\sigma$. If $\sigma$ remains real, then the perturbations stay small and the response can be treated as stable. But if $\sigma$ is both negative and imaginary, then the system will undergo exponential growth, forcing small perturbations to become large. Perturbations leading to such growth are said to be unstable. If \emph{any} possible perturbation leads to instability, then it is likely that the system will eventually undergo this rapid growth, since an arbitrary disturbance will typically contain all manner of perturbations.
+
+While this type of analysis has had a great deal of success for an enormously wide range of problems in fluid dynamics, it is clearly built upon ad hoc assumptions. In a sense, it is a solution seeking a problem. Nearly every subject involving nonlinear equations has at some point introduced what can almost be thought of as arbitrary conditions whose purpose is to justify the linearization, allowing one to solve the equations with relative ease. Often though, these assumptions inevitably pigeonhole us into focusing on those regimes where linearization is valid, and ignoring any alternatives. Similarly, studying the response of infinitesimal perturbations is also a somewhat na\"\i ve approach, for it completely neglects the possibility of interaction between a collection of disturbances. It also only considers the response in the asymptotic time limit $t \rightarrow \infty$.
+
+Nonetheless, these methods are philosophically very pleasing for problems in hydrodynamic instability. If we are interested in infinitesimal perturbations, then it seems reasonable that nonlinear terms such as quadratics will be much smaller than the linear terms, and neglecting them should hopefully introduce noticeable errors only after the amplitudes grow significantly larger in size. Also, if we introduce a number of disturbances into the system, then it is perfectly reasonable that each one evolves independently of the others, as this is one of the fundamental properties of linear systems that makes them so appealing. Hence, the fastest growing mode should eventually dominate over all other disturbances, regardless of their initial amplitudes. This suggests that, for the most part, we can neglect the initial state of the system.
+
+The possibility of interference between a combination of these solutions is neglected in such an analysis however, and it must be included if we are to determine the amplitude after a finite time. Also, even as Eady and Charney's results were being heralded by the meteorological community, others such as Eliassen and Petterssen emphasized that any analysis which ignores the initial conditions is fundamentally inconsistent with observations; for example, surface cyclogenesis and growth typically occur in response to pre-existing disturbances such as fronts and upper-level troughs. 
+
+The focus of this paper then is on the broader topic of the response of a baroclinic fluid to initial conditions, and particularly on how it evolves within a finite time. We retain the assumption of linearity, but by no longer restricting ourselves to a single mode evolving in the asymptotic time limit, we are now faced with a considerably more complicated task. But the inclusion of this so-called ``nonmodal growth'' has the potential to produce far more accurate representations of the development of large-scale disturbances in the atmosphere.
+
+We first give a brief description of the Eady model, which will be the proving grounds for many of these ideas in nonmodal growth. We then present the continuous modes of the system, all of which are neutral and therefore irrelevant in an asymptotic analysis, but are necessary for a complete treatment of most initial value problems. Following this, we provide complete analytic solutions for both the one-boundary and the classical two-boundary Eady problem in response to some initial disturbance. After providing some physical motivation for the results, we then move on to study the effects of Ekman pumping, and whether it is capable of suppressing the normal modes in favor of the nonmodal growth. Finally, we present a brief introduction to the new face of nonmodal growth, generalized stability theory. This method is capable of determining the optimum initial condition that will create the greatest disturbance after a finite time $t$, which is a powerful generalization of prior methods that simply addressed the asymptotic limit.
+
+Before we begin, it is worth noting that the majority of work in this subject has been due to Brian Farrell, who was himself motivated by the earlier work he did with by Richard Lindzen on the effects of initial conditions in models of baroclinic instability. Despite his many accomplishments in this subject, the role of nonmodal growth and its relation to the unstable modes in the atmosphere is still an open question.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Eady Problem}
+
+To illustrate the role of nonmodal growth in atmospheric disturbances, we use the model of \cite{Eady:1949}. By applying the quasigeostrophic and Boussinesq approximations to a rotating, stably stratified fluid, it is possible to neglect the vertical velocity in all quantities but the vorticity, which can be related to the Laplacian of the streamfunction. If we neglect curvature effects (i.e. $\beta = 0$) and introduce a mean zonal flow, then the streamfunction can be shown to obey the equation
+\begin{subequations}\label{fulleady}
+\begin{equation}\label{fulleady1}
+\left(\pdiff{}{t} + U_0 \pdiff{}{x}\right)\left(\nabla^2 \psi + \frac{f^2}{N^2} \pdiff{^2 \psi}{z^2} \right) = 0
+\end{equation}
+along with the boundary condition
+\begin{equation}\label{fulleady2}
+\left(\pdiff{}{t} + U_0 \pdiff{}{x}\right)\pdiff{\psi}{z} - \left(\pdiff{U_0}{z}\right) \pdiff{\psi}{x} = 0,
+\end{equation}
+\end{subequations}
+where the velocity $w=0$ on the boundaries.
+
+The simplest solutions to \eqref{fulleady1}, first calculated by Eady, are the modal solutions which arise when $\psi$ is assumed to be separable. Structurally, they are written as
+\[\label{modalform}
+\psi = \psi(z)F(t)e^{i\left(kx+ly\right)},\footnote{To clarify any ambiguity, regard $\psi = \psi(x,y,z,t)$ and $\psi(z)$ as distinct functions. Throughout this paper, the $\psi$ in question should be evident from the context.}
+\]
+and are well documented in various sources, see e.g. \citet{Pedlosky:1987}. In brief, substitution of the separable form of $\psi$ leads to an eigenvalue problem for $\psi(z)$, which is satisfied by some set of orthogonal eigenfunctions with associated eigenvalues, strongly dependent on the boundary conditions. The time dependence $F(t)$ is found to be of the form $e^{i \sigma_i t}$, where $\sigma_i$ depends on an associated eigenvalue for each mode $(k,l)$. This time dependence describes either stably neutral modes when $\sigma_i$ is real, or exponentially growing and decaying modes when $\sigma_i$ has an imaginary component. A general modal disturbance is a sum of such solutions over all possible values of $k$ and $l$. As $t \rightarrow \infty$, we would expect the unstable modes to become the dominant terms in such a disturbance. Additionally, the fastest growing unstable mode should eventually dominate over all other modes, even if its amplitude is initially much smaller.
+
+However, it's possible to consider solutions for $\psi$ that cannot be expressed in terms of a modal disturbance. For example, $\psi$ may have an initial value that cannot be represented by any sum of the normal modes. \citet{Pedlosky:1964} first considered this initial value problem for the Eady model and determined that there is also a continuum of neutral modes that must be considered when the normal modes are not sufficient. The general structure of these solutions remains the same, but there is no longer an orthogonal relationship between the various solutions for $\psi(z)$.
+
+Although a complete solution may be constructed from these two types of modes, we may instead take an approach that considers a less restrictive functional form,
+\[
+\psi = \psi(z,t) e^{i(kx + ly)}.
+\]
+In principle, these nonmodal solutions for $\psi$ can be expressed in terms of the normal and continuous modes. But such a potentially complicated representation makes it difficult to examine the physical evolution of the disturbance. Our hope is that the nonmodal form will better illustrate this evolution, as well as the underlying processes.
+
+In any case, the equations for the Eady model can be simplified for these classes of solutions. If the zonal flow is some linear shear $U_0 = \Lambda z$, then the system \eqref{fulleady} is reduced to
+\begin{subequations}
+\begin{equation}\label{dimeady1}
+\left(\frac{\partial}{\partial t} + i k \Lambda z\right)\left(\frac{f^2}{N^2} \frac{\partial^2 \psi}{\partial z^2} - \left(k^2+l^2\right) \psi\right) = 0
+\end{equation}
+\begin{equation}\label{dimeady2}
+\left(\frac{\partial}{\partial t} + i k \Lambda z\right)\frac{\partial \psi}{\partial z} - i k \Lambda \psi = 0.
+\end{equation}
+\end{subequations}
+By letting $\epsilon = f^2/N^2$, $\alpha^2 = k^2 + l^2$ and taking $H$ as a typical vertical length scale of the system, we may use the rescalings
+\[
+\begin{aligned}
+z & = H z' \\
+k & = \left(\sqrt{\epsilon} / H\right) k' \\
+l & = \left(\sqrt{\epsilon} / H\right) l' \\
+t & = \left(1 / \sqrt{\epsilon} \Lambda \right) \left(\alpha / k\right) t'
+\end{aligned}
+\]
+so that our nondimensionalized equations become
+\begin{subequations}
+\begin{equation}\label{eady1}
+\left(\pdiff{}{t} + i \alpha z\right)\left(\psi_{zz} - \alpha^2 \psi\right) = 0
+\end{equation}
+\begin{equation}\label{eady2}
+\left(\pdiff{}{t} + i \alpha z\right)\psi_z - i \alpha \psi = 0
+\end{equation}
+\end{subequations}
+where the primes have been dropped.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Continuous Modes in the Eady Model}
+
+To determine the origin of the continuous modes in the Eady model, we will attempt to solve equation \eqref{eady1} with separable solutions. In principle, this should lead us to a complete solution, since any reasonably smooth disturbance has an equivalent Fourier representation.\footnote{A sufficient condition is that the disturbance $f(t)$ be piecewise continuous, differentiable and absolutely integrable---that is, the integral $\int_{-\infty}^{\infty} |f(t)| dt$ must converge. For a readable treatment of the more precise conditions, see e.g. \citet{Lepage:1961}.} Although Pedlosky was the first to report on their existence within the Eady model, they are indicative of many problems of a similar nature. The method described here was first done by \citet{Case:1960} for the Couette problem of disturbances about a inviscid shear flow between two plates.
+
+If we retain the separable form for $\psi$ and let $F(t) = e^{i\sigma t}$, then \eqref{eady1} becomes
+\[
+(z- z_c)\left(\psi_{zz} - \alpha^2 \psi\right) = 0
+\]
+where $z_c = \sigma / \alpha$. In the traditional Eady analysis, we satisfy this by simply requiring that
+\[
+\psi_{zz} - \alpha^2 \psi = 0
+\]
+and solve the associated eigenvalue problem. However, there is a more general option, where we enforce this condition at all $z$ \emph{except} where $z = z_c$. In other words, we wish to solve the problem
+\[
+\psi_{zz} - \alpha^2 \psi = B \delta(z - z_c)
+\]
+where $B$ is a constant amplitude and $\delta(z)$ is the Dirac delta function. In other words, $\psi(z)$ is the Green function for this differential equation. The particular form for $\psi(z)$ depends on the boundary conditions, but in the traditional Eady analysis with upper and lower boundaries at $z = 0$ and $z = 1$, one finds that, for each $z_c$ between 0 and 1, the associated continuous modal solution for $\psi(z)$ is
+\[
+\psi(z) = -\frac{B[(z_c - 1)\alpha \sinh \alpha + \cosh \alpha]}{(z_c - c_1)(z_c- c_2) \alpha^3 \sinh \alpha} U(z_{\scriptscriptstyle <}) V(z_{\scriptscriptstyle >}),
+\]
+where
+\begin{align*}
+U(z) &= \alpha z_c \cosh \alpha z - \sinh \alpha z, \\
+V(z) &= \frac{(z_c - 1) \alpha \cosh \alpha + \sinh \alpha}{(z_c - 1) \alpha \sinh \alpha + \cosh \alpha} \cosh \alpha z - \sinh \alpha z,
+\end{align*}
+and
+\[
+\begin{array}{lll}
+z_{\scriptscriptstyle <} = z, & z_{\scriptscriptstyle >} = z_c & \quad \text{ when $z < z_c$} \\
+z_{\scriptscriptstyle <} = z_c, & z_{\scriptscriptstyle >} = z & \quad \text{ when $z > z_c$}
+\end{array}
+\]
+while $c_1$ and $c_2$ are the two roots given by the equation
+\[
+c = \frac{1}{2} \pm \frac{1}{\alpha} \sqrt{\left(\frac{\alpha}{2} - \tanh \frac{\alpha}{2}\right)\left(\frac{\alpha}{2} - \coth \frac{\alpha}{2}\right)}.
+\]
+(The solution is obtained by assuming two independent solutions in each region separated by $z=z_c$, and then matching each to bother the boundary conditions and the jump in $\psi$ prescribed by the delta function at the interface.) Hence, there is an infinite number of possible modes, one for each $z_c$ in the interval (0,1). The most general solution will have both normal mode (i.e. homogeneous) and continuous mode solutions, and the amplitudes are determined by the initial condition on $\psi$.
+
+An important observation can be made regarding the stability of these continuous modes. Recall that $z_c = \sigma / \alpha$. Since $z_c$ must be real, this implies that $\sigma$ must also be real. Therefore, all continuous mode disturbances remain neutral. So despite the necessity of these modes in the complete problem, the unstable normal modes will always dominate over them in the long term.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Eady Edge Wave}
+
+Although a combination of continuous and normal modes can completely describe the evolution of an arbitrary initial disturbance, the role played by each and the interaction between them is not clearly illustrated in this form. \citet{Farrell:1982} began a seminumerical study of the initial value problem in the Eady model, where he was able to qualitatively determine these features of their behavior. He also pointed out the similarities to the initial value Couette problem, particularly because of its inability to support \emph{any} normal modes. Consequently, solutions consist entirely of continuous modes.
+
+In much the same way that Pedlosky was able to extend the work of Case to the Eady model, \citet{Farrell:1984} built upon this connection with the Couette problem by appealing to an earlier study by \citet{Orr:1907}, who determined an exact solution for a harmonic initial disturbance in a Couette flow, and deduced that such disturbances decay as $t^{-2}$ when $t \rightarrow \infty$. By the same method, Farrell was able to construct exact solutions for many variations of the initial value Eady problem \citep{Farrell:1984, Farrell:1985}.
+
+Following Farrell's lead, we begin by examining the Eady edge wave problem, where there is only a single rigid boundary below a fluid which extends infinitely upward. It is well known that the normal mode analysis leads to only neutrally stable disturbances, and that these disturbances decay exponentially as one moves away from the boundary, see e.g. \citet{Gill:1982}. Such disturbances remain neutral because of their inability to extract energy from the mean flow. But in this nonmodal analysis, we shall see how the normal modes may indirectly extract energy drawn out by the initial perturbation, if only to a limited degree.
+
+In order to examine this situation, we consider the initial value problem for a sinusoidal perturbation $\psi$ of unit amplitude in space, as described by
+\[
+\psi_0 = e^{i(kx+ly+mz)}
+\]
+where $\psi = \psi_0$ at $t=0$.
+
+To determine the solution for $\psi$, we consider the differential equation \eqref{eady1}. This equation is satisfied if
+\begin{subequations}\label{nm_eqns}
+\begin{equation}\label{nm_hom}
+\psi_{zz} - \alpha^2 \psi = 0,
+\end{equation}
+which leads to the modal solutions. But just as with the treatment of the continuous modes, one can also seek solutions to the more general problem
+\begin{equation}\label{nm_par}
+\frac{\partial \phi}{\partial t} + i \alpha z \phi = 0
+\end{equation}
+\end{subequations}
+where $\phi(x,y,z,t) = \psi_{zz} - \alpha^2 \psi$. Equation \eqref{nm_hom} clearly corresponds to the classical edge wave solutions of the form
+\[
+\psi_h = A(t) e^{i(kx+ly)}e^{-\alpha z}
+\]
+where we have imposed the condition that the solution remain bounded as $z \rightarrow \infty$. But it should also be clear that these normal mode solutions are incapable of satisfying the initial condition, for they decay exponentially in $z$ while the initial condition varies sinusoidally in $z$. To match the initial condition, we must turn to the alternate solution.
+
+For this alternate case, equation \eqref{nm_par} is integrated to obtain
+\[
+\phi = B e^{-i \alpha z t}
+\]
+where $B = B(x,y,z)$ is as yet undetermined. If we now consider $t=0$, where $\phi = B$ and hence $\psi_0$ obeys
+\[
+\psi_{0zz} - \alpha^2 \psi_0 = B,
+\]
+then the substitution of $\psi_0$ and calculation of $B$ leads to an expression for $\phi$:
+\[
+\begin{split}
+\phi & = -(m^2+\alpha^2)e^{i(kx+ly+mz)}e^{-i \alpha z t} \\
+       & = -\alpha^2(1+a^2)e^{i(kx+ly)}e^{i(m - \alpha t)z}
+\end{split}
+\]
+where $a \equiv m/\alpha$. Finally, by solving the equation $\phi = \psi_{zz} - \alpha^2 \psi$, or
+\[
+\psi_{zz} - \alpha^2 \psi = -\alpha^2 (1+a^2) e^{i(kx+ly)} e^{i(m-\alpha t)z}
+\]
+with the trial solution $\psi = C(t) e^{i(kx+ly)} e^{i(m-\alpha t)z}$, we obtain an expression for $C(t)$ and determine that the particular solution for $\psi$ is
+\[
+\psi_p = \frac{(1+a^2)}{(1+(a-t)^2)} e^{i(kx+ly+(m-\alpha t)z)}.
+\]
+
+Now, noting that the full solution of $\eqref{eady1}$ is of the form $\psi = \psi_h + \psi_p$, and that $A(0) = 0$ at $t=0$, we then substitute this expression into \eqref{eady2}, evaluated at $z=0$, to determine the choice of $A(t)$ that will satisfy the lower boundary condition. After some manipulation, this yields an equation for $A(t)$:
+\[
+\frac{dA}{dt}+iA=-if(t)
+\]
+where
+\[
+f(t)=\frac{2(1+a^2)}{(1+(a-t)^2)^2}.
+\]
+This is a standard linear ODE which can be solved in a number of ways, such as by the use of an integrating factor, or alternatively by Laplace transforms. The solution is
+\[
+A(t) = -ie^{-it}\int_0^t f(\tau) e^{i\tau} d\tau.
+\]
+We now have a complete solution to the initial value problem for $\psi$:
+\begin{equation}
+\psi = \left\{ \frac{(1+a^2)}{(1+(a-t)^2)} e^{i(m-\alpha t)z} + A(t)e^{-mz}\right\} e^{i(kx+ly)}.
+\end{equation}
+
+In a standard linear stability analysis, the most relevant behavior corresponds to the limit $t \rightarrow \infty$, after transient behavior has become negligible. In this regime, when $t \gg a$ and $t \gg 1$, the nonmodal solution behaves like
+\[
+\psi_p \sim (1+a^2) e^{i(kx+ly)} \frac{e^{-i \alpha z t}}{t^2}
+\]
+so that $\psi_p$ decays like $t^{-2}$ and becomes negligible, just as in the Couette problem. But the interesting feature of $\psi_p$ is that its amplitude steadily \emph{increases} in time as $t$ approaches $a$, reaching a maximum of $(1+a^2)$. Only beyond this point does $\psi_p$ begin to decay.
+
+For the behavior of $\psi_h$, the amplitude takes on the form
+\[
+A(t \rightarrow \infty) = -ie^{-it} \int_0^\infty f(\tau) e^{i\tau} d\tau.
+\]
+For $a \gg 1$, which corresponds to a rapidly varying vertical disturbance relative to the horizontal variation, the integral can be approximated as
+\[
+\begin{split}
+A(t\rightarrow\infty) & = -2i (1+a^2) e^{-it} \int_0^\infty \frac{e^{i\tau}}{(1+(a-\tau)^2)^2} d\tau \\
+& = 2i (1+a^2) e^{-it} e^{ia} \int_{-\infty}^a \frac{e^{-iu}} {(1 + u^2)^2} du \\
+& \simeq 2i a^2 e^{-it} e^{ia} \left[\int_{-\infty}^{\infty} \frac{e^{-iu}}{(1+u^2)^2} du - \int_{a}^{\infty} \frac{e^{-iu}}{u^2} \left(1 - \frac{2}{u^2} + \dotsb \right) du \right] \\
+& = 2i a^2 e^{ia} e^{-it} \left(\frac{\pi}{e}-i\frac{e^{-ia}}{a^4} + O\left(a^{-5}\right) \right) \\
+& = \frac{2\pi i a^2}{e} e^{i(a-t)} + O\left(a^{-2}\right)
+\end{split}
+\]
+so that $A(t) \sim a^2$ as $t \rightarrow \infty$ and hence becomes large as $a$ becomes large. And since $|f(t)|$ has its maximum at $t=a$, after which it decays to zero, it's clear that, for all values of $a$, $A(t)$ begins to approach a constant at this time, just as $\psi_p$ begins its decay.
+
+This analysis demonstrates two key aspects of the initial value problem for the Eady edge wave. First, it shows how an initially nonmodal disturbance will eventually decay and be replaced by a persistent modal disturbance. For the case of $a \gg 1$, we see how an initial nonmodal disturbance, in the form of a rapid vertical variation of unit amplitude, is capable of extracting energy from the mean flow. As time goes on, some of this nonmodal energy is then transferred to the modal disturbance as well, whose amplitude is comparable to the maximum value of the nonmodal amplitude. This type of disturbance supports no energy fluxes, which is why it retains its amplitude as $t \rightarrow \infty$. A more detailed discussion of this process is provided in the next section.
+
+However, this problem also illustrates how there is a finite time interval $t \sim a$ where this energy transfer rate peaks and the nonmodal disturbance has a finite amplitude, thereby making a significant contribution to $\psi$. If the time scale $a$ is comparable to some physical process such as cyclogenesis, then it's very reasonable to conclude that these nonmodal disturbances, although eventually evanescent, could play a significant role in that process.
+
+Finally, it should be stressed that this solution could have been obtained in terms of the continuous and normal modes. But features such as the existence of the transition time scale would not have been illustrated as clearly, and we would have probably had to rely on numerical computations to determine these features.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Origin of Nonmodal Disturbances}
+
+Before moving on to the complete Eady initial value problem, it is worth discussing the nature of the nonmodal disturbances in further detail. Recall that the nonmodal growth is completely independent of the boundary conditions, for although the modal disturbances were forced to decay as $z \rightarrow \infty$, no such restriction was placed on the initial condition, which in our case oscillated freely in $z$. The solution obtained for $\psi_p$,
+\[
+\psi_p = \frac{(1+a^2)}{(1+(a-t)^2)} e^{i(kx+ly+(m-\alpha t)z)},
+\]
+applies to all variations of the Eady model, regardless of whether there are zero, one, or two rigid boundaries.
+
+For instructional purposes, consider the case of an unbounded fluid extending to $z \rightarrow \pm \infty$. As in the Couette problem, there are no modal solutions capable of matching the boundary conditions, for it is impossible to both satisfy the differential equation and have $\psi$ decay in both directions. Consequently, the only disturbance that can exist is the nonmodal one, and so $\psi = \psi_p$.
+
+Recall that the nonmodal disturbance consists of the neutral continuous modes. Individually, each is stable and therefore unable to extract energy from the mean flow. But if we have a distribution of them, then it is possible that they can interfere with each other in various ways as they propagate along the $xy$ plane, so that their apparent wavenumbers $k$ and $l$ are, at least temporarily, in an energy-extracting state. This is represented in our nonmodal solution by the brief period of growth from $t = 0$ to $t = a$.
+
+But we also know from the edge wave analysis that the nonmodal disturbance will eventually decay as $t \rightarrow \infty$, which is equivalent to saying that the energy will dissipate as well. Beyond $t = a$, the various continuous modes retain their gathered energy as the interference patterns break up. But without any boundaries, there is nowhere for these disturbances to become concentrated. Consequently, dispersive effects lead to the gradual dissipation of this energy. Although it seems to disappear completely, in an apparent violation of the conservation of energy, it is merely being spread across an infinite expanse.
+
+This process can be interrupted by the introduction of a boundary, such as in the edge wave problem. As the disturbances propagate, some materialize into the normal mode distribution with which we are familiar. Since this is a steady state that supports no energy flux, this pattern persists. As $t \rightarrow \infty$, all of this energy will either be meshed into this normal mode or dispersed across the fluid.
+
+To further emphasize this role of interference, let us consider the results of \citet{Rotunno+:1989}. As mentioned by Farrell and others, continuous modes are not necessary for the creation of a nonmodal disturbance; any constructive modal interference may contribute. Rotunno and Fantini have performed the calculation in the Eady model for two identical neutral modes that are moving in opposite directions along the top and bottom boundaries, and have explicitly shown how these waves can interfere to create a transient disturbance. Although we will continue to focus on the continuous modes, the reader should remember that it is not the type of modes within some initial condition that cause nonmodal growth, but rather the  interference between these modes. It is this interference of continuous and normal neutral modes, and even unstable modes, that leads to transient growth.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Eady Initial Value Problem}
+
+We now turn our attention to the classical Eady problem, where an additional rigid boundary is introduced at $z=H$, rescaled to $z=1$, and the interaction between the boundaries can introduce unstable modal growth. Although the mathematics is more complicated, the essential behavior found for the edge waves is reproduced, as well as some other interesting features.
+
+The system is largely the same as in the edge wave analysis, except that the additional boundary leads to a second constraint equation, provided by \eqref{fulleady2}. Evaluation of this equation at $z=0$ and $z=1$ yields the following system:
+\begin{subequations}
+\begin{align}
+&\left(\pdiff{}{t} + i\alpha z\right) (\psi_{zz} - \alpha^2 \psi) = 0,& \\
+&\frac{\partial^2 \psi}{\partial t \partial z} - i \alpha \psi = 0,& z = 0,\\
+&\frac{\partial^2 \psi}{\partial t \partial z} + i \alpha \pdiff{\psi}{z} - i \alpha \psi = 0,& z = 1.
+\end{align}
+\end{subequations}
+If we use the same initial condition as before, then the particular solution remains the same, although it may be in our interest to ensure that the vertical wavelength $2\pi/m$ is a multiple of height. But because we are now in a vertically bounded volume, the modal solution is most simply expressed in terms of hyperbolic functions. Hence, the full solution is 
+\begin{equation}
+\psi = \left\{\frac{(1+a^2)}{(1+(a-t)^2)} e^{i(m-\alpha t)z} + A(t) \cosh(\alpha z) + B(t) \sinh(\alpha z) \right\} e^{i(kx+ly)}.
+\end{equation}
+The principal difference is that the additional boundary condition introduces a second amplitude $B(t)$. But the method is the same as before: we use the boundary conditions to determine $A$ and $B$ and thereby obtain a complete solution for $\psi$. The notation follows Farrell's.
+
+By substitution of $\psi$ into the boundary conditions, we obtain the following system of equations:
+\begin{subequations}\label{eadyivp_sys}
+\begin{equation}
+\frac{dB}{dt} - iA = if(t)
+\end{equation}
+\begin{equation}
+\frac{dA}{dt} + \coth \alpha \frac{dB}{dt} + i(\alpha - \coth \alpha) A + i(\alpha \coth \alpha - 1) B = \frac{i e^{i\alpha(a-t)}}{\sinh \alpha} f(t)
+\end{equation}
+\end{subequations}
+where $f(t)$ is the same as in the previous section.
+
+The calculation of the coefficients is provided in Appendix \ref{eadyivp}. The result is
+\begin{subequations}
+\begin{equation}
+A(t) = \frac{1}{\sigma_1 - \sigma_2}\left[e^{\sigma_1 t} L_1(t) - e^{\sigma_2 t} L_2(t)\right],
+\end{equation} 
+\begin{equation}
+B(t) = \frac{1}{\sigma_1 - \sigma_2}\left[\frac{e^{\sigma_1 t}}{\sigma_1} L_1(t) - \frac{e^{\sigma_2 t}}{\sigma_2} L_2(t)\right]
+\end{equation}
+\end{subequations}
+where
+\begin{subequations}
+\[
+L_1(t) = g_{-1}(t)[-i \sigma_1 \coth \alpha + \alpha \coth \alpha - 1] + g_{+2}(t) \frac{i \sigma_1 e^{im}}{\sinh \alpha},
+\]
+\[
+L_2(t) = g_{-2}(t)[-i \sigma_2 \coth \alpha + \alpha \coth \alpha - 1] + g_{+1}(t) \frac{i \sigma_2 e^{im}}{\sinh \alpha}
+\]
+and
+\[
+g_{+i} = \int_0^\infty f(\tau) e^{\sigma_i \tau} d\tau,
+\]
+\[
+g_{-i} = \int_0^\infty f(\tau) e^{-\sigma_i \tau} d\tau.
+\]
+\end{subequations}
+The eigenvalues $\sigma_1$, $\sigma_2$ are
+\begin{subequations}
+\[
+\sigma_1 = -\frac{i \alpha}{2} + \left[\left(\frac{\alpha}{2} - \tanh \frac{\alpha}{2}\right) \left(\coth \frac{\alpha}{2} - \frac{\alpha}{2}\right)\right]^{1/2}
+\]
+\[
+\sigma_2 = -\frac{i \alpha}{2} - \left[\left(\frac{\alpha}{2} - \tanh \frac{\alpha}{2}\right) \left(\coth \frac{\alpha}{2} - \frac{\alpha}{2}\right)\right]^{1/2}.
+\]
+\end{subequations}
+
+Despite the complexity of these solutions, some important observations can be made. The first is that, for stable solutions where $\sigma_i$ is purely imaginary, the modal amplitudes $A$ and $B$ become significant on time scales of $a$, which is the same behavior observed for the edge wave. This is seen by considering the integrals within the terms $L_i(t)$, which become comparable to the nonmodal amplitude for $t \sim a$. So again we have a transfer of energy from initial nonmodal terms to the modal terms.
+
+As in the purely modal analysis, unstable solutions occur when $\sigma_i$ has a positive real part. This occurs when $\alpha < \alpha_c$, where $\alpha_c$ is the solution to the transcendental equation
+\[
+\frac{\alpha_c}{2} = \coth \frac{\alpha_c}{2},
+\]
+whose solution is $\alpha_c \approx 2.3994$. More importantly though, $\alpha$ and $\sigma_i$ are both $O(1)$ for unstable growth\footnote{Recall that the statement ``$x \text{ is } O(1)$'' implies that either $x \sim 1$ or $x \ll 1$.}. In particular, if $a \gg 1$, or even if $a \sim 1$ and $\sigma_i \sim 1$, then it's possible that the modal disturbance, jump-started by some infinitesimal energy transfer from the nonmodal disturbance, may have extracted so much energy from the mean flow that, by the time $t$ approaches $a$, any additional energy from the initial disturbance will only have a secondary effect on the amplitude. For the cases where $a \ll 1$ or $\sigma_i \ll 1$ (i.e. $\alpha \rightarrow 0$ or $\alpha \rightarrow \alpha_c$), this scenario is far less likely. But in any case, it is clear that the introduction of the unstable modes can lead to a variety of potentially new dynamical behavior.
+
+There is an additional interesting consequence of an initial disturbance in the Eady model, which occurs when $\alpha = \alpha_c + \delta$ for $\delta \rightarrow 0$; that is, when the nonmodal disturbance results in two neutral modes that are nearly identical, $\sigma_i = -i\alpha/2 \pm i\epsilon$, for $\epsilon \rightarrow 0$. In this case, one can take perturbative expansions of $A$ and $B$ in the regime $\text{Max}[1,a] \ll t \ll \epsilon^{-1}$, leading to a ``near-resonant'' growth by the two disturbances:
+\begin{align}
+A(t) &\approx t e^{-i \alpha_c t / 2} L(t) \\
+B(t) &\approx -t \left(2 \alpha_c^{-1}\right) e^{-i \alpha_c t / 2} L(t)
+\end{align} 
+where $L_1(t)$ and $L_2(t)$ become $L(t)$ as $\epsilon \rightarrow 0$. The derivation of these equations is in Appendix \ref{EadyIVP:Resonance}. This result is actually consistent with an observation by \citet{Lindzen+:1982} that the interaction of normal modes leads to an additional time scale $\tau = 2\pi (\text{Im } \sigma_1 - \text{Im } \sigma_2)^{-1}$. In our case, $\tau = 2 \pi \epsilon^{-1}$.
+
+This near-resonant regime therefore undergoes a very distinct physical evolution, which has two distinct stages. Over the period $t \sim a$, the continuous modes gradually exchange energy between each other and the mean state to create the nonmodal disturbance. Then in the interval $t \sim \epsilon^{-1}$, there is a rapid, violent transfer of energy from the continuous modes to the normal mode, which could almost be thought of as unstable behavior exhibited by a stable mode. This forces us to question whether we should associate cyclogenesis only with the unstable solutions. Certain events, such as incredibly rapid cyclogenesis, could very well be related to this result. Once again though, it's important to stress that we have been able to analytically describe a fairly complicated phenomenon with this nonmodal analysis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Relation to Cyclogenesis}
+
+We have previously described the dynamics of nonmodal growth and its relationship to the normal modes. We now stop to provide motivation for these problems and to give perspective into why they may be relevant to atmospheric phenomena.
+
+As mentioned in the introduction, one of the implicit goals for any study of baroclinic instability is to develop a reliable theory for cyclogenesis and other types of synoptic development. \citet{Petterssen+:1971} classify cyclogenesis under two types:
+\begin{description}
+\item[\ Type A] cyclogenesis refers to growth caused by the infinitesimal disturbance of an unstable mode, while
+\item[\ Type B] cyclogenesis refers to the deepening of a surface cyclone caused by an upper level, finite amplitude disturbance, such as a trough.
+\end{description}
+While Type A cyclogenesis is the most easily understood in terms of baroclinic instability, it is actually the least relevant to forecasting. Since it is triggered by an infinitesimal disturbance which cannot be accurately measured by any means, and must arise independently of the current state of its surroundings, a fact that is nearly impossible to establish, it is debatable as to whether a Type A cyclone has ever been, or ever will be, observed.
+
+For prognostic purposes, Type B is by far the most relevant, since a finite amplitude disturbance is easily measured and is a clearly identifiable state of the atmosphere. But since baroclinic instability models are fundamentally based on the exponential growth of infinitesimal surfaces, we are presented with the difficult problem of attempting to connect them with the observationally motivated Type B cyclogenesis theory.
+
+\citet{Farrell:1985} followed his first theoretical treatment of nonmodal growth with a simple numerical analysis of an initial ``split cosine bell'' disturbance tilting towards the west, similar to that observed in Type B cyclogenesis. This state is shown to evolve into a surface cyclone and that the fastest growing normal mode undergoes an $e$-folding of only 0.27, despite a rapid deepening of the surface low. This leads us to presume that the deepening is due to nonmodal growth. Also, the wavelength of the disturbance was more closely related to the initial state. Although his model had some undesirable effects, such as symmetric upper level troughs caused by his use of the Eady model, and that the simulation may very well have become dominated by unstable modes were it allowed to continue, it demonstrates his proposition that cyclogenesis due to nonmodal growth is a reasonable possibility.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Effect of Ekman Pumping on Baroclinic Instability}
+
+We have offered various circumstances where, when faced with an initial condition containing only neutral modes, a brief period of amplification can occur. But we have not yet addressed in any great detail the role of nonmodal growth when coupled with an unstable mode. This is perhaps the most critical question to ask for assessing its relevance to atmospheric phenomena. \citet{Farrell:1985} presents a justification for this by considering the effects of Ekman pumping on the unstable modes. The basis of the argument is that Ekman pumping will force the unstable modes to be damped, so much so that the nonmodal growth will be the dominant player in processes such as cyclogenesis.
+
+The effects of Ekman pumping are modeled by the inclusion of additional terms in the boundary conditions which represents a vertical momentum flux at the surface and tropopause. Using the same scalings and assumptions as before, the equations describing the system are
+\begin{subequations}
+\begin{equation}
+\left(\pdiff{}{t} + i \alpha z\right)\left(\psi_{zz} - \alpha^2 \psi \right) = 0,
+\end{equation}
+\begin{equation}\label{EadyEkman:LowerBound}
+\pdiff{^2 \psi}{t\partial z} - i \alpha(1 - \Gamma)\psi = 0, \quad z = 0,
+\end{equation}
+\begin{equation}\label{EadyEkman:UpperBound}
+\left(\pdiff{}{t} + i \alpha z \right)\psi_z - i \alpha(1 + \Gamma) \psi = 0, \quad z = 1,
+\end{equation}
+\end{subequations}
+where
+\[
+\Gamma = \frac{iN}{\Lambda H} \left(\frac{\nu}{2f}\right)^{1/2} \frac{\alpha^2}{k}
+\]
+represents the Ekman pumping and $\nu$ is the vertical eddy viscosity. Once again, recall that Ekman pumping only affects the boundaries, and so our nonmodal solution remains the same.
+
+For simplicity, we consider the edge waves of the system, where we remove the upper boundary and thereby ignore \eqref{EadyEkman:LowerBound}. Much of the mathematical detail in this section will be omitted, as it is nearly equivalent to the work presented in previous sections. By solving these reduced equations and restricting ourselves to decaying solutions in $z$, we find that our solution is
+\[
+\psi = \left\{\frac{1+a^2}{1+(a-t)^2} e^{i(m-\alpha t)z} + A(t) e^{-\alpha z} \right\} e^{i(kx + ly)}
+\]
+where $A(t)$ satisfies the equation
+\[
+\frac{dA}{dt} + i(1-\Gamma)A = -i(f-d)
+\]
+with $f$ and $d$ defined as
+\[
+f(t) \equiv \frac{2(1+a^2)}{(1+(a-t)^2)^2},
+\] \[
+d(t) \equiv \frac{\Gamma(1+a^2)}{1+(a-t)^2}.
+\]
+
+Solving for $A(t)$ with the condition that $A(0) = 0$, we find that
+\[
+A(t) = -i e^{i(1-\Gamma)t} \int_0^t e^{i(1-\Gamma)\tau} (f-d) d\tau.
+\]
+Farrell states that this amplitude approaches a constant as $t \rightarrow \infty$ for $\Gamma = 0$ but that it converges to zero otherwise. The author was not able to corroborate this and instead found that the integral approaches a simple harmonic wave for both $\Gamma = 0$ and $\Gamma \neq 0$, whose amplitude can be expressed in terms of exponential integrals. Nonetheless, the real part of this amplitude was found to decrease as $\Gamma$ increases, approaching zero as $\Gamma \rightarrow 1$. This reduction of amplitude does support Farrell's claim that the damping caused by Ekman pumping weakens the modal solutions.
+
+Farrell has been able to extend this hypothesis to numerical models for both an Eady model with an upper lid, as well in as a Charney model \citep{Farrell:1985, Farrell:1989} based on one proposed by \citet{Card+:1982}. In all of these cases, he has found that Ekman pumping acted to severely dampen the unstable modal growth and allowed the nonmodal disturbance to dominate the system.
+
+However, these results should not be taken as generally true by any means. \citet{Valdes+:1988} have run similar simulations and found that although the pumping weakens unsteady growth and allows nonmodal terms to briefly become dominant, the unsteady normal modes eventually dictate the disturbance's evolution after a day or so. And \citet{Lin+:1988} argue that in Farrell's Eady model simulations, he worked with a small meridional region that artificially boosted the effect of Ekman pumping. In their own simulations, which don't exhibit this feature, they find that even a tenfold increase of viscosity doesn't prevent the dominance of unstable mode growth. Even in the more recent work of \citet{Hakim:2000}, where a nonlinear quasigeostrophic model was used, it was the unsteady normal modes which dominated development. In this last study, the effect of Ekman pumping was found to simply slow the development rather than substantially change or prevent it.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Evolution of Nonmodal Growth: A Generalized Stability Analysis}
+
+Despite the evidence that the unstable modes still appear to be the dominant solutions in baroclinic instability problems, Farrell remains confident that the nonmodal growth plays a key role in the development of disturbances. In his later work \citep{Farrell:1989:Optimization}, he has recast the baroclinic instability problem as one of optimization, where one attempts to determine the ideal initial configuration of neutral and unstable modes that will maximize some quantity of interest, such as the amplitude or the energy, after a finite time $t$ has passed. As $t \rightarrow \infty$, such a theory should reproduce the unstable mode with the maximum growth rate. Even more recently, this work has been put on firmer theoretical foundations for more general dynamical systems \citep{Farrell+:1996:Stability1, Farrell+:1996:Stability2}.
+
+To understand this method, consider a very general evolution of a particular state $u(t)$, which obeys some dynamical equation
+\[
+\frac{d}{dt} u = \mathbf{A} u
+\]
+where $\mathbf{A}$ is some dynamical matrix. If $\mathbf{A}$ is independent of time, then the solution of $u$ is
+\[
+u(t) = e^{\mathbf{A} t} u(0).
+\]
+Now if $\mathbf{A}$ is a normal matrix, meaning that it commutes with its adjoint,\footnote{That is, $\mathbf{A}^\dag \mathbf{A} = \mathbf{A} \mathbf{A}^\dag$, where $\dag$ represents the adjoint.} then this implies that there is a complete set of eigenvectors with eigenvalues $\lambda_i$. In this vector space, the solutions for $u$ can be expressed in terms of the eigenvalues, so that $u(t) = e^{\lambda_i t}$. The fastest growing solution is then simply the one associated with the eigenvalue with the greatest real part, $\lambda_\text{max}$, so that our optimal initial condition is $u(t) = e^{\lambda_\text{max} t}$.
+
+Barotropic and baroclinic systems typically have highly non-normal matrices however, indicated by the presence of the very non-orthogonal continuous mode. Despite this, there is a way of performing a normalized analysis through the definition of an appropriate growth rate. We can, for example, define the growth rate $\sigma$ in terms of the amplitude of $u$. Using an inner product $\langle u | v \rangle \equiv v^\dag u$, we may express the relative amplitude of $u$ as
+\[ \begin{split}
+\sigma &= \frac{\langle u(t) | u(t) \rangle}{\langle u(0) | u(0)} \\
+       &= \frac{\langle e^{\mathbf{A}t} u(t) | e^{\mathbf{A}t} u(t) \rangle}{\langle u(0) | u(0)} \\
+       &= \frac{\langle e^{\mathbf{A}^\dag t} e^{\mathbf{A}t} u(t) | u(t) \rangle}{\langle u(0) | u(0)}
+\end{split} \]
+where we have used the identity $\left(e^{\mathbf{A} t}\right)^\dag = e^{\mathbf{A}^\dag t}$. This equation is essentially equivalent to saying that $\mathbf{B} u = \sigma u$, where $\mathbf{B} = e^{\mathbf{A}^\dag t} e^{\mathbf{A}t}$. Since $\mathbf{B}$ is self-adjoint, this leads to a set of orthogonal eigensolutions and eigenvalues for $u$. Just as with normal matrices, this yields a maximally unstable solution $u = e^{\lambda_\text{max} t}$, where $\lambda_\text{max}$ is the eigenvalue of $B$ with the largest real part. In the context of our previous discussions, these types of solutions correspond to the normal modes and the eigenvalues are the growth rates. Although this analysis was performed in terms of the amplitude of a disturbance, it could just as easily be done in terms of its energy.
+
+While the normal modes can be reproduced from this analysis with relative ease, the real benefit of recasting the problem in this form is the way that the continuous modal information may be incorporated. To do this, we perform a \emph{singular value decomposition} (SVD) on the matrix $e^{\mathbf{A} t}$,
+\[
+e^{\mathbf{A}t} = \mathbf{V} \mathbf{\Lambda} \mathbf{U}^\dag,
+\]
+where $\mathbf{U}$ is a unitary matrix containing the column vectors of initial states, $\mathbf{V}$ contains the final states, and $\mathbf{\Lambda}$ is a diagonal matrix containing the nonnegative square root of the growth rates. This representation can be thought of as a generalization of a normal matrix.\footnote{Formally, $\mathbf{U}$ contains the eigenvectors of $e^{\mathbf{A}^\dag t} e^{\mathbf{A} t}$, but this turns out to be equivalent to containing the initial states, since the right matrix evolves $u$ while the left matrix reverses the effect. One can make a similar statement concerning $\mathbf{V}$, defined as $e^{\mathbf{A} t} e^{\mathbf{A}^\dag t}$. And $\mathbf{\Lambda}$ contains the square roots of the eigenvalues of $e^{\mathbf{A}^\dag t} e^{\mathbf{A} t}$, which we have already shown to be the growth rates.}
+
+To show that the normal modes are retrieved as $t \rightarrow \infty$, one can perform a similarity transformation with the matrix $\mathbf{E}$ containing the column eigenvectors of $\mathbf{A}$, and the diagonal matrix $\mathbf{\Sigma}$ containing the eigenvalues, leading to the expression
+\[
+e^{\mathbf{A} t} = \mathbf{E} e^{\mathbf{\Sigma} t} \mathbf{E}^{-1}.
+\]
+As $t \rightarrow \infty$, the eigenvalue with the largest real part will dominate over all other quantities, so that $\mathbf{E}$ essentially contains only the eigenvector associate with this eigenvalue. Then I find that
+\[
+e^{\mathbf{A} t} \rightarrow \mathbf{E}_\text{max} e^{\Sigma_\text{max} t} \mathbf{E}_\text{max}^{-1}.
+\]
+Or, by appealing to Schwarz's inequality, I note that
+\[
+e^{\mathbf{A} t} (\mathbf{E}_\text{max}^{-1})^{\dag} \rightarrow \mathbf{E}_\text{max} e^{\Sigma_\text{max} t}.
+\]
+We have thus performed the optimization for $t \rightarrow \infty$. If we want the optimized state on the RHS, we merely project $u$ on the LHS to obtain the optimum initial condition. We should be pleased to find that the maximum eigenvalue (i.e. growth rate) leads to the fastest growing modes, as this is consistent with the modal analysis from before. But there is also the surprising result that the growth is further optimized by aligning the complex amplitude of $u$ with the biorthogonal to the eigenvector associated with this eigenvalue. This is illustrated in Figure \ref{Fig:Projection}. To project a vector onto, say, the real axis, represented by $OA$, and along the eigenvector $\mathbf{E}_\text{max}$, represented by $OB$, we choose $OC$, the vector orthogonal to $OB$, to obtain the optimum amplitude.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=4.5in]{fig.1}
+\caption{We wish to maximize the projection of a vector upon the line determined by $OA$ and in the direction of $OB$. This diagram shows that $OC$, the line perpendicular to $OB$, will maximize this projection, while skew lines such as $OC'$ will always have a smaller projection.}\label{Fig:Projection}
+\end{center}
+\end{figure}
+
+For the other limiting case, $t \rightarrow 0$, we can simply approximate the matrices through Taylor expansions so that
+\[
+e^{\mathbf{A}^\dag t} e^{\mathbf{A} t} = \mathbf{I} + (\mathbf{A}^\dag + \mathbf{A}) t + O(t^2).
+\]
+In this case, optimization is a matter of determining the eigenvalue of $\mathbf{A}^\dag + \mathbf{A}$ with maximum real part. This should yield results that are comparable to our calculations for nonmodal growth.
+
+As for which, if either, of these limits yields the most relevant result for atmospheric instabilities is of course dependent on $\mathbf{A}$. Although such a task is far beyond the scope of this paper, we present some typical forms for $\mathbf{A}$ in the context of the previous problems.
+
+For the Eady model, our differential equation was
+\[
+\left(\pdiff{}{t} + i \alpha z \right)\left(\pdiff{^2}{z^2} - \alpha^2\right) \psi = 0.
+\]
+We may consequently rewrite this as
+\[
+\pdiff{\Delta \psi}{t} = - i \alpha z \Delta \psi,
+\]
+so that our dynamical equation is
+\[
+\pdiff{\psi}{t} = -i \alpha \Delta^{-1} (z \Delta) \psi
+\]
+where $\Delta = \pdiff{^2}{z^2} - \alpha^2$ and $\Delta^{-1}$ is its inverse operator.
+
+If we include the effects of curvature, as in the Charney model, so that our equation is
+\[
+\left(\pdiff{}{t} + i \alpha z \right)\left(\pdiff{^2}{z^2} - \alpha^2\right) \psi + i \alpha \beta \psi = 0,
+\]
+then our resulting dynamical equation is
+\[
+\pdiff{\psi}{t} = -i \alpha \Delta^{-1} (z \Delta + \beta) \psi
+\]
+These matrix equations can be solved computationally to determine the eigenvalues and eigenvectors which correspond to optimum growth. And for any system, we must, of course, incorporate the boundary conditions in some appropriate manner.
+
+The reader unfamiliar with the necessary linear algebra should worry about the details in this section. In essence, we are merely presenting a method that determines the initial condition which maximizes the amplitude or similar quantity over a finite time $t$. By casting it in this form however, we may appeal to mathematics of linear algebra and matrix analysis and solve these problems in the most efficient manner.
+
+But of course, although we have the beginnings of a powerful generalized theory for stability analysis, we still have not answered our original question: are these transient disturbances relevant to the atmosphere? Although these methods are relatively new, many people, including Farrell and Ioannou themselves, have applied them to all manner of hydrodynamic problems, including even subjects far removed from the atmosphere, such as slow viscous flows and magnetohydrodynamics. But there is still no consensus on their applicability or even necessity in baroclinic instability theory, much less atmospheric phenomena.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+It has been shown that an initial disturbance, typically ignored in a traditional instability analysis, can have a strong influence on the short-term dynamical behavior of baroclinic systems. These effects arise because of the interference between the various wavelike solutions, or possibly even the exponentially growing and decaying solutions, that dominate the system in the early stages of its evolution. However, such behavior is transient and inevitably becomes negligible in comparison to the unstable modal growth as $t \rightarrow \infty$.
+
+The principal issue surrounding these interference effects that will determine their role in atmospheric phenomena is their relationship to the unstable modes, and the duration for which they remain significant. Through Farrell's nonmodal solutions, this issue has been greatly simplified and we are able to address it in a more quantitative manner than simulations would otherwise allow.
+
+There is strong observational evidence supporting the hypothesis that initial conditions are the dominant factor in the development of finite amplitude growth, such as the almost universal tendency for upper-level disturbances to preclude surface cyclogenesis. Farrell has presented simulations with initial conditions similar to such observations that lead to rapid development. But the inability to measure infinitesimal disturbances, along with the previous success in predicting the order of magnitudes for properties of large-scale disturbances, makes it difficult to completely dismiss traditional instability theory.
+
+Farrell has proposed that Ekman damping may act as a deterrent to unstable growth, so much so that the initial nonmodal growth will dominate development for a limited period of time. But simulations by many others find evidence to the contrary, instead demonstrating that the large-scale disturbances predicted by the unstable modes are not only dominant, but are the inevitable conclusion of any such development.
+
+There is still only limited evidence demonstrating how these nonmodal disturbances interact with unstable modes, and it is difficult to establish whether nonmodal disturbances play any role at all in large-scale events such as cyclogenesis. Even with a generalized stability analysis at our disposal, the length and time scales associated with nonmodal growth are not obvious in problems of baroclinic instability. Only through further research will we be able to answer this question with any confidence.
+
+\newpage
+
+\begin{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Calculation of Coefficients in the Eady Initial Value Problem}\label{eadyivp}
+
+The system of differential equations \eqref{eadyivp_sys} for the coefficients $A(t)$ and $B(t)$ is most readily solved through the use of Laplace transforms, which reduces it to a system of algebraic equations. By employing the initial condition $A(0) = B(0) = 0$, the Laplace transformed system (where, for a function $\phi(t)$, the transform is defined as $\tilde{\phi}(\sigma) = \mathcal{L}\{\phi(t)\} \equiv \int_0^\infty \phi(t) e^{-\sigma t} dt \ $) is
+\begin{subequations}
+\[
+-i\tilde{A} + \sigma \tilde{B} = i\tilde{f}(\sigma),
+\]
+\[
+\left(\sigma + i(\alpha - \coth \alpha)\right) \tilde{A} + \left(\sigma \coth \alpha + i (\alpha \coth \alpha - 1)\right) \tilde{B} = \left( \frac{ie^{i \alpha a}}{\sinh \alpha} \right) \tilde{f}(\sigma+i\alpha).
+\]
+\end{subequations}
+
+Inversion of the corresponding matrix results in expressions for $\tilde{A}$ and $\tilde{B}$:
+\begin{subequations}
+\begin{align*}
+\tilde{A} &= \frac{1}{D} \left\{(\sigma \coth \alpha + i(\alpha \coth \alpha - 1)) i \tilde{f}(\sigma) - \sigma \frac{e^{im}}{\sinh \alpha} i \tilde{f}(\sigma + i \alpha)\right\}, \\
+\tilde{B} &= \frac{1}{D} \left\{ -(\sigma + i(\alpha - \coth \alpha))i\tilde{f}(\sigma) - i\frac{e^{im}}{\sinh \alpha} i \tilde{f}(\sigma + i \alpha) \right\} \\
+\end{align*}
+\end{subequations}
+where $m \equiv \alpha a$ and $D$ is the determinant of the matrix, which can be expressed as
+\[
+\begin{split}
+D &= -i(\sigma \coth \alpha  + i(\alpha \coth \alpha - 1)) - \sigma(\sigma + i(\alpha - \coth \alpha)) \\
+  &= - \{\sigma^2 + (i\alpha)\sigma  - (\alpha \coth \alpha - 1)\} \\
+  &= - \left\{\sigma^2 + (i\alpha)\sigma + 1 - \frac{\alpha}{2}\left(\coth \frac{\alpha}{2} - \tanh \frac{\alpha}{2}\right)\right\} \\
+  &= - \left\{\sigma^2 + (i\alpha)\sigma + \left(\frac{\alpha}{2} - \tanh \frac{\alpha}{2} \right) \left(\frac{\alpha}{2} - \coth \frac{\alpha}{2} \right) - \frac{\alpha^2}{4}\right\} \\  
+\end{split}
+\]
+where the most notable identity employed is $2 \coth 2\alpha = \coth \alpha + \tanh \alpha$.
+
+In this form, the roots of the determinant are
+\begin{subequations}
+\[
+\sigma_1 = -\frac{i \alpha}{2} + \left[\left(\frac{\alpha}{2} - \tanh \frac{\alpha}{2}\right) \left(\coth \frac{\alpha}{2} - \frac{\alpha}{2}\right)\right]^{1/2}
+\]
+\[
+\sigma_2 = -\frac{i \alpha}{2} - \left[\left(\frac{\alpha}{2} - \tanh \frac{\alpha}{2}\right) \left(\coth \frac{\alpha}{2} - \frac{\alpha}{2}\right)\right]^{1/2}
+\]
+\end{subequations}
+and so the determinant is more succinctly written as
+\[
+D = -(\sigma - \sigma_1)(\sigma - \sigma_2).
+\]
+
+Next, use the partial fraction representation of $D$:
+\[
+\frac{1}{D} = -\frac{1}{(\sigma - \sigma_1)(\sigma - \sigma_2)} = -\frac{1}{\sigma_1 - \sigma_2} \left(\frac{1}{\sigma - \sigma_1} - \frac{1}{\sigma - \sigma_2}\right).
+\]
+
+Now note that the basic functional form of $\tilde{A}$ (and similarly for $\tilde{B}$) is
+\[
+\tilde{A} = \frac{1}{\sigma_1 - \sigma_2} \left(\frac{h(\sigma)}{\sigma - \sigma_1} - \frac{h(\sigma)}{\sigma - \sigma_2} \right)
+\]
+where
+\[
+h(\sigma) = (-i \sigma \coth \alpha + \alpha \coth \alpha - 1) \tilde{f}(\sigma) + \left(\frac{i \sigma e^{im}}{\sinh \alpha}\right) \tilde{f}(\sigma + i \alpha).
+\]
+If we perform an inverse Laplace transform, then $A$ becomes
+\[
+A(t) = \frac{1}{\sigma_1-\sigma_2} \left(e^{\sigma_1 t} \mathcal{L}^{-1}\left\{\frac{h(\sigma + \sigma_1)}{\sigma}\right\} dt - e^{\sigma_2 t} \mathcal{L}^{-1}\left\{\frac{h(\sigma + \sigma_2)}{\sigma}\right\} dt \right),
+\]
+where
+\begin{subequations}
+\[
+\begin{split}
+\mathcal{L}^{-1}\left\{\frac{h(\sigma+\sigma_1)}{\sigma}\right\} = (-i\sigma_1 \coth \alpha + (\alpha \coth \alpha - 1)) \left[\int_0^\infty e^{-\sigma_1 \tau} g(\tau) d\tau \right] \\
++ \frac{i \sigma_1 e^{im}}{\sinh \alpha} \left[ \int_0^\infty e^{\sigma_2 \tau} g(\tau) d\tau \right] - i \coth \alpha \ e^{-\sigma_1 t} g(t) + \frac{i e^{im}}{\sinh \alpha} e^{\sigma_2 t} g(t)
+\end{split}
+\]
+and
+\[
+\begin{split}
+\mathcal{L}^{-1}\left\{\frac{h(\sigma+\sigma_2)}{\sigma}\right\} = (-i\sigma_2 \coth \alpha + (\alpha \coth \alpha - 1)) \left[\int_0^\infty e^{-\sigma_2 \tau} g(\tau) d\tau \right] \\
++ \frac{i \sigma_2 e^{im}}{\sinh \alpha} \left[ \int_0^\infty e^{\sigma_1 \tau} g(\tau) d\tau \right] - i \coth \alpha \ e^{-\sigma_2 t} g(t) + \frac{i e^{im}}{\sinh \alpha} e^{\sigma_1 t} g(t),
+\end{split}
+\]
+\end{subequations}
+noting that $\sigma_1 + i \alpha = -\sigma_2$.
+
+After substituting these expressions, it is seen that the third and fourth terms of each expression cancel, so that our final expression for $A$ is
+\[
+A(t) = \frac{1}{\sigma_1 - \sigma_2}\left[e^{\sigma_1 t} L_1(t) - e^{\sigma_2 t} L_2(t)\right]
+\] 
+where $L_i$ and $g_{\pm i}$ are defined as before.
+
+Through similar means, one finds that the expression for $B$ is
+\[
+B(t) = \frac{1}{\sigma_1 - \sigma_2}\left[\frac{e^{\sigma_1 t}}{\sigma_1} L_1(t) - \frac{e^{\sigma_2 t}}{\sigma_2} L_2(t)\right]
+\]
+although one must make use of the fact that $\sigma_i^2 + i \alpha \sigma_i - \alpha \coth \alpha + 1 = 0$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Derivation of the Resonant Growth in the Eady IVP}\label{EadyIVP:Resonance}
+
+For the case of resonant growth where $\alpha = \alpha_c + \delta$, the expression for $\sigma_1$ becomes
+\[
+\sigma_1 = -\frac{i(\alpha_c + \delta)}{2} + \sqrt{\left(\frac{\alpha_c + \delta}{2} - \tanh \left(\frac{\alpha_c + \delta}{2}\right)\right) \left(\coth\left(\frac{\alpha_c + \delta}{2}\right) - \frac{\alpha_c + \delta}{2}\right)}.
+\]
+
+Since
+\[
+\tanh\left(\frac{\alpha_c + \delta}{2}\right) = \tanh\left(\frac{\alpha_c}{2}\right) + \text{sech}^2\left(\frac{\alpha_c}{2}\right) \frac{\delta}{2} + O\left(\delta^2\right)
+\] and \[
+\coth\left(\frac{\alpha_c + \delta}{2}\right) = \coth\left(\frac{\alpha_c}{2}\right) - \text{csch}^2\left(\frac{\alpha_c}{2}\right) \frac{\delta}{2} + O\left(\delta^2\right),
+\]
+then by substitution into the expression for $\sigma_1$ and using various identities along with the equation $\frac{\alpha_c}{2} = \coth \frac{\alpha_c}{2}$, we find that, to leading order,
+\[
+\sigma_1 = -\frac{i \alpha_c}{2} + i \sqrt{\delta} \left(\sqrt{\frac{\alpha_c^2 - 4}{8\alpha_c \sinh^2 (\alpha_c / 2)}} \; \right) + O(\delta).
+\]
+Then by defining $\sigma$ and $\epsilon$ as
+\[
+\sigma = -\frac{i \alpha_c}{2}, \quad
+\epsilon = \sqrt{\delta} \left(\sqrt{\frac{\alpha_c^2 - 4}{8\alpha_c \sinh^2 (\alpha_c / 2)}} \; \right),
+\]
+we may write $\sigma_1 = i(\sigma + \epsilon)$. Similarly, $\sigma_2 = i(\sigma - \epsilon)$.
+
+We are interested in the limit where $\epsilon t \ll 1$. In this case, $\sigma_1$ becomes
+\[ \begin{split}
+\sigma_1 &= \frac{e^{i\sigma t}}{2i\epsilon} \left[(1+i\epsilon t + \ldots) L_1(t) - (1 - i\epsilon t + \ldots) L_2(t)\right] \\
+         &= \frac{e^{i\sigma t}}{2i\epsilon} \left[ \left\{L_1(t) - L_2(t)\right\} + i\epsilon t \left\{L_1(t) + L_2(t)\right\} \right] + O(\epsilon^2 t^2).
+\end{split} \]
+We can approximate $L_1(t)$ and $L_2(t)$ by noting that they contain integrals such as $g_{+i}(t)$ where
+\[
+g_{+i}(t) = \int_0^t f(\tau) e^{i(\sigma \pm \epsilon) \tau} d\tau.
+\]
+The condition $\epsilon t \ll 1$ is valid across the entire range of integration, so that we may expand the integrand as
+\[
+g_{+i}(t) = \left\{\int_0^t f(\tau) e^{i\sigma \tau} d\tau \right\} \pm \epsilon \left\{\int_0^t \tau f(\tau) e^{i\sigma \tau} d\tau \right\} + O(\epsilon^2 t^2).
+\]
+Finally, if we restrict ourselves to the limit $t \gg a$, then we know that $f(t)$ will approach zero and that the integrals will converge to tolerable limits. To determine the contribution of these integrals in the series expansion, we look at the norm,
+\[
+\int_0^t |\tau^n f(\tau) e^{i\sigma \tau}| d\tau = \int_0^t \tau^n f(\tau) d\tau,
+\]
+since $g_{\pm i}(t)$ is bounded from above by this integral.
+
+For $n < 3$, we may use contour integration to determine that
+\[
+\int_0^t \tau^n f(\tau) d\tau \sim
+\begin{cases}
+\frac{1}{4} + \frac{3 \pi}{8} & \text{ for } n = 0 \\
+\frac{1}{2} + \frac{3 \pi}{8} & \text{ for } n = 1 \\
+\frac{1}{2} + \frac{3 \pi}{4} & \text{ for } n = 2
+\end{cases}
+\]
+while for $n \ge 3$, simple asymptotics tells us that
+\[
+\int_0^t \tau^n f(\tau) d\tau \sim \int_0^t \tau^{n-4} d\tau \sim
+\begin{cases}
+\log t & \text{ for } n = 3 \\
+\frac{t^{n - 3}}{n-3} & \text{ for } n > 3.
+\end{cases}
+\]
+For all of these cases, we can see that the restriction $\epsilon t \ll 1$ lets us neglect all higher order terms in the expansions. Hence we see that
+\[
+g_{\pm i} \rightarrow \int_0^t f(\tau) e^{\pm i \sigma \tau} d\tau
+\]
+so that $L_1(t) + L_2(t) \rightarrow 2L(t)$, where $L(t)$ is simply the same as $L_1(t)$ and $L_2(t)$ in the limit $\epsilon \rightarrow 0$, since all the integrals within approach the same values.
+
+As for $L_1(t) - L_2(t)$, we can see from looking at the first order term that
+\[
+L_1(t) - L_2(t) \sim 2i \int_0^t \tau f(\tau) e^{\pm i \sigma \tau} d\tau
+\]
+
+Finally, substitution of these results into the equation for $A(t)$ yields
+\[
+A(t) \approx \frac{e^{i\sigma}}{2i\epsilon}\left[(2i\epsilon)\left(tL(t) + O \left(\int_0^t \tau f(\tau) e^{\pm i \sigma \tau} d\tau \right) \right) \right]
+\]
+If we impose the final condition that $t \gg 1$, so that we are essentially restricting ourselves to an interval $Max[1,a] \ll t \ll \epsilon^{-1}$, then since the integrals are bounded by the value $\frac{1}{2} + \frac{3\pi}{8}$, we can neglect them and write $A(t)$ as
+\[
+A(t) \approx t e^{-i\alpha_c/2} L(t)
+\]
+which describes a rapidly growing amplitude due to resonance.
+
+By a nearly identical analysis, we may also find that
+\[
+B(t) \approx -t \left(2 \alpha_c^{-1}\right) e^{-i \alpha_c t / 2} L(t)
+\]
+by approximating $\sigma_1^{-1}$ and $\sigma_2^{-1}$ as $(i\sigma)^{-1}$. This requires the assumption that $t \gg \alpha_c^{-1}$, but this is already satisfied by the condition $t \gg 1$.
+
+Although there are a number of restrictions for which this resonant growth may occur, it is not actually as restrictive as it appears, for $\epsilon$ may be arbitrarily small, and any initial condition or physical process which leads to approximate resonance near $\alpha_c$ will always have the opportunity to force the $\sigma_i$'s to be even closer.
+
+\end{appendix}
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\bibliography{nonmodal}
+\bibliographystyle{jas99}
+
+\end{document}

@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}The Eady Problem}{3}
+\contentsline {section}{\numberline {3}Continuous Modes in the Eady Model}{5}
+\contentsline {section}{\numberline {4}The Eady Edge Wave}{6}
+\contentsline {section}{\numberline {5}The Origin of Nonmodal Disturbances}{10}
+\contentsline {section}{\numberline {6}The Eady Initial Value Problem}{11}
+\contentsline {section}{\numberline {7}Relation to Cyclogenesis}{14}
+\contentsline {section}{\numberline {8}Effect of Ekman Pumping on Baroclinic Instability}{15}
+\contentsline {section}{\numberline {9}Evolution of Nonmodal Growth: A Generalized Stability Analysis}{17}
+\contentsline {section}{\numberline {10}Conclusion}{22}
+\contentsline {section}{\numberline {A}Calculation of Coefficients in the Eady Initial Value Problem}{23}
+\contentsline {section}{\numberline {B}Derivation of the Resonant Growth in the Eady IVP}{25}

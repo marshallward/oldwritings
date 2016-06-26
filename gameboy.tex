@@ -1,0 +1,54 @@
+\documentclass[letterpaper, 10pt]{report}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ddt}{\tfrac{\partial}{\partial t}}
+
+\title{2D and Perspective Graphics on the Game Boy Advance}
+\author{Marshall Ward}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+
+Testing.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Matrix Mathematics}
+
+Many techniques in computer graphics can be described by elements known as \emph{matrices}. For example, one can associate the rotation of an object with a rotation matrix, which is applied to our coordinate system in some way, \emph{transforming} it from its original form to the new, rotated state. Other graphical processes such as translation, stretching, and shearing also have corresponding matrices. While the use of matrices requires a certain level of mathematical rigor, they also allow us to decompose a complicated scene into a series of basic matrices, which can then be combined through a simple (if sometimes tedious) procedure into a single transformation matrix.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linear systems}
+
+Matrices are in fact operators that transform one linear system into another. To better understand this, consider the simplest linear system $y(x)$,
+\begin{equation}
+y = a x.
+\end{equation}
+From the perspective of linear algebra, this is not a linear system because it is the equation for a line, but because it has the following property: if there are two point $x_1$ and $x_2$ that have solutions $y_1$ and $y_2$, then the solution for the point $\alpha x_1 + \beta x_2$ is $\alpha y_1 + \beta y_2$. That is, if
+\begin{align}
+y_1 &= a x_1, \\
+y_2 &= a x_2,
+\end{align}
+then it is easy to verify that
+\begin{equation}
+a \left( \alpha x_1 + \beta x_2 \right) = \alpha y_1 + \beta y_2.s
+\end{equation}
+It is also not difficult to show that the general equation for a line, $y(x) = a x + b$ is actually \emph{not} linear, in the linear algebraic sense!\footnote{The ``linear'' in linear algebra refers to this linearity property. The ``algebra'' refers to the use of addition and multiplication, or more generally any pair of operators with the same properties.}
+
+While this is an interesting mathematical property, it also has important practical benefits. For example, if we know the solutions of a set of known quantities, say $x_1, x_2, \ldots$, and we can write an unknown $x_u$ in terms of these known quantities, then we can use the linear property to immediately write the solution of the unknown quantity, $y(x_u)$. In other words, any linear system can be decomposed into a set of potentially simpler problems, which can be solved individually and then used to build the solution of the more complicated problem.
+
+For simple one-dimensional problems, this is usually not necessary. But when more than one variable is present, as in 2D and 3D graphics, such techniques become invaluable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

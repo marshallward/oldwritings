@@ -1,0 +1,13 @@
+% /usr/local/lib/tex/bibtex/newapa.sty, Mon Jun 29 13:17:19 1992
+% Edit by Nelson H. F. Beebe <beebe@plot79.math.utah.edu>
+%
+% This LaTeX option file is for use with bibliographies produced with
+% newapa.bst.
+%
+\let\@internalcite\cite
+\def\fullcite{\def\citeauthoryear##1##2##3{##1, ##3}\@internalcite}
+\def\fullciteA{\def\citeauthoryear##1##2##3{##1}\@internalcite}
+\def\shortcite{\def\citeauthoryear##1##2##3{##2, ##3}\@internalcite}
+\def\shortciteA{\def\citeauthoryear##1##2##3{##2}\@internalcite}
+\def\citeyear{\def\citeauthoryear##1##2##3{##3}\@internalcite}
+\let\cite=\fullcite

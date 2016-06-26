@@ -1,0 +1,183 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Modal Response of Layered Models}
+\author{Marshall Ward}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+This is an addendum to the prospectus, and is an attempt to better understand the problems in modal decomposition of the nonhydrostatic layered models. For simplicity, and to help illustrate the pervasiveness of the issues, we focus on single, homogeneous layers.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{1-1/2 Layer Model}
+
+Consider a single fluid layer that is unbounded in $x$ and $y$ and has a rigid bottom at $z = 0$. The mean fluid height is $H$ and the free surface is $z = H + h(x, y, t)$. The dynamics within the layer are given by
+\begin{subequations}
+\begin{align}
+u_t + \mathbf{u} \cdot \nabla u - f v &= -p_x \\
+v_t + \mathbf{u} \cdot \nabla v + f u &= -p_y \\
+w_t + \mathbf{u} \cdot \nabla w &= -p_z \\
+u_x + v_y + w_z = 0
+\end{align}
+\end{subequations}
+with boundary conditions $w = 0$ at $z = 0$, and $w = h_t + \mathbf{u} \cdot \nabla h$ and $p = g h$ at $z = H + h$. Note that we have taken the density to be $\rho = 1$ and are using the modified pressure $p = p' + \rho g (z - H)$ in place of the true (thermodynamic?) pressure $p'$.
+
+Under the following nondimensionalizations,
+\begin{equation}
+\begin{split}
+& (x, y) \rightarrow (Lx, Ly), \quad z \rightarrow H z, \quad t \rightarrow \tau t, \quad (u, v) \rightarrow (Uu, Uv), \\
+& \quad w \rightarrow W w, \quad h \rightarrow \mathcal{H} h, \quad p \rightarrow P
+\end{split}
+\end{equation}
+the incompressibility constraint suggests that $W = (H / L) U$. Substitution of the other quantities yields the nondimensional equations
+\begin{subequations}
+\begin{align}
+u_t + \left(\frac{\tau}{\tau_I}\right) \mathbf{u} \cdot \nabla u - \left(\frac{\tau}{\tau_R}\right) v &= - \left(\frac{\tau}{\tau_P}\right) p_x \\
+v_t + \left(\frac{\tau}{\tau_I}\right) \mathbf{u} \cdot \nabla v + \left(\frac{\tau}{\tau_R}\right) u &= - \left(\frac{\tau}{\tau_P}\right) p_y \\
+\delta^2 \left[ w_t + \left(\frac{\tau}{\tau_I}\right) \mathbf{u} \cdot \nabla w \right] &= - \left(\frac{\tau}{\tau_P}\right) p_z \\
+u_x + v_y + w_z &= 0
+\end{align}
+\end{subequations}
+with boundary conditions
+\begin{subequations}
+\begin{align}
+w = 0 &\quad \mathrm{at} \quad z = 0 \\
+w = \left(\frac{\mathcal{H}}{H} \right) \left( \frac{L/U}{T} \right) h_t + \left(\frac{\mathcal{H}}{H}\right) \mathbf{u} \cdot \nabla h &\quad \mathrm{at} \quad z = 1 + \left(\frac{\mathcal{H}}{H}\right) h \\
+p = \left( \frac{g \mathcal{H}}{P} \right) h &\quad \mathrm{at} \quad z = 1 + \left(\frac{\mathcal{H}}{H}\right) h
+\end{align}
+\end{subequations}
+using the notation
+\begin{equation}
+\tau_I = L / U, \quad \tau_R = f^{-1}, \quad \tau_P = UL / P, \quad \delta = H / L.
+\end{equation}
+If we also make the following assumptions,
+\begin{equation}
+\tau = \tau_R = \tau_P, \quad L = \frac{\sqrt{gH}}{f}, \quad \frac{\tau}{\tau_I} = \frac{\mathcal{H}}{H} = \epsilon
+\end{equation}
+associating $O(1)$ dynamics with geostrophy, gravity waves, inertial waves, and the deformation radius, then the adjusted nondimensional equations are
+\begin{subequations}
+\begin{align}
+u_t + \epsilon \mathbf{u} \cdot \nabla u &= v - p_x \\
+v_t + \epsilon \mathbf{u} \cdot \nabla v &= -u - p_y \\
+\delta^2 \left( w_t + \epsilon \mathbf{u} \cdot \nabla v \right) &= -p_z \\
+u_x + v_y + w_z &= 0
+\end{align}
+\end{subequations}
+with boundary condtions
+\begin{subequations}
+\begin{align}
+w = 0 &\quad \mathrm{at} \quad z = 0 \\
+w = h_t + \epsilon \mathbf{u} \cdot \nabla h &\quad \mathrm{at} \quad z = 1 + \epsilon h \\
+p = h &\quad \mathrm{at} \quad z = 1 + \epsilon h
+\end{align}
+\end{subequations}
+
+If advective processes are generally slow in comparison to the rest of the dynamics of the system, then we can justify a linearization in the limit $\epsilon \rightarrow 0$ so that the linearized system is
+\begin{subequations}
+\begin{align}
+u_t &= v - p_x \\
+v_t &= -u - p_y \\
+&\delta^2 w_t = -p_z \\
+u_x &+ v_y + w_z = 0
+\end{align}
+\end{subequations}
+with boundary conditions
+\begin{subequations}
+\begin{align}
+w = 0 &\quad \mathrm{at} \quad z = 0 \\
+w = h_t &\quad \mathrm{at} \quad z = 1 \\
+p = h &\quad \mathrm{at} \quad z = 1
+\end{align}
+\end{subequations}
+
+%-----------------------------------------------------------------------------%
+\section{Hydrostatic Case, $\delta = 0$}
+
+For the hydrostatic case, we have $p_z = 0$ so that, from the boundary conditions, $p(x, y, z, t) = h(x, y, t)$. Our system is then
+\begin{subequations}
+\begin{align}
+u_t &= v - h_x \\
+v_t &= -u - h_y \\
+u_x &+ v_y + w_z = 0
+\end{align}
+\end{subequations}
+The typical approach is to assume that there is no vertical shear, i.e. that $u_z = v_z = 0$. But to help in the generalization to the nonhydrostatic case, we want to decompose the flow into a purely barotropic component and a second component with vertical shear. We therefore let
+\begin{subequations}
+\begin{align}
+u(x,y,z,t) &= u_B(x,y,t) + \tilde{u}(x,y,z,t) \\
+v(x,y,z,t) &= v_B(x,y,t) + \tilde{v}(x,y,z,t)
+\end{align}
+\end{subequations}
+where $u_B = \int_0^1 u \, dz$ and $v_B = \int_0^1 v \, dz$. The shear terms $\tilde{u}$ and $\tilde{v}$ therefore do not produce any net horizontal transport.
+
+Under this decomposition, the equations for $\tilde{u}_z$ and $\tilde{v}_z$ are
+\begin{equation}
+(\tilde{u}_z)_{tt} + \tilde{u}_z = 0, \quad (\tilde{v}_z)_{tt} + \tilde{v}_z = 0
+\end{equation}
+whose solutions are
+\begin{subequations}
+\begin{align}
+\tilde{u}_z &= \tilde{A}(x,y,z) e^{it} + \tilde{B}(x,y,z) e^{-it} \\
+\tilde{v}_z &= \tilde{C}(x,y,z) e^{it} + \tilde{D}(x,y,z) e^{-it}
+\end{align}
+\end{subequations}
+so that, using $\tilde{u}_{zt} = \tilde{v}_z$ (or $\tilde{v}_{zt} = -\tilde{u}_z$), the horizontal flow is
+\begin{subequations}
+\begin{align}
+\tilde{u} &= A e^{it} + B e^{-it} \\
+\tilde{v} &= iA e^{it} - iB e^{-it}
+\end{align}
+\end{subequations}
+where, from the zero-transport constraint, $\int_0^1 A \, dz = \int_0^1 B \, dz = 0$.
+
+Now since $\tilde{u}_t = \tilde{v}$ and $\tilde{v}_t = -\tilde{u}$, the barotropic flow $\mathbf{u}_B$ satisfies the horizontal shallow water equations,
+\begin{subequations}
+\begin{align}
+(u_B)_t &= v_B - h_x \\
+(v_B)_t &= -u_B - h_y
+\end{align}
+\end{subequations}
+And when we integrate the incompressibility constraint across the layer, then from the boundary conditions on $w$ we have
+\begin{equation}
+h_t + (u_B)_x + (v_B)_y + \int_0^1 \left(\tilde{u}_x + \tilde{v}_y\right) dz = 0
+\end{equation}
+Then because of the zero net transport of the sheared flow, we have
+\begin{equation}
+\int_0^1 \nabla \cdot \mathbf{\tilde{u}} \, dz = \nabla \cdot \int_0^1 \mathbf{\tilde{u}} \, dz = 0.
+\end{equation}
+Hence, the integrated mass balance equation is
+\begin{equation}
+h_t + \nabla \cdot \mathbf{u}_B = 0
+\end{equation}
+and therefore the barotropic flow $\mathbf{u}_B$ obeys the shallow water equations, even in the presence of a vertical shear---only a hydrostatic assumption is required (at least under a linear approximation).
+
+From a modal perspective, there are preferred eigenmodes for each horizontal mode $(k,l)$ and vertical mode $m=0$ for which there is one PV and two gravity modes. The sheared modes, trapped within two effectively rigid walls, can be expanded in some Fourier series $\sum \Phi_m(k,l) e^{imz}$, $\Phi_0 = 0$. There are two inertial modes for each pair $(k,l)$ and vertical mode $m$.
+
+Hence there are three modes for each pair $(k,l)$ when $m = 0$ and two when $m \neq 0$. This, I feel, emphasizes the strangeness of the PV mode. Even though the gravity modes are heavily tied to the boundary condition on $w$, I think that this result is showing the fickleness of this third time derivative (and third mode). I hope that this strangeness will seem less strange in the nonhydrostatic case.
+
+%-----------------------------------------------------------------------------%
+\section{Nonhydrostatic flow, $\delta \neq 0$}
+
+When the hydrostatic constraint is relaxed, our system (repeated for convenience) is
+\begin{subequations}
+\begin{align}
+u_t &= v - p_x \\
+v_t &= -u - p_y \\
+&\delta^2 w_t = -p_z \\
+u_x &+ v_y + w_z = 0
+\end{align}
+\end{subequations}
+
+\end{document}

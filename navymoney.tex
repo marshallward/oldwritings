@@ -1,0 +1,79 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage[dvips]{graphicx}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+%\title{Wake Angle}
+%\author{Marshall Ward}
+
+\begin{document}
+
+%\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Our primary goal is to construct a robust procedure for the modeling of large-scale internal gravity waves, and to improve our understanding of their relationship to geostrophically balanced circulations in a planetary-scale oceanic environment.
+
+
+Tidal forcing has been proposed as a major contributor to the maintenance of abyssal circulation in the ocean, and it has been estimated that one half of the global internal wave production is due to the interaction of large-scale tidally forced waves with topography (Munk+Wunsch). This produces internal waves with equivalent tidal frequencies, also known as internal tides. Earlier work on internal ocean waves has primarily focused on the dynamics of a quasi-random internal wavefield, such as its tendency to induce mixing (Mueller++). One of principal mechanisms identified as responsible for the cascade of energy to smaller scales was a resonant triad interaction (Phillips, McComas+Bretherton). If we assume that a system can be described in terms of its waves (such as by a Fourier transform), then the free wave propagation mechanism is forced by the nonlinear advection, which is characterized as a wave-wave interaction. If a triad of waves, with wavenumbers $\mathbf{k}$ and frequencies $\omega$, satisfy the following conditions,
+\begin{equation*}
+  \mathbf{k}_1 = \mathbf{k}_2 + \mathbf{k}_3, \qquad \omega_1 = \omega_2 + \omega_3
+\end{equation*}
+then resonances appear in a perturbative analysis. This suggests that there is a preferred cascade of energy to the smaller scales which can form resonant triads with larger scales. By assuming that the nonresonant waves are unaffected by the nonlinearity and that they average out over long times, it is possible (using a multiple scales perturbative analysis) to construct a dynamical model involving only the resonant triads. The strongest class of resonant triads identified in these earlier studies were called Parametric Subharmonic Instabilities (PSI), which satisfy
+\begin{equation*}
+  \frac{\omega_1}{2} \approx \omega_2 \approx \omega_3 \qquad (k1=??).
+\end{equation*}
+and are named after a similar subharmonic response observed in a class of pendulum models.
+
+While the resonant triad mechanism was able to quantitatively explain certain features, such as the stability of the Garrett-Munk internal wave spectrum (McComas+Mueller), others have argued that the associated energy transfer timescales are too slow to provide a sufficient energy source for small-scale mixing (Olbers+Pomphrey, Holloway?). It has also been argued that the amplitudes of the relevant waves are too large to satisfy the perturbation analysis requirements (Holloway). But most of these criticisms were directed at statistical wavefields, which typically describe the smaller scale flow. If half of the global internal wave energy is indeed due to tidal forcing, then much of the wavefield will be strongly coherent on the larger scales and a reanalysis of these mechanisms is justified. For example, MacKinnon and Winters (2004) have demonstrated through numerical simulation that a long internal wave of M2 tidal frequency will cascade a sizable portion of its energy to modes with one half of its frequency when the wave is within a certain latitude band, which is consistent with a PSI-triggered mechanism. The characteristic energy cascade transfer timescale in their model is also estimated to be approximately 2 days, which is ten times larger than the previous transfer timescale estimates by Olbers and Pomphrey for statistical wavefields.
+
+
+An additional issue that emerges, and the one that we propose to study, is the possibility of an interaction between the geostrophically balanced portion of the flow and the internal wavefield. In most situations, it is generally reasonable to presume that there is a large separation of length scales between the planetary scale geostrophic flow and the small-scale internal wave “noise”, since the internal waves would effectively perceive the geostrophic flow as a constant velocity background. But since tidally forced internal waves are typically more comparable in length to geostrophic eddies (? I have no reference), we are examining whether there is a significant wave-wave interaction between the two.
+
+Work in the area of balanced dynamics has demonstrated that the geostrophic flow evolves independently of the internal wavefield up to a characteristic timescale interval of at least $\epsilon^2 \tau$, where $\tau$ is a characteristic gravity wave timescale and $\epsilon$ is the Rossby number. In other words, the system obeys quasigeostrophic dynamics. There is also numerical evidence of a perpetual noninteraction of gravity waves on geostrophic flow (Dewar+Killworth). The construction of slow timescale evolution equations using multiple scale analysis of resonant triads has also been developed for geophysical fluid systems (Bartello, Embid+Majda, PascaleLelong+Riley?).
+
+We have extended this approach by constructing an evolution equation for a coherent internal wavefield on these slower timescales that is more tailored for analyzing the interaction between a tidally forced internal wavefield and a large-scale geostrophically balanced background. To simplify the analysis, we have used the shallow water system as a characteristic model. A normal mode analysis shows that there are three independent modes in the system, a geostrophic mode and two gravity wave modes, with dispersion relations
+\begin{equation*}
+  \omega_0 = 0, \omega_\pm = \pm \sqrt{f^2 + c^2 K^2}.
+\end{equation*}
+The evolution equation is schematically rewritten as
+\begin{equation*}
+  \pdiff{A_1}{t} + i \omega_1 A_1 = \epsilon \Gamma A_2 A_3
+\end{equation*}
+where the left hand side describes wave propagation and the right hand side describes nonlinear wave-wave interaction. The parameter $\Gamma$ characterizes the strength of the particular interactions.
+
+We qualitatively denote a class of nonlinear triad interactions by $(s_1, s_2, s_3)$ where modes 2 and 3 act to modify mode 1. The terms $s_i$ denote the species of the wave (0 for geostrophic, $\pm$ for gravity waves). Quasigeostrophic dynamics can be established by noting that all geostrophic triads $(0,0,0)$ satisfy the resonant condition, since
+\begin{equation*}
+  \omega_1 = \omega_2 + \omega_3 \quad \text{or} \quad 0 = 0 + 0.
+\end{equation*}
+The triads $(0, 0, \pm)$ and $(0, \pm, 0)$ are not resonant, nor are $(0, +, +)$ and $(0, -, -)$. The triads $(0, +, -)$ and $(0, -, +)$ can be resonant, since
+\begin{equation*}
+0 = \sqrt{f^2 + c^2 K^2} - \sqrt{f^2 + c^2 K^2}
+\end{equation*}
+but $\Gamma = 0$ for these interactions. That is, interactions of this type are not possible. A multiple scale analysis removes nonresonant modes, so that the only remaining dynamics is quasigeostrophic.
+
+Although geostrophic flows are unaffected by internal waves, the converse is not necessarily true. Triads of the type $(\pm, 0, 0)$ are nonresonant, but resonant triads exist for interaction types $(\pm, \pm, 0)$, $(\pm, 0, \pm)$, and $(\pm, \pm, \pm)$, where the first two represent a geostrophic-gravity wave interaction and the last represents all pure gravity wave triad interactions. The resonance condition for geostrophic-gravity wave interactions is
+\begin{equation*}
+  \sqrt{f^2 + c^2 {K_1}^2} = 0 + \sqrt{f^2 + c^2 {K_2}^2}
+\end{equation*}
+implying that $K_1 = K_2$, which means that the target gravity wave and the modifying gravity wave must have the same wavelength, although they may have different directions. From the triad requirement, $\mathbf{k}_1 = \mathbf{k}_2 + \mathbf{k}_3$, only those geostrophic modes within a bandwidth satisfying $K_G < 2K_T$ may influence the gravity mode, where $K_G$ is the geostrophic wavenumber and $K_T$ is the resonant (and typically tidal) gravity wavenumber. In other words, there is no interaction if the tidal wavelength is more than twice the geostrophic modal wavelength. This places a significant and testable constraint on the capacity for geostrophic forcing on gravity waves.
+
+Applying these principles essentially equates to a reduction in system complexity. The nonresonant triads are removed and only the resonant surfaces in the wavenumber space are dynamically important, which should reduce the number of calculations required for explicit evaluation of the nonlinearity from $O(N^4)$ to $O(N^2)$ in a 2D shallow water system. While an FFT would provide comparable efficiency, this type of approach is able to provide detailed information on the energy exchange between modes and the rate of cascade between them. In addition, the geostrophic flow evolves independently of the gravity flow, so this data can be calculated beforehand and can effectively act as an external forcing. This suggests the possibility of a highly efficient method for calculation of geostrophic-gravity mode interaction.
+
+Funding support would allow us to develop these ideas in the following directions:
+\begin{itemize}
+  \item Many of the quantitative results mentioned here can be tested in a full numerical simulation, such as various resonant growth rates and noninteraction outside of the bandwidth $K_G < 2 K_T$. An idealized pseudospectral is currently in development.
+  
+  \item A model consisting of only resonant triads can be developed and its accuracy can be gauged in comparison to a full numerical model.
+  
+  \item Detailed cascading data will be calculated and estimates for energy cascade and dissipation can be made.
+  
+  \item If the work is successful to this point, then the nonlinear interactions between different vertical modes can be developed in the same manner, and the model may be able to effectively simulate the internal wavefield of a more realistic oceanic system.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

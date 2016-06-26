@@ -1,0 +1,65 @@
+Rough Idea for a NWP course:
+
+The goal is to make it a HOWTO course, where the student will have a small 
+library of self-written models at their disposal by the end of the course.
+
+I would hope that the following are possible:
+
+1) Barotropic Vorticity Equation
+
+2) Quasigeostrophic Shallow Water Equation
+
+3) Shallow Water Equation with IGW's
+
+4) N-layered Equation (full and QG?)
+
+And, well, I really don't know NWP so I don't know what else to add!
+(I guess that I have no business writing this)
+
+5) Parameterizing the hard stuff?
+
+==============================================================================
+
+1) Barotropic Vorticity Equation
+================================
+
+  a) Writing a Poisson Solver
+     ------------------------
+  This is a good chance to teach finite differencing, and introduction to 
+  solving elliptic linear PDEs. 
+
+    i) Gaussian Elimination (I don't actually know this :o )
+      * Demonstrate the basics: pivoting, et. al. 
+      * Show how slow it is
+
+    ii) Iterative
+       * Richardson, Gauss-Seidel, Jacobi, SOR
+
+    iii) Conjugate Gradient? Krylov?
+
+    iv) Multigrid? "Fast Poisson Solver"? Multipole? Probably too much
+
+  b) Advection
+     ---------
+    i) Standard centered Jacobian
+      * Illustrate nonlinear instability
+
+    ii) Phillips's and Orzsag's dealiasing (I don't know this)
+
+    iii) Arakawa Jacobian
+        * Stable, but how correct is it?
+        * Good way to encourage spectral approach
+
+    iv) Diffusion as a stabilizer should be mentioned in some context
+
+    v) Timestepping should also be an issue here, though I do not fully 
+       appreciate it in this context
+
+  c) Spectral Model
+     --------------
+    i) DFT and the FFT
+
+    ii) Yeah... let's be honest, I never learned much about spectral models
+
+==============================================================================
+
