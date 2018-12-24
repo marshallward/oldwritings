@@ -1,0 +1,478 @@
+\documentclass[letterpaper, 11pt, onecolumn]{article}
+
+\usepackage{amsmath, amssymb, amsfonts, bm}
+\usepackage{newapa, natbib}
+\usepackage[dvips]{graphicx}
+
+%\usepackage{hyperref}
+%\hypersetup{ % pdfmenubar=true, % pdftoolbar=true, %pdfpagemode={None} %}
+
+%\pagestyle{empty}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\degree}{^{\circ}} \newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\energy}[1]{$#1 \times 10^{-3} \text{ cm}^2 \text{ s}^{-3}$}
+\newcommand{\degC}{\degree\text{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Tropical Instability Waves}
+
+\author{Marshall Ward}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Tropical instability waves (TIWs) are a particular set of phenomena that have
+been observed over the last 25 years in the equatorial oceans. These
+disturbances were originally associated with spatial variations of sea surface
+temperature in the eastern Pacific, made visible by the strong gradients within
+this region, and the resulting patterns would propagate westward with a
+frequency of roughly 20--30 days. Such waves cannot be a part of the
+traditional neutral spectrum of equatorial waves, for only the
+eastward-traveling Kelvin and Yanai waves can exist within this frequency band.
+However, just as these observations were first being conducted, there was also
+newfound theoretical evidence showing that the mean equatorial currents were
+unstable, and that the most unstable modes possessed wavelengths and
+frequencies that were in agreement with those early observations. The
+coinciding of these two discoveries led to a designation of the phenomenon as
+tropical instability waves. Although the mechanism suggested by these early
+studies is no longer regarded as correct, it is generally accepted that TIWS
+are the result of an instability within the equatorial oceans, and is at least
+in part due to equatorial current instabilities.
+
+In this paper, we review some of the more recent observational evidence of
+TIWs. We focus on two main studies: the first, by \citet{Chelton++:2000}, is a
+modern treatment of the earliest evidence of TIWs, namely their SST profiles.
+Only in the last few years have satellites with microwave imaging been
+introduced, and their ability to penetrate cloud cover has vastly improved our
+understanding of these patterns. The second study to be presented is by
+\citet{Qiao-Weisberg:1998}, who have performed a detailed analysis of the eddy
+energetics within the equator. For even though most would agree that TIWs are
+caused by an instability of the mean state, the actual mechanism behind their
+development is still not clear. By explicitly calculating the various sources
+of eddy kinetic energy, it is hoped that we will gain a better understanding of
+the underlying dynamics behind TIW generation and propagation.
+
+
+\section{Observational Foundations}
+
+The existence of TIWs was first surmised from the early infrared observations
+of sea surface temperature (SST) over the Pacific \citep{Legeckis:1977},
+followed by similar observations over the Atlantic
+\citep{Legeckis-Reverdin:1987}. The most prominent measurements of TIWs have
+been along the intense northern SST front of the eastern Pacific cold tongue.
+The early measurements of Legeckis revealed a cusp-like pattern along this
+front with a wavelength of about 1000~km and period of about 25~days, as well
+as a westward phase speed of roughly 0.5~m/s. Subsequent measurements over the
+years have largely confirmed these estimates.
+
+Before 1997, measurements of the northern SST front were complicated by cloud
+coverage over the tropics, which acts to impede visible and infrared radiation
+from orbiting satellites. But with the launching of the Tropical Rainfall
+Measuring Mission (TRMM) Microwave Imager (TMI) on November 1997, it is now
+possible to use the microwave spectrum to determine tropical SST profiles.
+Because such signals are transparent to clouds, measurements can now be made in
+nearly all weather conditions, with the exception of regions of persistent
+rainfall which tend to contaminate such observations. Since the rainfall is
+both sporadic (on large timescales) and easily identifiable, it does not
+seriously hinder such observations. The coverage of the TMI exceeds 90\% over
+an area from $20\degree\text{S}$ to $20\degree\text{N}$ for a three-day
+composite average, so we should be able to construct a reasonably accurate time
+series for processes that occur on timescales of a week or more, such as TIWs.
+
+\subsection{The Equatorial Pacific Cold Tongue}
+
+%\begin{figure} %\begin{center} %\includegraphics{coldtongue.ps}
+%\caption{Test}\label{Fig:ColdTongue} %\end{center} %\end{figure}
+
+Since the presence of TIWs in the Pacific is strongly associated with the
+equatorial cold tongue, we first present some of the basic properties of this
+phenomenon. The tongue itself is a long band of cold water that extends from
+South America to deep within the central Pacific. By following the tongue
+westward, the latitude of the coldest water moves towards the north from about
+$2\degree\text{S}$ at $85\degree\text{W}$ to the equator near
+$130\degree\text{W}$, so that it is centered at about $1\degree\text{S}$. There
+are strong SST fronts to the north and south across most of the tongue, with
+the northern front tending to be located around $2\degree\text{N}$ and the less
+well-defined southern front being pushed towards the equator as we follow the
+tongue westward. While the tongue is typified by such fronts, the eastern cold
+water turns southward at $100\degree\text{W}$, causing the southern front to
+become effectively nonexistent. The northern front similarly dips southward in
+this region, crossing the equator at $90\degree\text{S}$.
+
+The intensity and spatial extent of the tongue changes dramatically on both
+seasonal and interannual timescales. Although the tongue is always present in
+some form, the SST gradients are most intense between the months of July and
+December for a typical year. During this period, the northern front has a
+gradient of roughly $1\degC$ per degree of latitude and the southern front is
+significantly weaker, at about $0.5\degC$ per degree latitude. During an El
+Ni\~no event, the warming of the east Pacific will consequently induce a net
+warming of the tongue and a weakening of the fronts. Similarly, the large scale
+cooling associated with a La Ni\~na event will cause the tongue to become even
+more pronounced, strengthening the SST gradients along the fronts.
+
+The signature of a TIW is the periodic disturbance of SST along these fronts,
+and since the strongest tropical SST gradients are observed along the northern
+fronts of the cold tongue, this is also where we observe the most intense TIW
+activity. Moderately strong waves can be also seen along the southern front of
+the cold tongue. A La Ni\~na event, which causes a further increase of SST
+gradients, will summarily lead to an even greater intensification of TIWs. A
+similar argument explains why an El Ni\~no event will tend to suppress TIW
+activity.
+
+As for the other tropical oceans of the world, there is a modest cold tongue
+across the Atlantic which possesses a definite (although significantly weaker)
+northern front but lacks a well-defined southern front. TIWs have been observed
+along this northern front in the Atlantic. SST gradients in the Indian Ocean
+have been too weak to resolve at this time, and hence no TIWs have been
+observed in this part of the world.
+
+\subsection{Evolution of TIWs}
+
+To better understand the dynamics of these waves, we now describe the evolution
+of a TIW event as reported by \citet{Chelton++:2000}. During the 1997--1998 El
+Ni\~no, the SST fronts of the cold tongue were not visible, and no TIWs were
+observed. On 13 May 1998, cold waters began to reappear within the tongue, east
+of $140\degree\text{W}$, which signaled the end of the El Ni\~no event. Within
+a week, the cold tongue intensified and stretched westward to the date line,
+and almost immediately thereafter the cusp-like signature of a TIW was
+observable along the northern front.
+
+These cusps began as relatively small perturbations near the Galapagos at
+$92\degree\text{W}$. They grew rapidly as they propagated westward, so that by
+the time they reached about $110\degree\text{W}$, the SST fronts were being
+meridionally displaced by several degrees of latitude. Many of the northern
+cusps, which themselves pointed northward, began to eject clockwise swirls of
+cold water, which are likely candidates for the anticyclonic eddies observed in
+earlier measurements of drifter trajectories \citep{Hansen-Paul:1984}.
+
+As we move deeper into the TIW season, similar cusps began to appear along the
+southern SST front, and these became larger as the season progressed. By the
+middle of October 1998, TIWs were highly developed along both fronts and the
+wavetrains would propagate as far as $160\degree\text{E}$, with seemingly
+identical phase speeds along each side of the tongue. At maximal extent, the
+northern cusps were approximately 50\% larger than the southern cusps. The TIWs
+and the fronts of the cold tongue remained well-defined until February 1999.
+The phase relationship of the north and south TIWs is difficult to establish,
+since the cusps become increasingly distorted as they protrude farther from the
+equator. But the generally sinuous profile of the cold tongue suggests a
+roughly antisymmetric relationship between the waves.
+
+% This is apparently suggested by a theory of Yu++, 1995
+
+The Atlantic was also monitored during this interval. A similar series of
+westward-propagating cusps was observed at $1\degree\text{N}$, along the SST
+front of its markedly weaker cold tongue. These waves appeared almost
+immediately after the formation of this equatorial cold water on 26 April 1998.
+In addition to having a cusp amplitude much weaker than those associated with
+Pacific TIWs, they propagated at a reduced speed of about 0.3~m/s. After August
+1998, the SST gradient weakened and it became much more difficult to track the
+Atlantic TIWs.
+
+Overall, the study by \citet{Chelton++:2000} established that TIWs are present
+across the entire northern front of the Pacific cold tongue, from the coast of
+South America to the western tip of the tongue at $160\degree\text{E}$, and may
+even extend across the entire Pacific, although this cannot be determined by
+the TMI due to the lack of strong SST gradients in the west. The existence of
+TIWs along the southern front was also established. The microwave-based
+measurements allowed for the compilation of uninterrupted sets of 50-day SST
+profiles, which were used via Radon transforms to compute a phase speed of
+0.53~m/s for TIWs along the northern front and 0.50~m/s along the southern
+front. Atlantic TIW speeds were estimated at 0.31~m/s.
+
+In addition to clarifying earlier studies on TIWs, they not only confirmed the
+existence of the southern waves, but also found that they became pronounced
+much later than their northern counterparts, and were actually persistent for a
+month longer. Also, although the roughly 0.5~m/s TIWs are clearly dominant,
+faster signals of lower amplitude were also observed.
+
+Finally, there is an unambiguous correlation of TIW intensity with the presence
+of mean SST gradients, but these gradients may not play a significant role in
+the dynamics, and instead merely serve to highlight their existence. The
+establishment of TIWs in regions of weak SST would require the measurement of
+dynamical fields such as sea level or meridional velocity under similar
+conditions, taken over regions such as the western Pacific.
+
+\section{Energetics of TIWs}
+
+Since the discovery of TIWs, a variety of dynamical theories on their origins
+have been proposed. The earliest theory, developed in conjunction with their
+discovery, suggested that they were due to barotropic instabilities caused by
+the intense shear between the South Equatorial Current (SEC) and the North
+Equatorial Countercurrent (NECC) \citep{Philander:1976, Philander:1978}. The
+role of zonal equatorial currents was later well established in the stability
+analysis of \citet{Cox:1980}. \citet{McCreary-Yu:1992} and
+\citet{Yu-McCreary-Proehl:1995} clarified the importance of the cyclonic shear
+between the SEC and Equatorial Undercurrent (EUC), and demonstrated how the
+strong SEC-NECC shear may in fact play little if any role in the generation of
+instabilities. They also proposed the existence of a baroclinic frontal
+instability across the northern SST front, and claim that this is an essential
+part of the TIW dynamics. \citet{Proehl:1996} relates the presence of TIWs to
+the existence of critical layers and overreflection. Since both barotropic and
+baroclinic processes are involved, he suggests that such a distinction does not
+provide a coherent description of the instability. More recently,
+\citet{Masina-Philander-Bush:1999} have presented a model which demonstrates
+that baroclinic instabilities along the SST front trigger TIW formations, which
+then transport energy southward and induce barotropic instabilities near the
+equator. The phase locking of these two processes leads to TIW propagation.
+
+While there is currently no definite consensus on the underlying dynamics of
+TIW formation, observational evidence seems to be in favor of a barotropic
+instability between the SEC and EUC. This is most evident in the recent study
+of \citet{Qiao-Weisberg:1998}, who were able to calculate the relevant
+perturbation energy fluxes during a TIW season. Data was collected from the
+Tropical Instabilite Wave Experiment (TIWE), a crossbar network of five buoys
+located on the equator at $140\degree\text{W}$, as well as the Tropical Ocean
+Global Atmosphere Tropical Atmosphere Ocean (TOGA TAO) array.
+
+\subsection{Eddy energetics} We now present a summary of the results by Qiao
+and Weisberg.
+
+To do this, we shall make a number of assumptions in our analysis of the
+energetics. We presume the existence of mean flows $U$, $V$, $W$, but will only
+allow variations in $U$ and $V$. Additionally, we assume a hydrostatic balance
+and that the lateral variations of the isopycnals are small. Specifically, we
+require that $\abs{\nabla \overline{\rho} / \overline{\rho}} \ll 1$ and
+$\abs{\nabla \overline{\rho}_z / \overline{\rho}_z} \ll 1$. We shall also
+assume that we have a Boussinesq-like approximation
+$\abs{\rho'/\overline{\rho}} \ll 1$, all of which are wholly applicable to the
+ocean. Frictional stress has also been neglected.\footnote{There are a number
+of other implicit assumptions in Qiao and Weisberg's analysis. For example, the
+term $\frac{1}{\overline{\rho}} \langle \rho' \bm{u}' \cdot \nabla p' \rangle$
+has been wholly neglected from their analysis. But being a third moment
+correlation, it is presumably small and not relevant to the analysis.}
+
+The eddy (or perturbation) kinetic energy is $\text{PKE} = \frac{1}{2}
+\overline{\rho} \left(u'^2 + v'^2\right)$, where the vertical flow has been
+neglected. Under the assumptions above, the PKE evolves according to the
+equation \begin{subequations}\label{PKE-eqn} \begin{align}
+  \left(\text{PKE}\right)_t =& -U \left(\text{PKE}\right)_x -V
+\left(\text{PKE}\right)_y -W \left(\text{PKE}\right)_z \label{PKE-MeanAdv}\\
+  & - \langle u' \left(\text{PKE}\right)_x \rangle - \langle v'
+\left(\text{PKE}\right)_y \rangle - \langle w' \left(\text{PKE}\right)_z
+\rangle \label{PKE-EddyAdv} \\
+  & - \langle u' u'\rangle U_x - \langle u' v' \rangle \left(U_y + V_x\right) -
+\langle v' v' \rangle V_y - \langle u' w' \rangle U_z - \langle v' w' \rangle
+V_z \label {PKE-MeanGen}\\
+  & - \langle p'_x u' \rangle - \langle p'_y v' \rangle - \langle p'_z w'
+\rangle \label{PKE-Work} \\
+  & - g \langle \rho' w' \rangle \label{PKE-PEConv}. \end{align}
+\end{subequations} The terms \eqref{PKE-MeanAdv} and \eqref{PKE-EddyAdv}
+describe the advection of eddy kinetic energy by the mean and perturbation
+flows, respectively. The terms \eqref{PKE-MeanGen} describe the barotropic
+conversion of energy from the mean flow to the eddies. The terms
+\eqref{PKE-Work} represents the work done to deform parcels by the perturbation
+pressure field. Finally, term \eqref{PKE-PEConv} represents a conversion from
+potential energy against the (hydrostatic) gravity field. Such conversions
+across lateral isopycnal variations have been neglected.
+
+To better understand the conversion terms, consider the following idealized
+situation. If we have a mean flow of constant vertical shear $U = \Lambda z$,
+with faster flows above, then the only barotropic conversion term from
+\eqref{PKE-MeanGen} is $-\overline{\rho} \Lambda \langle u' w' \rangle$. Now
+suppose that upward flows coincide with eastward flows and that there is a
+similar correlation between downward and westward flows, so that $\langle u' w'
+\rangle$ is everywhere positive. Then eastward momentum will tend to be carried
+upward with westward momentum carried downward, and the flow will thereby tend
+towards an organized shear of greater intensity. In this manner, the mean
+kinetic energy would tend to increase while the PKE decreases, which is
+consistent with our expression. If $u'$ and $w'$ are anticorrelated so that
+$\langle u' w' \rangle < 0$, then eddy momentum would be transferred against
+the shear and would tend to produce a more disorganized flow, and therefore an
+increase of PKE.
+
+As for the potential energy exchange \eqref{PKE-PEConv}, we associate heavier
+water with $\rho' > 0$ and lighter water with $\rho' < 0$. Then if we are in a
+situation where heavy parcels are rising, \emph{i.e.} $w' > 0$, while lighter
+water is sinking, $w' < 0$, then the correlation $\langle \rho' w' \rangle$
+will tend to be positive, and therefore we will also tend to produce eddy
+potential energy (PPE) at the cost of PKE. The reverse situation will therefore
+tend to produce PKE at the cost of PPE.
+
+The eddy potential energy $\text{PPE} = \frac{1}{2} g \rho'^2 /
+\left(-\overline{\rho}_z\right)$ obeys the equation
+\begin{subequations}\label{PPE-eqn} \begin{align}
+  \left(\text{PPE}\right)_t =& -U \left(\text{PPE}\right)_x - V
+\left(\text{PPE}\right)_y -W \left(\text{PPE}\right)_z \label{PPE-MeanAdv}\\
+  & - \langle u' \left(\text{PPE}\right)_x \rangle - \langle v'
+\left(\text{PPE}\right)_y \rangle - \langle w' \left(\text{PPE}\right)_z
+\rangle \label{PPE-EddyAdv} \\
+  & + g \left(\overline{\rho}_x \langle \rho' u' \rangle + \overline{\rho}_y
+\langle \rho' v' \rangle \right) / \overline{\rho}_z \label{PPE-LatGen} \\
+  & + g \langle \rho' w' \rangle \label{PPE-VertGen}. \end{align}
+\end{subequations} The terms \eqref{PPE-MeanAdv} and \eqref{PPE-EddyAdv}
+describe advection of eddy potential energy by the mean and eddy flows. Terms
+\eqref{PPE-LatGen} and \eqref{PPE-VertGen} describe a baroclinic extraction of
+potential energy from the mean density profile, where \eqref{PPE-LatGen} is due
+to lateral flows while \eqref{PPE-VertGen} is due to vertical flow.
+
+The baroclinic PPE conversion terms can be understood in a similar manner as
+the PKE. If a parcel moves across an isopycnal surface, then it must undergo a
+change in potential energy. For example, as in the PKE equation, the term
+\eqref{PPE-VertGen} illustrates how the rising of heavy water and sinking of
+light water, associated with $\langle \rho' w' \rangle > 0$, will tend to
+increase the available potential energy, which is consistent with our
+expression. This term has the opposite sign of \eqref{PKE-PEConv} in the PKE
+equation because it represents a direct exchange of kinetic and potential
+energy. A similar effect occurs for horizontal flows, except that the intensity
+is adjusted by terms such as $\overline{\rho}_x / \overline{\rho}_z \sim \delta
+z / \delta x$, the isopycnal slope. We expect such exchanges to be small
+however, and are not even represented in our PKE dynamics.
+
+\subsection{Observations of Energetic Fluxes}
+
+Through the use of TIWE and TOGA TAO data, Qiao and Weisberg were able to
+estimate each term in the PKE and PPE equations, and could determine the local
+exchanges of kinetic and potential energy, in an attempt to diagnose the
+instability process which produces TIWs. Their focus is on a TIW event which
+occurred over 1990, using data taken at $140\degree\text{W}$ and within $\pm
+0.5\degree$ of the equator. A general survey of the measurements will show that
+a region of major energy activity is one where the changes in energy per unit
+mass exceed \energy{0.5}.
+
+We first consider the perturbation kinetic energy. In \eqref{PKE-MeanAdv}, the
+zonal and meridional advection of PKE by the mean flows are both found to be
+significant during periods of wave activity, exceeding \energy{2}, and confined
+to the upper $110 \text{ m}$. For the meridional patterns, there is a
+divergence of PKE at the surface and a convergence at the subsurface, due to
+divergent Ekman pumping, caused by increase of $\beta$, and the corresponding
+convergence below. The vertical advection is negligible. When combining these
+processes, the zonal and meridional advections are approximately balanced, with
+total advections of at most \energy{1.5}, a significant reduction compared to
+the individual components, so that advection alone cannot be responsible for a
+buildup of PKE.
+
+% Maybe omit this stuff about Ekman divergence. I sort of understand atop, but
+not necessarily the subsurface stuff
+
+For the perturbation PKE advection, most of these triple correlations are not
+of much importance, rarely exceeding \energy{0.5}, with the exception of
+meridional advection, $-\langle \left(u'^2 + v'^2\right) v' \rangle / 2$, which
+may be as large as \energy{2.5}. The term varies greatly, but is overall
+negative and tends to weaken the TIWs.
+
+The dominant generation of PKE is due to the exchange between eddies and the
+mean flow. The zonal shear sources $-\langle u' u' \rangle U_x$ and $-\langle
+u' v' \rangle V_x$ are found to have relatively small magnitudes (less than
+\energy{0.5}) and are not a significant source of energy. The term $-\langle u'
+v' \rangle U_y$ appears to be the most significant source of PKE, with positive
+values as large as \energy{2} observed between July and August above the EUC
+core, suggesting that the TIWs are extracting energy from the meridional shear
+between the zonal SEC and EUC flows.
+
+Also of importance is the term $-\langle v' v' \rangle V_y$, which reflects the
+mean meridional flow convergence and divergence since $\langle v' v' \rangle$
+is positive definite. We observe positive values on the surface and negative
+subsurface values, as expected. When we consider the sum of the meridional
+shear generation terms, we find that on the equator and to its south, there are
+negative values and therefore these regions act as a sink for PKE. In contrast
+to this, the north tends to have predominantly positive values, largely due to
+$U_y$, which produce the energy necessary for PKEs. These patterns essentially
+coincide with the wave season.
+
+As for the vertical shear production terms $-\langle u' w' \rangle U_z$ and
+$-\langle v' w' \rangle V_z$, the $U_z$ shear tends to reverse sign across the
+EUC core, with large negative values of about \energy{2} above $110 \text{ m}$,
+but small positive values below. Hence, the $U_z$ shear principally acts as a
+sink of PKE. So to summarize the effects of shear, the meridional shear $U_y$
+to the north of the equator is the principal source of PKE, while $U_y$, $V_y$
+and $U_z$ shears tend to reduce PKE at and south of the equator.
+
+The pressure terms \eqref{PKE-Work} are the most difficult to evaluate, most
+notably because there is no definite way to evaluate $-\langle p'_x u' \rangle$
+from TIWE data. The meridional pressure work $-\langle p'_y v' \rangle$ is
+found to be quite large, of about \energy{4.5}. While earlier observational
+evidence seems to suggest that these two lateral work terms should balance, one
+cannot realistically estimate their effects. But given that such terms require
+an external forcing to be nonzero when integrated over a domain, they are most
+likely not involved in TIW generation.
+
+The last term of importance is the PKE-PPE exchange term, $-g \langle \rho' w'
+\rangle$. If the perturbation density field is hydrostatic (\emph{i.e.}, $p'_z
+= - g \rho'$), then this will precisely balance the work term $-\langle p'_z w'
+\rangle$. In any case, this value is found to be positive for most of the TIW
+season, and strongly negative following this season at around February. THe 
+positive correlation shows an exchange from PKE to PPE.
+
+We shall now briefly summarize the analysis of the PPE equation. In general,
+most of the terms are not significant. Only mean meridional and vertical
+advection can be estimated, and both are less than $10^{-3} \text{ cm}^2 \text{
+s}^{-3}$. We then extrapolate that the same is true for zonal flows, and that
+this is not a dominant part of PPE balance. The baroclinic conversion, which
+could have the greatest effect on energetics, turns out to in fact be very
+small, less than $10^{-3} \text{ cm}^2 \text{ s}^{-3}$. Again, only meridional
+fluxes could be measured, but since we expect $\overline{\rho}_y >
+\overline{\rho}_x$, we can extrapolate to both cases. We emphasize however that
+these measurements were made near the equator, and not along the cold tongue
+front. The only term of dominance is the PKE-PPE exchange, $g \langle \rho' w'
+\rangle$, which has already been described. Therefore, we see that the change
+in PPE along the equator is most likely due to only the PKE-PPE exchange.
+
+We therefore conclude that along the equator, it is the meridional shear of
+zonal flows $U_y$ that is the principal source of instability. We also see that
+PKE sinks arise from $U_y$, $V_y$ and $U_z$, as well as the perturbative PKE
+flux. There is also an exchange of PKE to PPE.
+
+\subsection{Discussion of Energetics}
+
+Because of the dominance of $-\langle u' v' \rangle U_y$ above the EUC core, we
+conclude that a potential source of TIW energy is from the strong subsurface
+shear between the SEC and EUC, and occurs just north of the equator. After the
+initial growth, the waves seem to be maintained by the $U_y$ and $V_y$ shears
+to the north, while the $U_y$, $V_y$ and $U_z$ shears tend to weaken the waves
+and return the energy to the mean flow. The meridional perturbative PKE flux
+$-\langle \left(u'^2 + v'^2\right) v' \rangle / 2$ further weakens the waves in
+the south by creating a meridional dispersive effect. The meridional work
+$-\langle p'_y v' \rangle$ also weakens the waves, but may be counteracted by
+the zonal work $-\langle p'_x u' \rangle$. For the vertical flux, we expect a
+generation of PKE near $180 \text{ m}$ through PKE-PPE exchange, while the
+vertical work $-\langle p'_z w' \rangle$ then acts to carry the energy upward.
+
+\section{Conclusions}
+
+We have presented some of the most striking evidence for the existence of TIWs
+by describing one of the more recent observations of SST profiles by
+\citet{Chelton++:2000}. The TIWs had characteristic length and time scales for
+these waves that were consistent with prior studies. But they also provided
+clear evidence of TIWs south of the equator, and point out an evident (if
+somewhat qualitative) asymmetry between the north and south SST profiles.
+Although the SST signature of the southern TIWs was weaker, these waves were
+able to persist for a few months longer than their northern counterparts. TIWs
+were also observed in the Atlantic, but only along the northern equatorial
+region. None were observed in the Indian Ocean.
+
+We then sought to better understand the mechanism which produced these waves,
+and presented the energetic analysis by \citet{Qiao-Weisberg:1998}. Advection
+of PKE by the mean flow did not appear to play a major role, while the
+barotropic generation of eddies by mean shear was especially significant. The
+meridional shear between the SEC and EUC was observed to be the principal
+source of PKE north of the equator, while the vertical and meridional SEC-EUC
+shears south of the equator tended to consume PKE. There is also a modest
+meridional advection of PKE by the eddies. The only significant role played by
+PPE was to act as a reservoir for PKE; no baroclinic energy generation was
+observed.
+
+Although we have illustrated the importance of barotropic instability in TIW
+dynamics, it should not be presumed that the waves are wholly due to such a
+process. The study by Qiao and Weisberg doesn't, for example, address the
+possibility of strong baroclinic processes near the cold tongue fronts, which
+were outside the range of the TIWE experiment. Therefore, baroclinic theories
+such as that suggested by \citet{Masina-Philander-Bush:1999} may yet provide an
+accurate description of TIW dynamics. And yet, even though TIWs are associated
+with strong SST gradients, \citet{Chelton++:2000} carefully make the point that
+this is also the principal means of observing the waves, so it would be
+difficult, if not impossible, to comment on their existence in the absence of
+such gradients. It is also not clear how to coincide the lack of instability on
+the southern side of the equator with the existence of southern TIWs. It is
+clear however that it will be some time before a definitive explanation of TIW
+dynamics is known.
+
+\bibliography{tiw} \bibliographystyle{jas99}
+
+\end{document}
