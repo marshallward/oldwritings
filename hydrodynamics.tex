@@ -1,0 +1,213 @@
+\documentclass[twoside, openany]{book}
+
+\usepackage{amsmath, amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage[perpage, symbol, norule]{footmisc}
+\usepackage{indentfirst}
+\usepackage{makeidx}
+\usepackage{dotseqn}
+
+% Some useful shortcut mathematical structures
+\newcommand{\edot}{\>.\>}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+
+
+% Lamb delineates "articles" in the ToC, which are groups of paragraphs.
+% "Paragraph" might be easier, but at least this is educational.
+\newcounter{article}
+\newcounter{lastarticle}
+\newcommand{\article}[1]{
+  \stepcounter{article}
+  \textbf{\thearticle}.
+  \markright{#1} % I may not want this
+}
+
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{} % Do I have sections? So hard to say...
+\newcommand{\articleinterval}{
+  \ifthenelse{\equal{\thelastarticle}{\thearticle}}
+    {\thearticle}
+    {\thelastarticle--\thearticle}
+    \setcounter{lastarticle}{\thearticle}
+}
+
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[CE]{\emph \leftmark}
+\fancyhead[CO]{\emph \rightmark} % This is tricky; it seems inconsistent
+\fancyhead[RE]{[CHAP. \Roman{chapter}}
+\fancyhead[LO]{\articleinterval\!\!\!]} %\! is a kludge; find better way
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Lamb only uses the article number to reference his equations.
+\numberwithin{equation}{article} % A compromise
+
+\makeindex
+
+\begin{document}
+
+\frontmatter
+
+% How do I make a completely blank page???
+
+% Temporary title page
+% Redo this with \begin{titlepage}...
+\title{Hydrodynamics}\author{Sir Horace Lamb, M.A., LL.D., Sc.D., F.R.S.}
+\date{}
+\maketitle
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter*{Preface}
+
+This may be regarded as the sixth edition of a \emph{Treatise on the Mathematical Theory of the Motion of Fluids}, published in 1879. Subsequent editions, largely remodelled and extended, have appeared under the present title.
+
+In this issue no change has been made in the general plan and arrangement, but the work has again been revised throughout, some important omissions have been made good, and much new matter has been introduced.
+
+The subject has in recent years received considerable developments, in the theory of tides for instance, and in various directions bearing on the problems of aeronautics, and it is interesting to note that the ``classical'' Hydrodynamics, often referred to with a shade of depreciation, is here found to have a widening field of practical applications. Owing to the elaborate nature of some of these researches it has not always been possible to fit an adequate account of them into the frame of this book, but attempts have occasionally been made to give some indication of the more important results, and of the methods employed.
+
+As in previous editions, pains have been taken to make due acknowledgement of authorities in the footnotes, but it appears necessary to add that the original proofs have often been considerably modified in the text.
+
+I have again to thank the staff of the University Press for much valued assistance during the printing.
+
+\rightline{HORACE LAMB}
+
+\noindent \emph{April} 1932
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+% The ToC of Hydrodynamics is very different from the standard LaTex ToC. I'll have to work on this.
+% Oops!! Redefining \thechapter will mess this up. Now I probably need to redefine various parts of \tableofcontents...
+% I've looked into it. It's a mess, and would take far more skill than I currently have.
+\tableofcontents
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\mainmatter
+
+\chapter{The Equations of Motion}
+
+\addcontentsline{toc}{section}{Fundamental property of a fluid}
+
+\article{a1}
+\MakeUppercase{T{\footnotesize he}} following investigations proceed on the assumption that the matter with which we deal may be treated as practically continuous and homogeneous in structure; \emph{i.e.} we assume that the properties of the smallest portions into which we can conceive it to be divided are the same as those of the substance in bulk.
+
+The fundamental property of a fluid is that it cannot be in equilibrium in a state of stress such that the mutual action between two adjacent parts is oblique to the common surface. This property is the basis of Hydrostatics, and is verified by the complete agreement of the deductions of that science with experiment. Very slight observation is enough, however, to convince us that oblique stresses may exist in fluids \emph{in motion}. Let us suppose for instance that a vessel in the form of a circular cylinder, containing water (or other liquid), is made to rotate about its axis, which is vertical. If the angular velocity of the vessel be constant, the fluid is soon found to be rotating with the vessel as one solid body. If the vessel be now brought to rest, the motion of the fluid continues for some time, but gradually subsides, and at length ceases altogether; and it is found that during this process the portions of fluid which are further from the axis lag behind those which are nearer, and have their motion more rapidly checked. These phenomena point to the existence of mutual actions between the contiguous elements with are partle tangential to the common surface. For if the mutual action were everywhere wholly normal, it is obvious that the moment of momentum, about the axis of the vessel, of any portion of fluid bounded by the surface of revolution about this axis, would be constant. We infer, moreover, that these tangential stresses are not called into play so long as the fluid moves as a solid body, but only whilst a change of shape of some portion of the mass is going on, and that their tendency is to oppose this change of shape.
+
+\article{a2}
+It is usual, however, in the first instance to neglect the tangential stresses altogether. Their effect is in many practical cases small, and, independently of this, it is convenient to divide the not inconsiderable difficulties of our subject by investigating first the effects of purely normal stresses. The further consideration of the laws of tangential stress is accordingly deferred till Chapter \ref{ch:viscosity}.
+
+If the stress exerted across any small plane area situate at a point $P$ of the fluid be wholly normal, its intensity (per unit area) is the same for all aspects of the plane. The following proof of this theorem is given here for purposes of reference. Through $P$ draw three straight lines $PA$, $PB$, $PC$ mutually at right angles, and let a plane whose direction-cosines relatively to these lines are $l$, $m$, $n$, passing infinitely close to $P$, meet them in $A$, $B$, $C$. Let $p$, $p_1$, $p_2$, $p_3$ denote the intensities of the stresses\footnote{Reckoned positive when pressures, negative when tensions. Most fluids are, however incapable under ordinary conditions of supporting more than an exceedingly slight degree of tension, so that $p$ is nearly always positive.} across the faces $ABC$, $PBC$, $PCA$, $PAB$, respectively, of the tetrahedron $PABC$. If $\Delta$ be the area of the first-mentioned face, the areas of the others are, in order, $l\Delta$, $m\Delta$, $n\Delta$. Hence if we form the equation of motion of the tetrahedron parallel to $PA$ we have $p_1 \edot l\Delta = pl \edot \Delta$, where we have omitted the terms which express the rate of change of momentum, and the component of the extraneous forces, because they are ultimately proportional to the mass of the tetrahedron, and therefore of the third order of small linear quantities, whilst the terms retained are of the second. We have then, ultimately, $p=p_1$, and similarly $p=p_2=p_3$, which proves the theorem.
+
+% This is a kludge to get article indexing started correctly. There might be a better way, if I can force it to be executed at the end of the first page. But I don't know if that's possible.
+\setcounter{lastarticle}{\thearticle}
+
+\addcontentsline{toc}{section}{The two plans of investigation}
+
+\article{a3}
+The equations of motion of a fluid have been obtained in two different forms, corresponding to the two ways in which the problem of determining the motion of a fluid mass, acted on by given forces and subject to given conditions, may be viewed. We may either regard as the object of our investigations a knowledge of the velocity, the pressure, and the density, at all points of space occupied by the fluid, for all instants; or we may seek to determine the history of every particle. The equations obtained on these two plans are conveniently designated, as by German mathematicians, the `Eulerian' and the `Lagrangian' forms of the hydrokinetic equations, although both forms are in reality due to Euler\footnote{``Principles g\'en\'eraux du mouvement des fluides,'' \textit{Hist. de l'Acad. de. Berlin}, 1755.}.
+% This footnote is more of a reference. I think there's a better way to deal with this. I really hope so, since I want to generate an Author index.
+
+\index{Eulerian form of the hydrodynamical equations}
+
+\section*{The Eulerian Equations.}
+
+\addcontentsline{toc}{section}{`Eulerian' form of the equations of motion. Dynamical Equations. Equation of continuity. Physical equations. Surface conditions}
+
+\article{a4}
+Let $u, v, w$ be the components, parallel to the co-ordinate axes, of the velocity at the point $(x, y, z)$ at the time $t$. These quantities are then functions of the independent variables $x, y, z, t$. For any particular value of $t$ they define the motion at that instant at all points of space occupied by the fluid; whilst for particular values of $x, y, z$ they give the history of what goes on at a particular place.
+
+We shall suppose, for the most part, not onlyt that $u, v, w$ are finite and continuous functions of $x, y, z$, but that their space-derivatives of the first order $(\partial u/\partial x, \partial v/\partial x, \partial w/\partial x, \textrm{ \&c.})$ are everywhere finite\footnote{``De principiis motus fluidorum,'' \textit{Noti Comm. Acad. Petrop.} xiv. 1 (1759).\\Lagrange gave three investigations of the equations of motion; first, incidentally, in connection with the principle of Least Action, in the \textit{Miscellanea Taurinensia}, ii. (1760) [\textit{Oeuvres}, Paris, 1867-92, i.]; secondly in his ``Memoire sur la Th\'eorie du Mouvement des Fluides,'' \textit{Nouv. m\'em. de l'Acad. de Berlin}, 1781 [\textit{Oeuvres}, iv.]; and thirdly in the \textit{M\'ecanique Analytique}. In this last exposition he starts with the second form of the equations (Art. 14, below) but translates them at once into the `Eulerian' notation.}; we shall understand by the term `continuous motion,' a motion subject to these restrictions. Cases of exemption, if they present themselves, will require separate examination. In continuous motion, as this defined, the relative vorticity of any two neighboring particles $P$, $P^\prime$ will always be infinitely small, so that the line $PP^\prime$ will always remain of the same order of magnitude. It follows that if we imagine a small closed surface to be drawn, surrounding $P$, and suppose it to move with the fluid, it will always enclose the same matter. And \emph{any} surface whateverm which moves with the fluid, completely and permanently separates the matter on the two sides of it.
+
+\article{a5}
+The values of $u, v, w$ for successive values of $t$ give as it were a series of pictures of consecutive stages of the motion, in which however there is no immediate means of tracing the identity of any one particle.
+
+To calculate the reate at which any function $F(x, y, z, t)$ varies for a moving particle, we may remark that at the time $t+\delta t$ the particle which was originally in the position $(x, y, z)$ is in the position $(x+u\delta t, y+v\delta t, z+w\delta t)$, so that the corresponding value of $F$ is
+\begin{equation*}
+F(x+u\delta t, y+v\delta t, z+w\delta t, t+\delta t) = F + u \delta t \pdiff{F}{x} + v \delta t \pdiff{F}{y} + w \delta t \pdiff{F}{z} + \delta t \pdiff{F}{t}.
+\end{equation*}
+If, after Stokes, we introduce the symbol $D/Dt$ to denote a differentiation following the motion of the fluidm the new value of $F$ is also expressed by $F + DF/Dt \edot \delta t$, whence
+\begin{equation} \label{material_diff}
+\frac{DF}{Dt} = \pdiff{F}{t} + u\pdiff{F}{x} + v\pdiff{F}{y} + w\pdiff{F}{z}.
+\end{equation}
+
+\article{a6}
+To form the dynamical equations, let $p$ be the pressure, $\rho$ the density, $X, Y, Z$ the components of the extraneous forces per unit mass, at the point $(x, y, z)$ at the time $t$. Let us take an element having its centre at $(x, y, z)$, and its edges $\delta x, \delta y, \delta z$ parallel to the rectangular co-ordinate axes. The rate at which the $x$-component of the momentum of this element is increasing is $\rho \delta x \delta y \delta z Du/Dt$; and this must be equal to the $x$-component of the forces acting on the element. Of these the extraneous forces give $\rho \delta x \delta y \delta z X$. The pressure on the $yz$-face which is nearest the origin will be ultimately
+\begin{equation*}
+(p - \tfrac{1}{2} \partial p / \partial x \edot \delta x) \delta y \delta z \footnote{It is easily seen, by Taylor's theorem, that the mean pressure over any face of the element $\delta x \delta y \delta z$ may be taken to be equal to the pressure at the centre of that face.},
+\end{equation*}
+that on the opposite face
+\begin{equation*}
+(p - \tfrac{1}{2} \partial p / \partial x \edot \delta x) \delta y \delta z.
+\end{equation*}
+The difference of these gives a resultant $-\partial p / \partial x \edot \delta x \delta y \delta z$ in the direction of $x$-positive. The pressures on the remaining faces are perpendicular to $x$. We have then
+\begin{equation*}
+\rho \delta x \delta y \delta z \frac{Du}{Dt} = \rho \delta x \delta y \delta z X - \pdiff{p}{x} \delta x \delta y \delta z.
+\end{equation*}
+
+Substituting the value of $Du/Dt$ from \eqref{material_diff}, and writing down the symmetrical equations, we have
+\begin{equation} % This needs work; it doesn't align all elements
+\left.
+\begin{split}
+\pdiff{u}{t} + u \pdiff{u}{x} + v \pdiff{u}{y} + w \pdiff{u}{z} &= X - \frac{1}{\rho} \pdiff{p}{x},\\
+\pdiff{v}{t} + u \pdiff{v}{x} + v \pdiff{v}{y} + w \pdiff{v}{z} &= Y - \frac{1}{\rho} \pdiff{p}{y},\\
+\pdiff{w}{t} + u \pdiff{w}{x} + v \pdiff{w}{y} + w \pdiff{w}{z} &= Z - \frac{1}{\rho} \pdiff{p}{z}
+\end{split}
+\right\}
+\end{equation}
+
+\article{a7}
+To these dynamical equations we must join, in the first place, a certian kinematical relation between $u, v, w, \rho$, obtained as follows.
+
+If $Q$ be the volume of a moving element, we have, on account of the constancy of mass,
+\begin{equation*}
+\frac{D\edot \rho Q}{Dt} = 0,
+\end{equation*}
+or % Get this on the same line
+\begin{equation}
+\frac{1}{\rho} \frac{D\rho}{Dt} + \frac{1}{Q} \frac{DQ}{Dt} = 0.
+\end{equation}
+To calculate the value of $1/Q\edot DQ/Dt$, let the element in question be that which at time $t$ fills the rectangular space $\delta x \delta y \delta z$ having one corner $P$ at $(x, y, z)$, and the edges $PL, PM, PN$ (say) parallel to the co-ordinate axes. At time $t+\delta t$ the same element will form an oblique parallelepiped, and since the velocities of the particle $L$ relative to the particle $P$ are $\partial u/\partial x \edot \delta x, \partial v /\partial x \edot \delta x, \partial w/\partial x\edot \delta x$,the projections of the edge $PL$ on the co-ordinate axes become, after the time $\delta t$,
+\begin{align*} %Adjust spacing
+\left(1+\pdiff{u}{x} \delta t \right) \delta x, && \pdiff{v}{x}\delta t \edot \delta x, && \pdiff{w}{x} \delta t \edot \delta x,
+\end{align*}
+respectively.
+
+To the first order in $\delta t$, the length of this edge is now
+\begin{equation*}
+\left(1+\pdiff{u}{x}\delta t\right)\delta x,
+\end{equation*}
+and similarly for the remaining edges. Since the angles of the parallelepiped differ infinitely little form right angles, the volume is still given, to the first order in $\delta t$, by the product of the three edges, \emph{i.e.} we have
+
+\label{a14}Bladitty.
+
+\chapter{Integration of the Equations in Special Cases}
+
+\chapter{Irrotational Motion}
+
+\chapter{Motion of a Liquid in Two Dimensions}
+
+\chapter[Irrotational Motion of a Liquid]{Irrotational Motion of a Liquid: Problems in Three Dimensions}
+
+\chapter[Motion of Solids through a Liquid]{On the Motion of Solids through a Liquid: Dynamical Theory}
+
+\chapter{Vortex Motion}
+
+\chapter{Tidal Waves}
+
+\chapter{Surface Waves}
+
+\chapter{Waves of Expansion}
+
+\chapter{Viscosity}\label{ch:viscosity}
+
+\chapter{Rotating Masses of Liquid}
+
+\backmatter
+
+\printindex
+
+\end{document}
