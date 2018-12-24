@@ -1,0 +1,41 @@
+%
+% Symbols file GFD2002
+%
+
+% Partial derivative
+\def\pd{\partial}
+% Real numbers
+\def\reals{{\mathbb R}}
+% 1st partial derivative
+\newcommand {\pdd}[2]{\frac{\partial #1}{\partial #2}}
+% 2nd partial derivative
+\newcommand {\pdTwo}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+% reference style
+%\newcommand {\nref}[1]{~(\ref{#1})}
+\newcommand {\nref}[1]{~\ref{#1}}
+% unit vector notation
+\newcommand {\unitv}[1]{\mathbf{\hat{#1}}}
+% the subscript for the horizontal component
+\newcommand {\horiz}{_{_{H}}}
+% the symbol for the velocity
+\newcommand {\vel}{\mathbf{u}}
+% the symbol for the horizontal velocity
+\newcommand {\uh}{\vel\horiz}
+% the symbol for the vertical unit vector
+\newcommand {\khat}{\unitv{k}}
+% the symbol for the unit vector in th y direction
+\newcommand {\jhat}{\unitv{j}}
+% the symbol for the unit vector in the direction \hnabla h
+\newcommand {\nhat}{\unitv{n}}
+% the symbol for the horizontal nabla
+\newcommand {\hnabla}{\nabla\!\horiz}
+% the symbol for the horizontal laplacian
+\newcommand {\hlap}{\hnabla^{\,2}}
+% the subscript denoting top
+\newcommand {\up}{_{_{T}}}
+% the subscript denoting bottom
+\newcommand {\down}{_{_{B}}}
+% degree symbol
+\newcommand {\degree} {^{\circ}}
+% Cross product
+\def\cross{\times}
