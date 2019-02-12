@@ -1,0 +1,43 @@
+% Written by DVItoMP, Version 0.64 (MiKTeX 2.2)
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n0="cmmi10";
+_s("a",_n0,1.00000,0.0000,0.0000);
+setbounds _p to (0,0.0000)--(5.2661,0.0000)--
+ (5.2661,4.2895)--(0,4.2895)--cycle;
+_p endgroup
+mpxbreak
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n0="cmmi10";
+_s(char13,_n0,1.00000,0.0000,0.0000);
+setbounds _p to (0,-1.9372)--(5.7114,-1.9372)--
+ (5.7114,4.2895)--(0,4.2895)--cycle;
+_p endgroup
+mpxbreak
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n0="cmmi10";
+_s(char18,_n0,1.00000,0.0000,0.0000);
+_n1="cmmi5";
+_s("o",_n1,1.00000,4.6769,-1.4944);
+setbounds _p to (0,-1.4944)--(8.6758,-1.4944)--
+ (8.6758,6.9185)--(0,6.9185)--cycle;
+_p endgroup
+mpxbreak
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n0="cmmi10";
+_s("a",_n0,1.00000,0.0000,0.0000);
+setbounds _p to (0,0.0000)--(5.2661,0.0000)--
+ (5.2661,4.2895)--(0,4.2895)--cycle;
+_p endgroup
+mpxbreak

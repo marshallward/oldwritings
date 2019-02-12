@@ -1,0 +1,374 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.4)  12 FEB 2019 22:31
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**fronts.tex
+(./fronts.tex
+LaTeX2e <2018-04-01> patch level 5
+(/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+) (./newapa.sty)
+(/usr/share/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip46
+\bibsep=\skip47
+LaTeX Info: Redefining \cite on input line 694.
+LaTeX Info: Redefining \citeyear on input line 735.
+\c@NAT@ctr=\count100
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 99.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+No file fronts.aux.
+\openout1 = `fronts.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Try loading font information for U+msa on input line 15.
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 15.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+Package natbib Warning: Citation `Hoskins:1982' on page 1 undefined on input li
+ne 27.
+
+
+Package natbib Warning: Citation `Hakim+:2001' on page 1 undefined on input lin
+e 27.
+
+[1
+Non-PDF special ignored!
+<special> papersize=614.295pt,794.96999pt
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Reference `ConservedParcel' on page 2 undefined on input line 57
+.
+
+[2]
+
+LaTeX Warning: Reference `ConservedParcel' on page 3 undefined on input line 66
+.
+
+
+LaTeX Warning: Reference `KinematicEqn' on page 3 undefined on input line 66.
+
+
+LaTeX Warning: Reference `KinematicEqn' on page 3 undefined on input line 88.
+
+
+LaTeX Warning: Reference `QG:Buoyancy' on page 3 undefined on input line 88.
+
+
+LaTeX Warning: Reference `QG:Momentum' on page 3 undefined on input line 92.
+
+[3]
+
+LaTeX Warning: Reference `QG:Momentum' on page 4 undefined on input line 98.
+
+
+LaTeX Warning: Reference `QG:GradB' on page 4 undefined on input line 103.
+
+
+LaTeX Warning: Reference `QG:GradV' on page 4 undefined on input line 103.
+
+
+LaTeX Warning: Reference `QG:PreSE' on page 4 undefined on input line 122.
+
+[4] [5]
+
+LaTeX Warning: Reference `QG:GradB' on page 6 undefined on input line 183.
+
+[6]
+
+LaTeX Warning: Reference `GreenEquation' on page 7 undefined on input line 189.
+
+
+
+LaTeX Warning: Reference `GreenSolution' on page 7 undefined on input line 193.
+
+
+
+LaTeX Warning: Reference `Fig:SlopedDomain' on page 7 undefined on input line 2
+00.
+
+File: fronts_fig.1 Graphic file (type eps)
+<fronts_fig.1>
+File: img/qg_slope_n16_1src_mid.eps Graphic file (type eps)
+ <img/qg_slope_n16_1src_mid.eps>
+File: img/qg_slope_n16_1src_btm.eps Graphic file (type eps)
+ <img/qg_slope_n16_1src_btm.eps>
+
+LaTeX Warning: Reference `Fig:QGSlopeFlowMid' on page 7 undefined on input line
+ 217.
+
+File: img/sg_slope_n16_s075_1src_mid.eps Graphic file (type eps)
+<img/sg_slope_n16_s075_1src_mid.eps>
+
+LaTeX Warning: Reference `Fig:QGSlopeFlowMid' on page 7 undefined on input line
+ 223.
+
+File: img/sg_slope_n16_s075_1src_btm.eps Graphic file (type eps)
+<img/sg_slope_n16_s075_1src_btm.eps>
+
+LaTeX Warning: Reference `Fig:QGSlopeFlowMid' on page 7 undefined on input line
+ 229.
+
+File: img/sg_slope_2src_surface.eps Graphic file (type eps)
+<img/sg_slope_2src_surface.eps> [7
+Non-PDF special ignored!
+<special> PSfile="fronts_fig.1" llx=-3 lly=-8 urx=75 ury=75 rwi=780 
+] [8
+Non-PDF special ignored!
+<special> PSfile="img/qg_slope_n16_1src_mid.eps" llx=0 lly=0 urx=707 ury=35...
+Non-PDF special ignored!
+<special> PSfile="img/qg_slope_n16_1src_btm.eps" llx=0 lly=0 urx=707 ury=35...
+] [9
+Non-PDF special ignored!
+<special> PSfile="img/sg_slope_n16_s075_1src_mid.eps" llx=0 lly=0 urx=724 u...
+Non-PDF special ignored!
+<special> PSfile="img/sg_slope_n16_s075_1src_btm.eps" llx=0 lly=0 urx=724 u...
+]
+
+LaTeX Warning: Reference `Fig:SlopedDomain' on page 10 undefined on input line 
+241.
+
+
+LaTeX Warning: Reference `Fig:QGSlopeFlowMid' on page 10 undefined on input lin
+e 247.
+
+
+LaTeX Warning: Reference `Fig:SGSlopeFlowBtm' on page 10 undefined on input lin
+e 247.
+
+
+LaTeX Warning: Reference `Fig:SGSlopedBoundary' on page 10 undefined on input l
+ine 247.
+
+[10
+Non-PDF special ignored!
+<special> PSfile="img/sg_slope_2src_surface.eps" llx=0 lly=0 urx=712 ury=53...
+]
+
+LaTeX Warning: Reference `Fig:CurvedDomain' on page 11 undefined on input line 
+254.
+
+File: fronts_fig.4 Graphic file (type eps)
+<fronts_fig.4> [11
+Non-PDF special ignored!
+<special> PSfile="fronts_fig.4" llx=-75 lly=-3 urx=75 ury=93 rwi=1500 
+]
+File: fronts_fig.5 Graphic file (type eps)
+ <fronts_fig.5>
+
+LaTeX Warning: Reference `Fig:CircReflection' on page 12 undefined on input lin
+e 292.
+
+File: img/qg_curve_n16_3src_mid.eps Graphic file (type eps)
+<img/qg_curve_n16_3src_mid.eps>
+File: img/sg_curve_n16_s075_3src_mid.eps Graphic file (type eps)
+ <img/sg_curve_n16_s075_3src_mid.eps>
+
+LaTeX Warning: Reference `Fig:QGCurvedFlow' on page 12 undefined on input line 
+309.
+
+
+LaTeX Warning: Reference `Fig:QGCurvedFlow' on page 12 undefined on input line 
+309.
+
+File: img/sg_curve_3src_surface.eps Graphic file (type eps)
+<img/sg_curve_3src_surface.eps>
+
+LaTeX Warning: Reference `Fig:SGCurvedFlow' on page 12 undefined on input line 
+316.
+
+
+LaTeX Warning: Reference `Fig:SGCurvedFlow' on page 12 undefined on input line 
+316.
+
+
+LaTeX Warning: Reference `Fig:SGCurvedBoundary' on page 12 undefined on input l
+ine 320.
+
+[12
+Non-PDF special ignored!
+<special> PSfile="fronts_fig.5" llx=-3 lly=-3 urx=195 ury=89 rwi=1980 
+] [13
+Non-PDF special ignored!
+<special> PSfile="img/qg_curve_n16_3src_mid.eps" llx=0 lly=0 urx=709 ury=14...
+Non-PDF special ignored!
+<special> PSfile="img/sg_curve_n16_s075_3src_mid.eps" llx=0 lly=0 urx=692 u...
+Non-PDF special ignored!
+<special> PSfile="img/sg_curve_3src_surface.eps" llx=0 lly=0 urx=721 ury=14...
+] (./fronts.bbl)
+
+Package natbib Warning: There were undefined citations.
+
+[14] (./fronts.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2017 strings out of 492639
+ 23787 string characters out of 6135498
+ 90954 words of memory out of 5000000
+ 5875 multiletter control sequences out of 15000+600000
+ 21695 words of font info for 80 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 27i,17n,27p,808b,260s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
+sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+>
+Output written on fronts.pdf (14 pages, 206307 bytes).
+PDF statistics:
+ 114 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
