@@ -1,0 +1,406 @@
+\documentclass[landscape]{seminar}
+
+\usepackage{amsmath, amssymb, amsfonts, bm}
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{.0, .0, .6}
+
+\usepackage[dvips]{graphicx}
+
+\usepackage{hyperref}
+\hypersetup{
+  pdfmenubar=true,
+  pdftoolbar=true,
+  pdfpagemode={None}
+}
+
+\pagestyle{empty}
+
+\renewcommand{\printlandscape}{\special{landscape}}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\jcbn}[2]{J\left(#1, #2 \right)}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}
+Barotropic Instability
+\end{center}
+
+\begin{itemize}
+  \item Governing Equations
+
+  \item Squire's Theorem
+
+  \item The 2D Problem and Generalized Boundary Conditions
+
+  \item Rayleigh's and Fj\o rtoft's Theorems
+
+  \item Howard's Semicircle Theorem
+
+  \item Examples of Barotropic Instability
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Governing Equations\end{center}
+
+\begin{itemize}
+  \item Problem of interest: Inertial (self-interacting) instability of jet-like channel flows
+
+  \item No stratification or rotation
+
+  \item Governing equations:
+\begin{subequations}
+\begin{gather}
+\bm{u}_t + \bm{u} \cdot \nabla \bm{u} = - \nabla p \\
+\nabla \cdot \bm{u} = 0
+\end{gather}
+\end{subequations}
+
+  \item Rigid walls at $y_1$, $y_2$ $\Rightarrow$ $v = 0$ at walls (or no walls at all)
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+  \item Steady state: $u = U(y)$, $v =0$
+
+  \item Perturbed equations:
+\begin{subequations}
+\begin{gather}
+\bm{u}'_t + U \bm{u}'_x + \left(v' U_y \right) \hat{\bm{\imath}} + \bm{u}' \cdot \nabla \bm{u}' = - \frac{1}{\rho} \nabla p' \\
+\nabla \cdot \bm{u}' = 0.
+\end{gather}
+\end{subequations}
+
+\item 2D perturbed state uses streamfunction $\psi$: $u = - \psi_y$, $v = \psi_x$; can use \emph{conservation of vorticity}, $\frac{D \zeta}{Dt} = 0$:
+\begin{equation}
+\left(\pdiff{}{t} + U \pdiff{}{x} \right) \nabla^2 \psi - U_{yy} \psi_x + \jcbn{\psi}{\nabla^2 \psi} = 0.
+\end{equation}
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+
+  \item Nonlinear stability is doable in principle, but \emph{too hard} $\Rightarrow$ linearize the system (and hope it's reasonable)
+
+  \item Use modal expansion: $u = \hat{u}(y)\exp(i(kx + mz - kct))$, etc.
+
+  \item Perturbation equations:
+\begin{subequations}
+\begin{align}
+i k \left(U - c\right)\hat{u} + \hat{v} \frac{dU}{dy} &= - i k \hat{p} \\
+i k \left(U - c\right)\hat{v} &= - \frac{d \hat{p}}{d y} \\
+i k \left(U - c\right)\hat{w} &= - i m \hat{p} \\
+i k \hat{u} + \frac{d\hat{v}}{d y} + i m \hat{w} &= 0.
+\end{align}
+\end{subequations}
+
+\item Singularities may occur if $(U - c) = 0$ in channel, since terms ``disappear''
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Squire's Theorem\end{center}
+
+\begin{itemize}
+  \item Squire came up with a clever transformation:
+\begin{equation*}
+\tilde{k}^2 = k^2 + m^2, \ \ \ \tilde{k} \tilde{u} = k \hat{u} + m \hat{w}, \ \ \ \tilde{p} / \tilde{k} = p / k, \ \ \ \tilde{v} = \hat{v}, \ \ \ \tilde{c} = c.
+\end{equation*}
+
+\item The 3D eigenproblem becomes
+\begin{subequations}
+\begin{align}
+i \tilde{k} (U - \tilde{c}) \tilde{u} + \tilde{v} \frac{dU}{dy} &= - i \tilde{k} \tilde{p}, \\
+i \tilde{k} (U - \tilde{c}) \tilde{v} &= - \frac{d\tilde{p}}{dy}, \\
+i \tilde{k} \tilde{u} + \frac{d \tilde{v}}{d y} &= 0.
+\end{align}
+\end{subequations}
+
+ \item This looks like the 2D problem (i.e. $m = w = 0$) $\Rightarrow$ \emph{every 3D problem is related to a 2D problem!}
+
+ \item Growth rate in 3D is $k c_i$, growth rate in 2D equivalent is $\tilde{k} c_i$ $\Rightarrow$ growth rate is always faster in 2D (so just study 2D)
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Formal 2D Problem\end{center}
+
+\begin{itemize}
+  \item Solve
+\begin{equation}
+\left(\pdiff{}{t} + U \pdiff{}{x} \right) \nabla^2 \psi - U_{yy} \psi_x = 0
+\end{equation}
+with normal modes:
+\begin{equation}
+\left(U - c\right) \left(\psi'' - k^2 \psi \right) - U'' \psi = 0
+\end{equation}
+
+  \item Called \emph{Rayleigh's stability equation}
+
+  \item Two-point eigenvalue problem: general solution $\psi = A_1\psi_1(y;k,c) + A_2\psi_2(y;k,c)$ with $\psi(y_1) = \psi(y_2) = 0$ gives
+\begin{equation*}
+F(k, c) = \begin{vmatrix} \psi_1(y1; k, c) & \psi_2(y1; k, c) \\ \psi_1(y2; k, c) & \psi_2(y2; k, c) \\ \end{vmatrix} = 0
+\end{equation*}
+which is inverted for dispersion relation $c(k)$
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Formal Boundary Conditions\end{center}
+
+\begin{itemize}
+  \item Singularity from $U - c$ permits weakly discontinuous profiles
+
+  \item General boundary conditions: \emph{mass} and \emph{momentum} balance
+
+  \item Momentum: continuity of pressure
+\begin{equation*}
+\int_{a-\epsilon}^{a+\epsilon} \left[k (U - c) u + v U' \right] = - i \int_{a-\epsilon}^{a+\epsilon} k p = 0
+\end{equation*}
+gives
+\begin{equation}
+\left[\left(U-c\right)\psi' - U' \psi \right]_{a-\epsilon}^{a+\epsilon} = 0
+\end{equation}
+
+  \item Mass: continuity of material surface $y = \eta(x, t)$ gives
+\begin{equation}
+\left[\psi / (U - c) \right]_{a-\epsilon}^{a+\epsilon} = 0
+\end{equation}
+
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Rayleigh's Theorem\end{center}
+
+\begin{itemize}
+  \item From Mr. Hayes (minus stratification):
+\begin{equation}
+c_i \int_{y_1}^{y_2} \frac{U''}{|U-c|^2} |\psi|^2 dy = 0.
+\end{equation}
+
+  \item A necessary condition for instability is the existence of an inflection point
+
+  \item Or, the vorticity ("PV") gradient must change direction $\Rightarrow$ You need \emph{counterpropagating Rossby waves}
+
+  \item For pairs of copropagating Rossby waves one can only grow at the cost of another's decay, leading to an endless cycle of birth and decay (like the circle of life)
+
+  \item For pairs of counterpropagating Rossby waves, both can grow or decay in unison, creating a potential instability
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Fj\o rtoft's Theorem\end{center}
+
+\begin{itemize}
+  \item Rayleigh looked at imaginary part, Fj\o rtoft looked at real part:
+\begin{equation*}
+\int_{y_1}^{y_2} \left(|\psi'|^2 + k^2 |\psi|^2 + U'' \frac{(U - c_r)}{|U - c|^2}|\psi|^2 \right) dy = 0.
+\end{equation*}
+
+  \item Using Rayleigh's theorem allowed him to manipulate this to
+\begin{equation}
+\int_{y_1}^{y_2} \frac{U'' (U - U_s)}{|U - c|^2} |\psi|^2 dy \leq 0.
+\end{equation}
+
+  \item So $U'' (U - U_s) < 0$ somewhere in the flow, where $U_s$ is the flow at the inflection point
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Howard's Semicircle Theorem\end{center}
+
+\begin{itemize}
+  \item Lou Howard did a lot of tricks to the stability equation, including getting it in Sturm-Liouville form:
+\begin{equation}
+((U-c)^2 F')' - k^2 (U-c)^2 F = 0.
+\end{equation}
+where $F = \psi / (U-c)$
+
+  \item After a lot of other tricks, he was able to show that
+\begin{equation*}
+\begin{split}
+0 &\geq \int_{y_1}^{y_2} (U - U_{\min}) (U - U_{\max}) Q dy \\
+&= \int_{y_1}^{y_2} \left[(c_i^2 + c_r^2) - (U_{\min} + U_{\max})c_r + U_{\min} U_{\max} \right] Q dy
+\end{split}
+\end{equation*}
+where $Q = |F'|^2 + k^2 |F|^2 > 0$
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+  \item Then $c_r^2 + c_i^2 - (U_{\min} + U_{\max})c_r + U_{\min} U_{\max} \leq 0$, or...
+\begin{equation}
+\left[c_r - \frac{1}{2}(U_{\min} + U_{\max}) \right]^2 + c_i^2 \leq \left[\frac{1}{2}(U_{\max} - U_{\min}) \right]^2.
+\end{equation}
+
+  \item So on the complex plane, all eigenvalues (i.e. phase speeds and growth rates) are within a circle centered at $\frac{1}{2}(U_{\min} + U_{\max})$ with radius $\frac{1}{2}(U_{\max} - U_{\min})$
+
+  \item Upper semicircle has $c_i > 0$ and the unstable modes, hence the name
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Examples of Barotropic Instability\end{center}
+
+\begin{itemize}
+  \item Poiseuille Flow: $U(y) = 1 - y^2$ between $y = \pm 1$
+
+  \item $U'' = -2$; no inflection points so it must be \emph{stable}
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Sinusoidal Flow: $U(y) = \sin y$\end{center}
+
+\begin{itemize}
+  \item $U'' = - \sin y = 0$ at $y = 0, \pm n \pi$, so it's stable if $y_1$ and $y_2$ are between two $\pi$'s
+
+  \item What if there's one inflection point, say $y = 0$?
+
+  \item Then $U'' = 0$ at $y =0$ and $U'' (U - U_s) = -\sin^2 y < 0$
+
+  \item Rayleigh's and Fj\o rtoft's criteria are met... but is it unstable?
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+  \item If we take $c = U_s$, then we can use a theorem from Sturm-Liouville theory
+
+  \item After a lot of hooplah, we show that for all modes k, $k^2 < k_s^2$, where $k_s$ is when $c = c_s = U_s$, and if $k_s > 0$ then all modes will be stable
+
+  \item For the sinusoid, this ``s-mode'' has $c = U_s = 0$ and we get
+\begin{equation*}
+\sin y \left(\psi_s'' + (1 - k_s^2) \psi_s \right) = 0
+\end{equation*}
+with $\psi_s = 0$ at $y_1$ and $y_2$ and solution
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+  \item Ignore the singular modes; the solution is (with boundaries $y_1, y_2$)
+\begin{equation*}
+\psi_s = \sin\left[n \pi (y - y_1) / (y_2 - y_1)\right]
+\end{equation*}
+with
+\begin{equation*}
+k_s = \left(1 - \frac{n^2 \pi^2}{(y_2 - y_1)^2} \right)^{\frac{1}{2}}
+\end{equation*}
+
+\item As long as $n < (y_2 - y_1) / \pi$, then the flow is \emph{stable}, even though both Rayleigh's and Fj\o rtoft's conditions are met
+
+\item This is sort of a rare exception. Most violators are unstable
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}Top Hat Profile: $U(y) = \begin{cases} 1 & \vert y \vert < 1 \\ 0 & \vert y \vert > 1. \end{cases}$\end{center}
+
+\begin{itemize}
+  \item Flow is discontinuous; we need the ``special'' boundary conditions at the discontinuities
+
+  \item In each piece, stability equation is
+\begin{equation*}
+(U - c) (\psi'' - k^2 \psi) = 0
+\end{equation*}
+so to decay at $y = \pm \infty$, each part looks like
+\begin{equation*}
+\psi =
+\begin{cases}
+A e^{-ky} & y > 1 \\
+B e^{ky} + C e^{-ky} & -1 < y < 1 \\
+D e^{ky} & y < 1
+\end{cases}
+\end{equation*}
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+  \item Momentum BC gives
+\begin{align*}
+kc A e^{-k} &= k(1-c) \left(B e^{k} - C e^{-k}\right) \\
+k(1-c) \left(B e^{-k} - C e^{k}\right) &= -cD e^{-k}
+\end{align*}
+
+  \item Mass BC gives
+\begin{align*}
+(c-1) A e^{-k} &= (c-1) \left(B e^{k} + C e^{-k}\right) \\
+(c-1) \left(B e^{-k} - C e^{k}\right) &=  e^{-k}.
+\end{align*}
+
+  \item Stick this crap together to eliminate $A, B, C, D$ and get expressions for $c$:
+\begin{equation*}
+c_1 = \frac{1 + i (\coth k)^{1/2}}{1 + \coth k}, \ \ \ c_2 = \frac{1 + i (\tanh k)^{1/2}}{1 + \tanh k}
+\end{equation*}
+
+\item Every mode has $c_i > 0$, and \emph{every mode is unstable}
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+The End
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}

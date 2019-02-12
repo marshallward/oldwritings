@@ -1,0 +1,363 @@
+\documentclass[letterpaper, 11pt, onecolumn]{article}
+
+\usepackage{amsmath, amssymb, amsfonts, bm}
+\usepackage{newapa, natbib}
+\usepackage[dvips]{graphicx}
+
+%\usepackage{hyperref}
+%\hypersetup{
+%  pdfmenubar=true,
+%  pdftoolbar=true,
+%  pdfpagemode={None}
+%}
+
+%\pagestyle{empty}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\jcbn}[2]{J\left(#1, #2 \right)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Barotropic Instability}
+
+\author{Marshall Ward}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+In this paper, we present a number of the more fundamental ideas from the instability of barotropic flows, focusing on channel flows. More realistic effects, such as stratification and rotation, have not been introduced; the intention is to understand the limitations of the fluid in the absence of any forcings. We seek to better understand the self-interacting inertial instability.
+
+We first present some of the theorems related to the stability of such flows, and later apply these ideas to some idealized flows.
+
+\section{The Governing Equations}
+
+Neglecting frictional, rotational, and compressible effects, the dynamics of our system for three dimensional flow are described by
+\begin{subequations}\label{BasicEqns}
+\begin{gather}
+\bm{u}_t + \bm{u} \cdot \nabla \bm{u} = - \nabla p \\
+\nabla \cdot \bm{u} = 0
+\end{gather}
+\end{subequations}
+with $\rho \equiv 1$. Alternatively, one may replace the quantity $p / \rho$ by $p$ and have it act as a proxy for the pressure. Let us consider a steady parallel shear flow $\bm{U} = U(y)\hat{\bm{\imath}}$ in a constant pressure field $P$, within a region that is unbounded in $x$ and $z$, but has rigid walls located at $y_1$ and $y_2$; this is commonly referred to as \emph{channel flow}. One can verify by inspection that this is a solution to the system, and therefore a possible (if potentially unstable) flow.
+
+To examine the stability of this flow, we next consider a perturbation to the basic state, so that $\bm{u} = \bm{U} + \bm{u}'$. Our system then becomes
+\begin{subequations}\label{3Dsystem}
+\begin{gather}
+\bm{u}'_t + U \bm{u}'_x + \left(v' U_y \right) \hat{\bm{\imath}} + \bm{u}' \cdot \nabla \bm{u}' = - \frac{1}{\rho} \nabla p' \\
+\nabla \cdot \bm{u}' = 0.
+\end{gather}
+\end{subequations}
+
+If we restrict ourselves to two dimensional flow, then the problem becomes more tractable. Since $\nabla \cdot \bm{u}' = 0$, this implies the existence of a streamfunction $\psi$ such that $\bm{u}' = \widehat{\bm{k}} \times \nabla \psi$; that is, $u = U(y) - \psi_y$ and $v = \psi_x$. The complete dynamics of \eqref{BasicEqns} can be described in terms of vorticity conservation among parcels, expressed by the equation $D\zeta / Dt = 0$, where $\zeta = v_x - u_y = \nabla^2 \psi - U_y$. Our vorticity equation then becomes
+\begin{equation*}
+\begin{split}
+\frac{D\zeta}{Dt} &= \zeta_t + U \zeta_x + \bm{u}' \cdot \nabla \zeta \\
+&= \left(\pdiff{}{t} + U \pdiff{}{x} \right) \nabla^2 \psi - U_{yy} \psi_x - \psi_y \nabla^2 \psi_x + \psi_x \nabla^2 \psi_y
+\end{split}
+\end{equation*}
+We may therefore take our 2D dynamical equation as
+\begin{equation}\label{2Dsystem}
+\left(\pdiff{}{t} + U \pdiff{}{x} \right) \nabla^2 \psi - U_{yy} \psi_x + \jcbn{\psi}{\nabla^2 \psi} = 0.
+\end{equation}
+At the moment, there is no rational justification for restricting ourselves to 2D flows. But their linearized stability properties are effectively equivalent to the 3D case; this is discussed in section \ref{SquiresThm}.
+
+Although in principle we could solve for $\bm{u}'$ in \eqref{3Dsystem}, or $\psi$ in \eqref{2Dsystem}, and then use this solution to determine whether the perturbation flow remains bounded, this is in general a foreboding task and must often be done computationally. So in order to make any significant theoretical predictions of our model results, we shall consider the simplified linearized problem, which neglects the perturbative advection term, $\bm{u}' \cdot \nabla \bm{u}'$ in \eqref{3Dsystem} and $\jcbn{\psi}{\nabla^2 \psi}$ in \eqref{2Dsystem}.
+
+Therefore, when we neglect the nonlinear advection, the three dimensional equations along each direction are
+\begin{subequations}
+\begin{align}
+\pdiff{u'}{t} + U \pdiff{u'}{x} + v' \frac{dU}{dy} &= - \pdiff{p'}{x}, \\
+\pdiff{v'}{t} + U \pdiff{v'}{x} &= - \pdiff{p'}{y}, \\
+\pdiff{w'}{t} + U \pdiff{w'}{x} &= - \pdiff{p'}{z}, \\
+\pdiff{u'}{x} + \pdiff{v'}{y} + \pdiff{w'}{z} &= 0.
+\end{align}
+\end{subequations}
+We now consider the stability of an arbitrary disturbance in this linearized problem. Unless our disturbance is singular in higher derivatives, which is neither physical nor of particular interest, we can divide a quantity of interest and divide it into its wavelike components (or modes) along the unbounded directions $x$ and $z$, as well as in time, $t$. We may then track the evolution of these modes independently, and take the evolution of a disturbance as an aggregate of these modes. Then for one such mode, quantities will take the form
+\begin{equation*}
+\bm{u}' = \widehat{\bm{u}}(y) \exp\left(i \left(k x + m z - k c t \right) \right), \ \ \ p = \hat{p}(y) \exp\left(i \left(k x + m z - k c t \right) \right).
+\end{equation*}
+% Someday I hope to learn a systematic way to make a two-column without flalign
+From these expressions, we see that unbounded growth, and therefore instability, is associated with negative values of $c_i$, the imaginary part of $c$.
+
+Our equations for each mode then become
+\begin{subequations}\label{3Deigenproblem}
+\begin{align}
+i k \left(U - c\right)\hat{u} + \hat{v} \frac{dU}{dy} &= - i k \hat{p} \\
+i k \left(U - c\right)\hat{v} &= - \frac{d \hat{p}}{d y} \\
+i k \left(U - c\right)\hat{w} &= - i m \hat{p} \\
+i k \hat{u} + \frac{d\hat{v}}{d y} + i m \hat{w} &= 0.
+\end{align}
+\end{subequations}
+We will address the boundary conditions in more detail later, but at the rigid walls we will require that $\hat{v} = 0$ at $y_1$ and $y_2$.
+
+This is formally a two-point eigenvalue problem in $y$, with an eigenvalue of $c$. If the system remains nonsingular, then we can decompose the system into a discrete set of modes. However, there is a strong possibility of singularity, occurring when $U = c$, which would degenerate the system and therefore change the nature of the problem itself. This degeneracy is even more apparent in the 2D system. This will require the inclusion of the so-called \emph{continuous modes} which lack the orthogonality of the normal modes, and complicated the stability analysis. But we will for the moment assume that this is not the case and that our disturbance can be decomposed into a discrete set of modes.
+
+\section{Squire's Theorem}\label{SquiresThm}
+
+Squire's theorem tells us that for every unstable three-dimensional disturbance, the corresponding two-dimensional surface will be even more unstable. In other words, a stability analysis for a 3D flow can effectively be done within a 2D framework.
+
+We illustrate this point through a Squire transformation:
+\begin{equation*}
+\tilde{k}^2 = k^2 + m^2, \ \ \ \tilde{k} \tilde{u} = k \hat{u} + m \hat{w}, \ \ \ \tilde{p} / \tilde{k} = p / k, \ \ \ \tilde{v} = \hat{v}, \ \ \ \tilde{c} = c.
+\end{equation*}
+Then by combining the the first two equations, the eigenvalue problem \eqref{3Deigenproblem} becomes
+\begin{subequations}
+\begin{align}
+i \tilde{k} (U - \tilde{c}) \tilde{u} + \tilde{v} \frac{dU}{dy} &= - i \tilde{k} \tilde{p}, \\
+i \tilde{k} (U - \tilde{c}) \tilde{v} &= - \frac{d\tilde{p}}{dy}, \\
+i \tilde{k} \tilde{u} + \frac{d \tilde{v}}{d y} &= 0.
+\end{align}
+\end{subequations}
+The functional form of this system of equations is identical to a 2D disturbance when $m = 0$ and $\hat{w} = 0$. To prove Squire's theorem, consider an arbitrary three-dimensional disturbance of wavenumber $\tilde{k}$, and growth rate $k c_i$. But the corresponding 2D disturbance with the same wavenumber has a growth rate of $\tilde{k} \tilde{c}_i = \tilde{k} c_i$. Since $\tilde{k} > k$ when $m \neq 0$, we may therefore say that an unstable 3D mode will remain unstable when the analogous mode is analyzed in two dimensions, and that this mode will become even more unstable.
+
+The result is effectively describing a projection of the mean wind along the disturbance. Only the component of the wind that is parallel to the disturbance can interact with it and create an instability, and so if we are considering a three-dimensional disturbance, then this projection of the mean flow will be weaker than a wave parallel to the wind, and will therefore grow (or decay) more slowly.
+
+Although a 2D flow will not describe a 3D flow in complete detail, we can use it to analyze the stability of jets in a 3D system. The reduced complexity of the 2D dynamics will allow us to state a number of useful theorems on stability, and Squire's theorem lets us extend these results to 3D flows.
+
+\section{The Two-Dimensional Problem and Boundary Conditions}
+
+We shall now restrict ourselves to two-dimensional flows. Neglecting the inertial term, the vorticity equation \eqref{2Dsystem} is
+\begin{equation}
+\left(\pdiff{}{t} + U \pdiff{}{x} \right) \nabla^2 \psi - U_{yy} \psi_x = 0
+\end{equation}
+which, for normal modes (and $k \neq 0$), becomes
+\begin{equation}
+\left(U - c\right) \left(\psi'' - k^2 \psi \right) - U'' \psi = 0
+\end{equation}
+where we can now use primes to denote derivatives in $y$ without ambiguity. This is often referred to as \emph{Rayleigh's stability equation}. The boundary condition $\hat{v} = 0$ becomes $\psi = 0$ at the walls.
+
+To solve the problem formally, one recongizes that it is a second-order eigenvalue problem, so that for each mode and eigenvalue $(k, c)$, the solution is of the form
+\begin{equation*}
+\psi = A_1 \psi_1(y; k, c) + A_2 \psi_2(y; k, c) = 0
+\end{equation*}
+which, when evaluated at each boundary, gives us a relation of the form
+\begin{equation*}
+F(k, c) = \begin{vmatrix} \psi_1(y1; k, c) & \psi_2(y1; k, c) \\ \psi_1(y2; k, c) & \psi_2(y2; k, c) \\ \end{vmatrix} = 0
+\end{equation*}
+which can be inverted (in theory) to give an algebraic expression for $c$.
+
+We now give a more complete discussion of boundary conditions, specifically addressing those times when the mean flow has discontinuous slopes or even velocities. The singular nature of the stability equation permits the existence of such profiles, and we can therefore study their stability.
+
+Physically, the reason that such discontinuties are plausible is that a fluid dynamical system only requires a continuity of momentum flux and mass flux. Within these constraints, discontinuities in other quantities are permitted. For momentum, this is established by a continuity of pressure. So if we take the $x$-momentum equation for a modal disturbance over such a discontinuity and integrate over an infinitesimal distance, we have
+\begin{equation*}
+\int_{a-\epsilon}^{a+\epsilon} \left[k (U - c) u + v U' \right] = - i \int_{a-\epsilon}^{a+\epsilon} k p = 0
+\end{equation*}
+where, as $\epsilon \rightarrow 0$, the RHS is zero by continuity of pressure. We therefore find, after substituting $u = -\psi'$ and $v = i k \psi$, that
+\begin{equation}
+\left[\left(U-c\right)\psi' - U' \psi \right]_{a-\epsilon}^{a+\epsilon} = 0
+\end{equation}
+
+Mass balance is illustrated by a material surface through the domain, which is conserved following the fluid. So if our sheet is described by $y = \eta(x, t)$, then invariance of the surface along the fluid, $D (y - \eta) / D t = 0$, as well as the introduction of a linearization approximation for a normal mode, yields
+\begin{equation*}
+v = D \eta / D t = \eta_t + U \eta_x = i k (U - c) \eta
+\end{equation*}
+so that, by using $v = i k \psi$, integration over the domain and the continuity of $\eta$ yields the result
+\begin{equation}
+\left[\psi / (U - c) \right]_{a-\epsilon}^{a+\epsilon} = 0
+\end{equation}
+
+These results can also be obtained directly from the stability equation.
+
+\section{Rayleigh's and Fj\o rtoft's Theorems}
+
+We now present the global stability theorems for parallel shear channel flows, Rayleigh's and Fj\o rtoft's theorems.
+
+For Rayleigh's theorem, if we assume that $U \neq c$ anywhere in the channel, we may multiply the stability equation by the conjugate of $\psi$ to obtain
+\begin{equation*}
+|\psi'|^2 + k^2 |\psi|^2 + \left(\frac{U''}{U - c} \right)|\psi|^2 = (\psi^* \psi')'
+\end{equation*}
+so that integration across the channel, and using $\psi = 0$ at the boundaries for the RHS, gives us
+\begin{equation*}
+\int_{y_1}^{y_2} \left(|\psi'|^2 + k^2 |\psi|^2 + \left(\frac{U''}{U - c} \right)|\psi|^2 \right) dy = 0.
+\end{equation*}
+If we now that $c = c_r + i c_i$ and split the integral into its real and imaginary parts, we have
+\begin{equation*}
+\left[\int_{y_1}^{y_2} \left(|\psi'|^2 + k^2 |\psi|^2 + U'' \frac{(U - c_r)}{|U - c|^2}|\psi|^2 \right) dy \right] + i c_i \int_{y_1}^{y_2} \frac{U''}{|U - c|^2} |\psi|^2 dy = 0.
+\end{equation*}
+Since the imaginary part must individually be zero, we have
+\begin{equation}
+c_i \int_{y_1}^{y_2} \frac{U''}{|U-c|^2} |\psi|^2 dy = 0.
+\end{equation}
+This is the essence of Rayleigh's \emph{inflection point theorem}. If $U'' \neq 0$ in the domain, so that $U''$ does not change sign, then there is no way for the integral across the channel to become zero. Therefore, the only way to satisfy the equation is if $c_i = 0$, implying that the flow is stable. Rayleigh's theorem is therefore a \emph{necessary} condition for instability: if U'' (or the mean flow vorticity gradient) does not change sign, then the flow must be stable. For an instability to occur, we require that the vorticity gradient change sign.
+
+Rayleigh's theorem is best interpreted through the behavior of Rossby waves, where the vortex gradient $U''$ essentially acts as a $\beta$-effect. If $\beta$ does not change sign, then all of the disturbances (which correspond to Rossby waves) are \emph{copropagating}, that is, traveling in the same direction, and the theorem tells us that such a configuration must be stable. However, if $\beta$ changes sign, then it is possible to have Rossby waves traveling in opposite direction, or \emph{counterpropagation}, and such a configuration has the potential for instability.
+
+The physical mechanisms underlying these results can be determined by looking at the interaction between two such waves. The interaction of the waves with themselves act to propagate themselves in a direction with stronger background vorticity to the right. The interaction between the waves depends on both their direction of propagation and phase. For copropagating waves, the long-term interaction creates a situation where the first wave is amplifying the second, while the second wave is actually weakening the first. As the amplifying wave becomes weaker, its ability to cause growth is suppressed, allowing the second wave to become stronger, and then take over the role of amplifier. In other words, there is an endless exchange of roles between amplification and damping, and that such a system remains neutral. For the case of counterpropagating waves however, the first wave's amplification occurs in conjunction with the second wave, so that the two continuously amplify (or weaken) each other, potentially leading to an instability. The actual determination of growth or decay depends on the phase relationship of the waves.
+
+The result of Rayleigh can be strengthened to some degree, and this is encapsulated in Fj\o rtoft's theorem. This can be shown by returning to the proof for Rayleigh's theorem, but now taking the real part of the penultimate equation as zero:
+\begin{equation*}
+\int_{y_1}^{y_2} \left(|\psi'|^2 + k^2 |\psi|^2 + U'' \frac{(U - c_r)}{|U - c|^2}|\psi|^2 \right) dy = 0.
+\end{equation*}
+Then since the first two terms are nonnegative, we may say that
+\begin{equation*}
+\int_{y_1}^{y_2} \left(U'' \frac{(U - c_r)}{|U - c|^2}|\psi|^2 \right) dy = -\int_{y_1}^{y_2} \left(|\psi'|^2 + k^2 |\psi|^2 \right) dy \leq 0.
+\end{equation*}
+Now let us presume that Rayleigh's criterion for instability has been met, then for some constant wind $U_s$, we can say that
+\begin{equation*}
+(c_r - U_s) \int_{y_1}^{y_2} \frac{U''}{|U - c|^2} |\psi|^2 dy = 0.
+\end{equation*}
+Then by adding this to the real part of the complex equation, we have
+\begin{equation}
+\int_{y_1}^{y_2} \frac{U'' (U - U_s)}{|U - c|^2} |\psi|^2 dy \leq 0.
+\end{equation}
+In other words, instability requires that both $U'' = 0$ and $U''(U - U_s) < 0$ be true somewhere in the flow. The choice for $U_s$ is somewhat subjective, but if we choose it to correspond to the point where $U'' = 0$, then we can ensure that $U''$ and $U - U_s$ will change sign in conjunction. We thence have Fj\o rtoft's theorem, stating that $U''(U - U_s) < 0$ is a necessary condition for instability, where $U_s$ is the flow at the point where $U'' = 0$.
+
+\section{Howard's Semicircle Theorem}
+
+Lou Howard was able to extend an earlier result of Rayleigh's concerning the possible eigenvalues of a channel flow instability. To do this, he rewrote the stability equation in Sturm-Liouville form. If we take $F = \psi / (U - c)$, then the stability equation becomes
+\begin{equation*}
+(U - c) ((U-c) F)'' - (U-c)'' (U-c) F - k^2 (U-c)^2 F = 0.
+\end{equation*}
+After applying the chain rule of derivatives, it then becomes
+\begin{equation}
+((U-c)^2 F')' - k^2 (U-c)^2 F = 0.
+\end{equation}
+If we now multiply by the conjugate and integrate across the channel (as in the Rayleigh theorem analysis), then
+\begin{equation*}
+\int_{y_1}^{y_2} (U - c)^2 \left(|F'|^2 + k^2 |F|^2 \right) dy = 0
+\end{equation*}
+which, when decomposed into real and imaginary parts, becomes
+\begin{subequations}
+\begin{align*}
+\int_{y_1}^{y_2} \left((U-c_r)^2 - c_i^2\right) Q dy & = 0 \\
+2 c_i \int_{y_1}^{y_2} (U - c_r) Q dy & = 0
+\end{align*}
+\end{subequations}
+where $Q = |F'|^2 + k^2 |F|^2 > 0$. Now let us presume that $c_i \neq 0$. Then from the imaginary part, we have
+\begin{equation*}
+\int_{y_1}^{y_2} U Q dy = \int_{y_1}^{y_2} c_r Q dy
+\end{equation*}
+which can be used with the real part to show that
+\begin{equation*}
+\int_{y_1}^{y_2} U^2 Q dy = \int_{y_1}^{y_2} (c_i^2 + c_r^2) Q dy.
+\end{equation*}
+But since $(U - U_{\min}) \geq 0$ and $(U - U_{\max}) \leq 0$, they imply that
+\begin{equation*}
+\begin{split}
+0 &\geq \int_{y_1}^{y_2} (U - U_{\min}) (U - U_{\max}) Q dy \\
+&= \int_{y_1}^{y_2} \left[(c_i^2 + c_r^2) - (U_{\min} + U_{\max})c_r + U_{\min} U_{\max} \right] Q dy
+\end{split}
+\end{equation*}
+We therefore need the integrand to be negative, and so the leading constant must be negative:
+\begin{equation*}
+c_r^2 + c_i^2 - (U_{\min} + U_{\max})c_r + U_{\min} U_{\max} \leq 0
+\end{equation*}
+or, by refactoring,
+\begin{equation}
+\left[c_r - \frac{1}{2}(U_{\min} + U_{\max}) \right]^2 + c_i^2 \leq \left[\frac{1}{2}(U_{\max} - U_{\min}) \right]^2.
+\end{equation}
+Hence, the eigenvalues must lie within a circle centered at $\frac{1}{2}(U_\text{min} + U_\text{max})$ and with a radius of $\frac{1}{2}(U_\text{max} - U_\text{min})$. The upper semicircle corresponds to $c_i > 0$, the unstable waves, and this bound on the unstable modes is referred to as Howard's \emph{semicircle theorem}.
+
+\section{Examples of Barotropic Instability}
+
+\subsection{Poiseuille Flow}
+
+For $-1 \leq y \leq 1$, plane Poiseuille flow
+\begin{equation*}
+U(y) = 1 - y^2
+\end{equation*}
+lacks any inflection points and cannot produce counterpropagating Rossy waves. It is therefore stable, based on the Rayleigh inflection point theorem.
+
+\subsection{Sinusoidal Flow}
+
+For the case of sinusoidal flow between boundaries $y_1$, $y_2$,
+\begin{equation*}
+U(y) = \sin y
+\end{equation*}
+the stability equation becomes
+\begin{equation*}
+(\sin y - c) \left( \psi'' - k^2 \psi\right) + \sin y \psi = 0.
+\end{equation*}
+Since $U'' = 0$ at nodes $y = n \pi$, it is first clear that the profile is stable whenever $y_1$ and $y_2$ contain none of these nodes by Rayleigh's theorem. For the presence of at least one node, we may take that node to be $y_s = 0$ without loss of generality, so that $y_1 \leq 0 \leq y_2$.
+
+If our profile contains $y = 0$, then the profile also meets Fj\o rtoft's criterion:
+\begin{equation*}
+U''(U - U_s) = - \sin^2 y < 0
+\end{equation*}
+To consider stability, we shall use the following theorem concerning so-called \emph{s-wave} neutral solutions where $c = U_s$, which draws on a number of ideas from Sturm-Liouville theory. If $c = U_s$, then the Rayleigh equation can be written in the form
+\begin{equation*}
+\psi'' + K(y) \psi + \lambda \psi = 0
+\end{equation*}
+where $K(y) = -U'' / (U - U_s)$ and $\lambda = -k^2$. We can apply a variational solution to this equation to obtain
+\begin{equation*}
+\lambda_s = \min\left[\frac{\int_{y_1}^{y_2} \left((f')^2 - K f^2\right) dy} {\int_{y_1}^{y_2} f^2 dy} \right]
+\end{equation*}
+where variation is over square-integrable functions $f$. We may then use an expression from the proof of Rayleigh's theorem to show that
+\begin{equation*}
+\int_{y_1}^{y_2} \vert \psi' \vert^2 + k^2 \vert \psi \vert^2 dy = \int_{y_1}^{y_2} \frac{(U - c_r)^2 - (U_s - c_r)^2}{(U - c_r)^2 + c_i^2} K \vert \psi \vert^2 dy < \int_{y_1}^{y_2} K \vert \psi \vert^2 dy
+\end{equation*}
+and so, therefore,
+\begin{equation}
+k^2 < \max\left[\frac{\int_{y_1}^{y_2} - \vert \psi' \vert^2 + K \vert \psi \vert^2 dy}{\int_{y_1}^{y_2} \vert \psi \vert^2 dy} \right] = k_s^2
+\end{equation}
+With this result, one can show that if $k^2 > k_s^2$, then $c_i = 0$. In addition, after some further work, one can establish that for $K(y) \geq 0$, then as long as $k_s$ remains real, \emph{all} modes are stable.
+
+For the $s$-mode of our sinusoidal profile, $K(y) = -U'' / (U - U_s) = 1$, so that our neutral stability equation is
+\begin{equation*}
+\sin y \left(\psi_s'' + (1 - k_s^2) \psi_s \right) = 0
+\end{equation*}
+with $\psi_s = 0$ at $y_1$ and $y_2$.
+
+Ignoring continuous modes, the solution is then
+\begin{equation*}
+\psi_s = A \sin((1 - k_s^2) y + \phi)
+\end{equation*}
+which, after incorporating the boundary conditions, becomes
+\begin{equation*}
+\psi_s = \sin\left[n \pi (y - y_1) / (y_2 - y_1)\right]
+\end{equation*}
+with
+\begin{equation*}
+k_s = \left(1 - \frac{n^2 \pi^2}{(y_2 - y_1)^2} \right)^{\frac{1}{2}}
+\end{equation*}
+We have stability as long as $k_s$ remains real, since growth is given by $k_s c_i$. Hence, for $n < (y_2 - y_1) / \pi$, the flow will be stable, \emph{even though both Rayleigh's and Fj\o rtoft's criteria have been met}. For larger $n$, the flow will be unstable.
+
+\subsection{Top Hat Flow}
+Consider the square-profile jet:
+\begin{equation*}
+U(y) = \begin{cases} 1 & \vert y \vert < 1 \\ 0 & \vert y \vert > 1. \end{cases}
+\end{equation*}
+
+Because of the discontinuity, we must divide the system into three distinct regimes, each satisfying its own stability equation,
+\begin{equation*}
+(U - c) (\psi'' - k^2 \psi) = 0
+\end{equation*}
+so that, in each region, the flow obeys
+\begin{equation*}
+\psi =
+\begin{cases}
+A e^{-ky} & y > 1 \\
+B e^{ky} + C e^{-ky} & -1 < y < 1 \\
+D e^{ky} & y < 1
+\end{cases}
+\end{equation*}
+Continuity of pressure requires $(U - c)\psi'$ be continuous, so that
+\begin{align*}
+kc A e^{-k} &= k(1-c) \left(B e^{k} - C e^{-k}\right) \\
+k(1-c) \left(B e^{-k} - C e^{k}\right) &= -cD e^{-k}
+\end{align*}
+while continuity of mass, requiring $\psi / (U - c)$ continuity, yields
+\begin{align*}
+(c-1) A e^{-k} &= (c-1) \left(B e^{k} + C e^{-k}\right) \\
+(c-1) \left(B e^{-k} - C e^{k}\right) &=  e^{-k}.
+\end{align*}
+We can then eliminate the amplitude coefficients and obtain an algebraic dispersion relation for $c$, whose solutions are
+\begin{equation*}
+c_1 = \frac{1 + i (\coth k)^{1/2}}{1 + \coth k}
+\end{equation*}
+and
+\begin{equation*}
+c_2 = \frac{1 + i (\tanh k)^{1/2}}{1 + \tanh k}
+\end{equation*}
+Because the imaginary part is positive in both cases, all modes of the top hat jet are unstable.
+
+\section{Conclusion}
+
+We have summarized a number of key results from barotropic instability theory, specifically the theorems of Squire, Rayleigh, Fj\o rtoft, and Howard, for channel flows. We have also applied these ideas to a number of particular cases, to better understand these theorems.
+
+\end{document}

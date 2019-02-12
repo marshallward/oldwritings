@@ -1,0 +1,310 @@
+\documentclass[30pt,landscape]{foils}
+
+\usepackage{amsmath, amssymb, bm}
+
+\usepackage[pdftex]{color}
+\usepackage[pdftex]{geometry}
+
+\geometry{headsep=3ex,hscale=0.9}
+
+\usepackage{hyperref}
+\hypersetup{pdftitle={GeneralBernoulliThm},
+  pdfsubject={A Generalization of Bernoulli's Theorem},
+  pdfauthor={Marshall Ward, GFDI,
+  Florida State University
+  <ward@gfdi.fsu.edu>},
+  pdfkeywords={pdftex, acrobat},
+%  pdfpagemode={FullScreen}
+}
+
+\usepackage{pause}
+\usepackage{background}
+%\usepackage{pp4slide}
+
+\rightfooter{} % no more page numbers bottom right
+\MyLogo{} % no logo bottom left
+
+\title{A Generalization of Bernoulli's Theorem}
+\author{Christoph Sch\"ar, \emph{JAS}, 15 March 1993}
+\date{}
+
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\begin{document}
+
+\maketitle
+
+\foilhead{Outline}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+  \item Introduction
+
+  \item Classical Bernoulli Theorem
+
+  \item Generalization with Friction and Diabatic Heating
+
+  \item Application to Gravity Wave Breaking over Topography
+
+  \item Conclusions
+
+\end{itemize}
+
+\foilhead{Introduction}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+  \item PV has proven to be a powerful tool in geophysical dynamics
+
+  \item For inviscid and adiabatic flow, the PV is $Q = \frac{\bm{\omega} \cdot \nabla \theta}{\rho}$ and $\frac{D Q}{D t} = 0$
+
+  \item If a frictional force or a diabatic heating is introducted then this relationship breaks down
+
+  \item Haynes and McIntyre (1977, 1980) constructed a pointwise PV conservation principle of the form
+  \begin{equation*}
+  \pdiff{}{t} \left(\rho Q\right) + \nabla \cdot \bm{J} = 0
+  \end{equation*}
+      where $\bm{J}$ represents a generalized PV flux
+
+  \item Using the generalized PV theory, we will present a more general form of Bernoulli's theorem
+
+  \item The theorem will be used to suggest a relationship between PV flux and gravity wave breaking
+
+\end{itemize}
+
+\foilhead{Classical Bernoulli Theorem}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+
+  \item Inviscid, Adiabatic Momentum equation:
+
+  \begin{equation*}
+    \frac{D \bm{u}}{D t} + 2\bm{\Omega} \times \bm{u} = -\frac{1}{\rho} \nabla p + \nabla \Phi
+  \end{equation*}
+
+  \item Use $\bm{u} \cdot \nabla \bm{u} = \nabla \left(\frac{1}{2} \bm{u}^2 \right) + \bm{\zeta} \times \bm{u}$ and the enthalpy
+  \begin{equation*}
+    dh = T ds + \rho^{-1} dp = \rho^{-1} dp
+  \end{equation*}
+  for frictionless flow
+
+  \item Then projection along $\bm{u}$ gives
+  \begin{equation*}
+    \pdiff{}{t} \left(\frac{1}{2}\bm{u}^2 \right) + \bm{u} \cdot \nabla \left( \frac{1}{2} \bm{u}^2 + h + \Phi \right) = 0
+  \end{equation*}
+  \item which for a steady state reduces to
+  \begin{equation*}
+    \bm{u} \cdot \nabla B = 0
+  \end{equation*}
+  where $B = \frac{1}{2} \bm{u}^2 + h + \Phi$ is the \emph{Bernoulli potential}
+
+  \item For the atmosphere, we may also use $h = c_p T$ and $\Phi = gz$ so that $B = c_p T + \frac{1}{2} \bm{u}^2 + g z$
+
+  \item $B$ is conserved along streamlines, and $\bm{u}$ is perpendicular to $\nabla B$; but in 3D, $B$ is a surface and will not specify the direction of $\bm{u}$
+
+  \item If we also use the adiabatic condition $\frac{D \theta}{D t} = 0$ which in steady state becomes
+  \begin{equation*}
+    \bm{u} \cdot \nabla \theta = 0
+  \end{equation*}
+      then we see that $\bm{u}$ is also perpendicular to $\nabla \theta$.
+
+  \item We may then say that $\bm{u}$ is parallel to $\nabla \theta \times \nabla B$, and will interpret this as the (classical) Bernoulli Theorem
+
+\end{itemize}
+
+
+\foilhead{Generalization with Friction and Heating}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+
+  \item Our dissipative system of equations becomes
+  \begin{equation*}
+  \frac{D \bm{u}}{D t} + 2\bm{\Omega} \times \bm{u} = \frac{1}{\rho} \nabla p - \nabla \Phi + \bm{F}
+  \end{equation*}
+  \begin{equation*}
+  \frac{D \rho}{D t} + \rho \nabla \cdot \bm{u} = 0
+  \end{equation*}
+
+  \begin{equation*}
+  \frac{D \theta}{D t} = \dot{\theta}
+  \end{equation*}
+
+  \item The presence of $\bm{F}$ and $\dot{\theta}$ will invalidate Bernoulli's theorem, but we can recast it in terms of PV
+
+  \item As in the inviscid case, we can construct a PV relation, except there is now a modification due to the forcings
+  \begin{equation*}
+  \frac{D Q}{D t} = \frac{1}{\rho} \left[ \bm{\omega} \cdot \nabla \dot{\theta} + \left(\nabla \times \bm{F}\right) \cdot \nabla \theta \right]
+  \end{equation*}
+  which, after some manipulation, can be written as
+  \begin{equation*}
+  \pdiff{}{t}\left(\rho Q\right) + \nabla \cdot \bm{J} = 0
+  \end{equation*}
+
+  \item Here, $\bm{J} \equiv \rho Q \bm{u} - \bm{\omega} \dot{\theta} - \bm{F} \times \nabla \theta$, and advection of PV and a nonadvective forcing
+
+  \item Using the PV flux, we now seek to reestablish the Bernoulli theorem, so we again consider the momentum equation
+  \begin{equation*}
+  \pdiff{\bm{u}}{t} + \bm{\omega} \times \bm{u} = -\frac{1}{\rho} \nabla p - \nabla \left(\frac{1}{2} \bm{u}^2 + \Phi\right) + \bm{F}
+  \end{equation*}
+
+  \item By using $dh = T ds + \rho^{-1} dp$, this becomes
+  \begin{equation*}
+  \pdiff{\bm{u}}{t} + \bm{\omega} \times \bm{u} = -T \nabla s - \nabla B + \bm{F}
+  \end{equation*}
+
+  \item Unlike before, there is a dependence on entropy, which we would like to remove; since $\theta = \theta(s)$, taking the component perpendicular to $\nabla \theta$ should eliminate this effect:
+  \begin{multline*}
+  \nabla \theta \times \pdiff{\bm{u}}{t} + \nabla \theta \times \left(\bm{\omega} \times \bm{u}\right) \\ = -T \nabla \theta \times \nabla s - \nabla \theta \times \nabla B + \nabla \theta \times \bm{F}
+  \end{multline*}
+
+  \item This can then be simplified to
+  \begin{multline*}
+  \nabla \theta \times \left(\nabla B + \pdiff{\bm{u}}{t} \right) - \bm{\omega} \pdiff{\theta}{t} \\ = \bm{u} \left(\bm{\omega} \cdot \nabla \theta \right) - \bm{\omega} \dot{\theta} - \bm{F} \times \nabla \theta
+  \end{multline*}
+  That is,
+  \begin{equation*}
+  \bm{J} = \nabla \theta \times \left(\nabla B + \pdiff{\bm{u}}{t} \right) - \bm{\omega} \pdiff{\theta}{t}
+  \end{equation*}
+
+  \item Then the steady state flow satisfies
+  \begin{equation*}
+    \boxed{\bm{J} = \nabla \theta \times \nabla B}
+  \end{equation*}
+
+  \item So with forcing, the flow along Bernoulli and potential temperature surface intersections in the classical theory is replaced by a PV flux along such intersections
+
+  \item Also, notice that if $\bm{F} = 0$ and $\dot{\theta} = 0$, then $\bm{J} = \rho Q \bm{u}$, so that we recover the earlier result,
+  \begin{equation*}
+    \rho Q \bm{u} = \nabla \theta \times \nabla B
+  \end{equation*}
+
+  \item It is also possible to show a similar result in isentropic coordinates (which assumes a hydrostatic state):
+  \begin{equation*}
+    \bm{J_\theta} = \hat{\bm{k}} \times \nabla B_\theta
+  \end{equation*}
+
+\end{itemize}
+
+\foilhead{Application to Mean Flows}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+  \item The time-dependent forms of the Bernoulli theorems are not very practical, and there are few truly steady flows in the atmosphere
+
+  \item We can however apply the theorems to a \emph{statistical} steady state
+
+  \item For example, consider the equation of motion:
+  \begin{equation*}
+    \pdiff{\bm{u}}{t} + \bm{u} \cdot \nabla \bm{u} = - T \nabla s - \nabla B + \bm{F}
+  \end{equation*}
+
+  \item If we take a time average $\overline{\left(\cdot\right)} = \lim\limits_{T \rightarrow \infty} \frac{1}{T} \int_0^T \left(\cdot\right) dt$, then the explicit time dependence averages out and we are left with
+  \begin{equation*}
+    \overline{\bm{u}} \cdot \nabla \overline{\bm{u}} = -\overline{T} \nabla \overline{s} - \nabla \overline{B} + \left(\overline{\bm{F}} - \overline{T' \nabla s'} - \overline{\bm{u'} \cdot \nabla \bm{u'}}\right)
+  \end{equation*}
+  where the additional correlation terms represent some unspecified eddy processes
+
+  \item Notice if that we regard $\overline{\bm{F}} - \overline{T' \nabla s'} - \overline{\bm{u'} \cdot \nabla \bm{u'}}$ as an effective force $\cal{\bm{F}}$, then our equation is functionally identical to the unaveraged steady state flow
+
+  \item By a similar averaging of the thermodynamic equation, we can obtain a statistically steady basic state
+
+  \item Therefore, the Bernoulli theorm can be applied to a statistically steady state, \emph{even if the flow itself is highly turbulent}
+
+\end{itemize}
+
+\foilhead{PV Flux over an area A}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+  \item Using $\bm{J} = \nabla \theta \times \nabla B = - \nabla \times \left(B \nabla \theta \right)$, we can integrate over an area $A$ and use Stokes' theorem to obtain
+  \begin{equation*}
+  J^{\left(A\right)} = \int_A \bm{J} d\bm{a} = - \oint_{\partial A} B \nabla \theta \cdot d\bm{s}
+  \end{equation*}
+  so
+  \begin{equation*}
+    J^{\left(A\right)} = -\oint_{\partial A} B d\theta
+  \end{equation*}
+
+\end{itemize}
+
+\foilhead{Applications to Gravity Wave Breaking}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+  \item Gravity wave breaking past topography is of importance in mesoscale flows, and possibly in the general circulation as well
+
+  \item Much research suggests gravity wave breaking in 3D is associated with the turbulent production of PV anomalies, even if the basic flow is irrotational, and can only occur if the turbulent PV flux is upgradient
+
+  \item We apply our results from the Bernoulli theorem to this problem, and consider a basic irrotational state with $Q = 0$ everywhere
+
+  \item Because $Q = 0$, we will have $B$ and $\theta$ planes atop each other at all points, except where turbulent (or otherwise forces) PV fluxes are present
+
+  \item Since the basic state nor the generated gravity waves have any PV, observed PV fluxes \emph{must} be associated with nonlinear wave breaking
+
+\end{itemize}
+
+\foilhead{2D Gravity Wave Breaking}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+  \item If we have a 2D system with $v = 0$ and $\pdiff{}{y} = 0$, then $Q = 0$ everywhere and PV fluxes must be associated with wave breaking
+
+  \item The PV flux in the $\hat{\bm{y}}$ direction between two $\theta$ surfacs and distances $x_1$, $x_2$ is given by
+  \begin{equation*}
+    J^{(y)} = \int_{\theta_l}^{\theta_u} \left[B(x_2) - B(x_1)\right]d\theta
+  \end{equation*}
+
+  \item If we assume a stable stratification at $x_1$, $x_2$ as well as inviscid, adiabatic, and hydrostatic, then we can ensure that there are no turbulent fluxes in this region and no PV fluxes
+
+  \item We also neglect physical dissipation and diabatic effects in the domain of interest, so that any effective dissipation is due solely to turbulent wave breaking
+
+  \item We also invoke an ``entropic principle'', assuming that any turbulent forcing leads to a net energy loss
+
+  \item Despite no true diabatic effects, we allow a turbulent mixing to carry parcels across isentropics; however, far from the topography, parcels will relax to their original isentropes
+
+  \item That is, $\sigma u|_{x_1} = \sigma u|_{x_2}$, and the ''entropic mass flux'' is conserved between isentropes far from the turbulence
+
+  \item Now consider the energy balance equation:
+  \begin{equation*}
+    \pdiff{\rho E}{t} + \nabla \cdot \left(\rho E \bm{u} \right) + \nabla \cdot \left(p \bm{u} \right) = \rho \mathcal{D}
+  \end{equation*}
+
+  \item Here, $\mathcal{D} = \bm{u} \cdot \bm{F} + \frac{c_p T}{\theta} \dot{\theta}$ is the dissipative work
+
+  \item Then by using $B = E + \frac{p}{\rho}$ (via the enthalpy), we have a conservation law for Bernoulli potential:
+  \begin{equation*}
+    \pdiff{}{t}\left(\rho B\right) - \pdiff{p}{t} + \nabla \cdot \left(\rho B \bm{u}\right) = \rho \mathcal{D}
+  \end{equation*}
+
+  \item The vertically integrated steady state Bernoulli flux is then
+  \begin{equation*}
+    \int_0^\infty \rho \bm{u} B(x) |_{x_1}^{x_2} dz = \int \rho \mathcal{D} dx dz
+  \end{equation*}
+
+  \item Finally, by using $dM/dA = \rho dx dz = \sigma dx d\theta$ and $\sigma u|_{x_1} = \sigma u|_{x_2}$, we can say that
+  \begin{equation*}
+    \int_{\theta_0}^\infty \sigma \bm{u} \left[B(x) - B(x_1) \right] d\theta = \int \rho \mathcal{D} dx dz
+  \end{equation*}
+
+  \item Now by our entropic principle, the RHS is negative, since we can only dissipate energy. If we take the reasonable assumption that $\bm{u}_1$ and $\bm{u}_2$ are both positive, then it must be that $B(x_2) - B(x_1) < 0$ somewhere in the domain, and we \emph{must} have a PV flux in the $-\hat{\bm{y}}$ direction somewhere in the domain
+
+  \item Hence, we see that wave breaking (i.e. dissipation) must be associated with a PV flux
+
+\end{itemize}
+
+
+\foilhead{Conclusions}
+\hypersetup{pdfpagetransition=Replace}
+
+\begin{itemize}
+
+  \item The Bernoulli Law can be generalized to frictional and diabatic systems, except it is the PV flux that moves along constant $B$ and $\theta$
+
+  \item We can extend this law by applying it to statistical steady states, where the effect of turbulent eddies can be incorporated into the explicit fricitional and diabatic forcings
+
+  \item By relating PV fluxes to changes in Bernoulli potential across isentropic surfaces it is possible to demonstrate how wave breaking and other turbulent effects of gravity waves can be associated with PV fluxes
+\end{itemize}
+
+\end{document}

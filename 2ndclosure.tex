@@ -1,0 +1,152 @@
+\documentclass[landscape]{seminar}
+
+\usepackage{amsmath, amssymb, amsfonts}
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{.0, .0, .6}
+
+\usepackage[dvips]{graphicx}
+
+\usepackage{hyperref}
+\hypersetup{
+  pdfmenubar=true,
+  pdftoolbar=true,
+  pdfpagemode={None}
+}
+
+\pagestyle{empty}
+
+\renewcommand{\printlandscape}{\special{landscape}}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}
+Review of Closure Modeling
+\end{center}
+
+\begin{itemize}
+
+  \item We are principally interested in \emph{mean} quantities: $U_i$, $\Theta$, $P$
+
+  $\Rightarrow 5$ unknowns of interest
+
+\end{itemize}
+
+Evolution equations:
+
+\begin{equation*}
+\frac{dU_j}{dx_j} = 0
+\end{equation*}
+\begin{equation*}
+\pdiff{U_i}{t} + \pdiff{}{x_j}\left(U_i U_j + \overline{u_i u_j}\right) + \epsilon_{ijk} f_j U_k = -\pdiff{P}{x_i} - g_i \beta \Theta + \nu \nabla^2 U_i
+\end{equation*}
+\begin{equation*}
+\pdiff{\Theta}{t} + \pdiff{}{x_j}\left(\Theta U_j + \overline{\theta u_j}\right) = \alpha \nabla^2 \Theta
+\end{equation*}
+
+\begin{itemize}
+  \item 5 Evolution equations but 9 new unknowns: $\overline{u_i u_j}$, $\overline{\theta u_j}$
+
+  $\Rightarrow$ System is not closed
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+  \item We can model the unknown variables in terms of known variables; e.g. a down-gradient diffusions:
+  \begin{center}
+    $\overline{u_i u_j} = -K \pdiff{U_i}{x_j}$, \ \  $\overline{\theta u_j} = -k_T \pdiff{\Theta}{x_j}$
+  \end{center}
+
+  This is a \emph{first order} closure, solving for the first moments
+
+  \item Instead we can determine evolution equations for the second moments $\overline{u_i u_j}$, etc., and hope that it improves our accuracy
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{center}
+Second Moment Evolution Equations
+\end{center}
+
+\footnotesize
+
+\[
+\begin{split}
+\pdiff{}{t}(\overline{u_i u_j}) &+ \pdiff{}{x_k}\left[\overline{u_i u_j} U_k + \overline{u_i u_j u_k} - \nu \pdiff{}{x_k}\overline{u_i u_j}\right] + f_k \left[\epsilon_{j k l} \overline{u_l u_i} + \epsilon_{i k l} \overline{u_i u_j} \right]\\
+   & = - \left[\pdiff{}{x_j} \overline{p u_i} + \pdiff{}{x_i} \overline{p u_j} \right] - \left[\overline{u_i u_k} \pdiff{U_j}{x_k} + \overline{u_j u_k} \pdiff{U_i}{x_k} \right] \\
+   & - \beta \left[g_j \overline{u_i \theta} + g_i \overline{u_j \theta} \right] + \overline{p \left( \pdiff{u_i}{x_j} + \pdiff{u_j}{x_i}\right)} - 2 \nu \pdiff{u_i}{x_k} \pdiff{u_j}{x_k}\\
+\end{split}
+\]
+
+\[
+\begin{split}
+\pdiff{}{t}(\overline{\theta u_j}) &+ \pdiff{}{x_k} \left[U_k \overline{u_j \theta} + \overline{u_j u_j \theta} - \alpha \overline{u_j \pdiff{\theta}{x_k}} - \nu \overline{\theta \pdiff{u_j}{x_k}} \right] + f_k \epsilon_{jkl}\overline{u_l \theta} + \pdiff{}{x_j}\overline{p \theta}\\
+  &  = - \overline{u_j u_k} \pdiff{\Theta}{x_k} - \overline{\theta u_k} \pdiff{U_j}{x_k} - \beta g_j \overline{\theta^2} + \overline{p \pdiff{\theta}{x_j}} - (\alpha + \nu) \overline{\pdiff{u_j}{x_k}\pdiff{\theta}{x_k}} \\
+\end{split}
+\]
+
+\[
+\pdiff{}{t}\overline{\theta^2} + \pdiff{}{x_k} \left[U_k \overline{\theta^2} + \overline{u_k \theta^2} - \alpha \pdiff{\overline{\theta^2}}{x_k} \right] = - 2 \overline{u_k \theta} \pdiff{\Theta}{x_k} - 2 \alpha \overline{\pdiff{\theta}{x_k} \pdiff{\theta}{x_k}}
+\]
+
+\normalsize
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+
+  \item Same problem: Expressions for third moments are needed to determine second moment evolution
+
+  \item \emph{Second Order Closure}: Model the third moments in terms of lower moments
+
+  \item By physical and dimensional arguments, relate them to a \emph{kinetic energy scale} $q^2$, and a \emph{length scale} $l$, which also gives us a time scale $t_e = l / q$
+
+\begin{center}
+Examples:
+\end{center}
+
+$2 \nu \overline{\pdiff{u_i}{x_k} \pdiff{u_j}{x_k}} = \frac{2}{3} \frac{q^3}{B_1 l} \delta_{ij}$, \ \ \ $(\alpha + \nu) \overline{\pdiff{u_j}{x_k} \pdiff{\theta}{x_k} } = 0$,
+
+\bigskip
+
+$2 \alpha \overline{\pdiff{\theta}{x_k} \pdiff{\theta}{x_k} } = 2 \frac{q}{B_2 l} \overline{\theta^2}$, \ \ \ \ \ldots
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\begin{itemize}
+
+  \item First moments ($U_i$, $\Theta$, $P$) depend on themselves and second moments
+
+  \item Second moments ($\overline{u_i u_j}$, $\overline{u_i \theta}$, $\overline{\theta^2}$) depend on first moments, second moments, and $q$ and $l$
+
+  \item Equations for $q$ and $l$, or any two combinations of them, such as $q^2$ and $\epsilon = q^3/B_1 l$, will close our system of equations
+
+  \item The \emph{kinetic energy equation} for $q^2$ is well established:
+\[
+\frac{D q^2}{Dt} - \pdiff{}{z} \left[q l S_q \pdiff{}{z}\left(q^2\right)\right] = 2(P + B - \epsilon)
+\]
+
+  \item The \emph{length scale equation}, or energy dissipation ($\epsilon$) equation, or whatever you choose, however, is not so well established
+
+\end{itemize}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
